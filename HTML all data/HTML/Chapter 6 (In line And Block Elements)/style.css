@@ -1,0 +1,56 @@
+#divone{
+    color: rgb(0, 0, 0);
+    background-color: rgb(167, 219, 228);
+}
+    
+    /* or */
+    /* .red{
+        color:black;
+    background-color: aqua;
+}
+/* or */
+/* .yellow{
+    color: blue;
+    }
+    }  */
+    
+#onespan{
+        background-color: rgb(205, 154, 253);
+    }
+p{
+    background-color: rgb(240, 215, 215);
+}
+a{
+    background-color: yellow;
+}
+ol{
+       background-color: yellow; 
+}
+ul{
+        background-color: yellow;
+}
+dl{
+        background-color: yellow;
+}
+
+option{
+        background-color: yellow;
+}
+form{
+        background-color: yellow;
+}
+section{
+        background-color: yellow;
+}
+header{
+        background-color: yellow;
+}
+tbody{
+        background-color: yellow;
+}
+footer{
+        background-color: yellow;
+}
+tbody{
+        background-color: yellow;
+}

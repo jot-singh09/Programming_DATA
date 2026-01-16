@@ -1,0 +1,723 @@
+# import webbrowser as web
+# import subprocess
+# import os
+# import sys
+# import json
+# import time
+# import threading
+# import re
+# from urllib.parse import quote
+# import winreg
+
+# # ========== FILES ==========
+# KNOWN_APPS_FILE = "known_apps.json"
+
+# # ========== APP DISCOVERY ==========
+# def discover_installed_apps():
+#     apps = {}
+
+#     registry_paths = [
+#         (winreg.HKEY_LOCAL_MACHINE, r"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths"),
+#         (winreg.HKEY_CURRENT_USER, r"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths"),
+#         (winreg.HKEY_LOCAL_MACHINE, r"SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\App Paths"),
+#     ]
+
+#     for hive, path in registry_paths:
+#         try:
+#             with winreg.OpenKey(hive, path) as key:
+#                 for i in range(winreg.QueryInfoKey(key)[0]):
+#                     app_name = winreg.EnumKey(key, i)
+#                     try:
+#                         with winreg.OpenKey(key, app_name) as app_key:
+#                             app_path, _ = winreg.QueryValueEx(app_key, "")
+#                             if app_path and os.path.exists(app_path):
+#                                 apps[app_name.replace(".exe", "").lower()] = app_path
+#                     except:
+#                         continue
+#         except:
+#             continue
+
+#     common_apps = {
+#         "notepad": "notepad.exe",
+#         "calc": "calc.exe",
+#         "paint": "mspaint.exe",
+#         "cmd": "cmd.exe",
+#         "powershell": "powershell.exe",
+#         "explorer": "explorer.exe",
+#         "taskmgr": "taskmgr.exe",
+
+#         "chrome": r"C:\Program Files\Google\Chrome\Application\chrome.exe",
+#         "edge": r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe",
+#         "firefox": r"C:\Program Files\Mozilla Firefox\firefox.exe",
+
+#         "vscode": fr"C:\Users\{os.getlogin()}\AppData\Local\Programs\Microsoft VS Code\Code.exe",
+#         "telegram": fr"C:\Users\{os.getlogin()}\AppData\Roaming\Telegram Desktop\Telegram.exe",
+#         "whatsapp": fr"C:\Users\{os.getlogin()}\AppData\Local\WhatsApp\WhatsApp.exe",
+#     }
+
+#     apps.update(common_apps)
+#     return apps
+
+
+# def save_known_apps(apps):
+#     with open(KNOWN_APPS_FILE, "w") as f:
+#         json.dump(apps, f, indent=2)
+
+
+# def load_known_apps():
+#     if os.path.exists(KNOWN_APPS_FILE):
+#         with open(KNOWN_APPS_FILE, "r") as f:
+#             return json.load(f)
+#     return {}
+
+
+# def update_app_database():
+#     print("🔍 Scanning installed apps...")
+#     apps = discover_installed_apps()
+#     save_known_apps(apps)
+#     return apps
+
+
+# # ========== OPEN APP (SAFE + NON-BLOCKING) ==========
+# def open_app_non_blocking(app_name, apps_db):
+#     app = app_name.lower()
+
+#     def runner():
+#         if app in apps_db:
+#             try:
+#                 path = apps_db[app]
+#                 if not path.lower().endswith(".exe"):
+#                     print("❌ Invalid app path")
+#                     return
+#                 subprocess.Popen([path], shell=False)
+#                 print(f"✅ Opened: {app_name}")
+#             except Exception as e:
+#                 print(f"❌ Error: {e}")
+#         else:
+#             print("❌ App not found")
+
+#     threading.Thread(target=runner, daemon=True).start()
+
+
+# # ========== WEB / SEARCH ==========
+# def is_website_domain(text):
+#     pattern = r"^[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)+$"
+#     return re.match(pattern, text.lower()) is not None
+
+
+# def open_website(site):
+#     if not site.startswith("http"):
+#         site = "https://" + site
+
+#     threading.Thread(target=lambda: web.open(site), daemon=True).start()
+#     print(f"🌐 Opening: {site}")
+
+
+# def web_search(query):
+#     url = f"https://www.google.com/search?q={quote(query)}"
+#     threading.Thread(target=lambda: web.open(url), daemon=True).start()
+#     print(f"🔍 Searching: {query}")
+
+
+# def open_youtube(query):
+#     url = f"https://www.youtube.com/results?search_query={quote(query)}"
+#     threading.Thread(target=lambda: web.open(url), daemon=True).start()
+#     print(f"🎬 YouTube: {query}")
+
+
+# # ========== UI ==========
+# def clear_screen():
+#     os.system("cls" if os.name == "nt" else "clear")
+
+
+# def banner():
+#     clear_screen()
+#     print("════════════════════════════════════════════")
+#     print("🚀 SMART COMMAND ASSISTANT (SAFE MODE)")
+#     print("════════════════════════════════════════════")
+#     print("✔ No auto-start")
+#     print("✔ Apps open in background")
+#     print("✔ Terminal stays active")
+#     print("Type: help -h")
+#     print("════════════════════════════════════════════")
+
+
+# def help_menu():
+#     print("""
+# 📖 COMMANDS
+# --------------------------------
+# appname -a     Open app
+# query -y       YouTube search
+# query -s       Google search
+# site.com       Open website
+# list -l        List apps
+# update -u      Update app database
+# clear -c       Clear screen
+# exit           Quit
+# --------------------------------
+# """)
+
+
+# # ========== MAIN ==========
+# def main():
+#     apps_db = update_app_database()
+#     banner()
+#     help_menu()
+
+#     while True:
+#         try:
+#             cmd = input("\n🎯 Command > ").strip()
+#             if not cmd:
+#                 continue
+
+#             if cmd in ["exit", "quit"]:
+#                 print("👋 Goodbye!")
+#                 break
+
+#             if cmd in ["help", "-h"]:
+#                 help_menu()
+#                 continue
+
+#             if cmd in ["clear", "-c"]:
+#                 banner()
+#                 continue
+
+#             if cmd in ["update", "-u"]:
+#                 apps_db = update_app_database()
+#                 print("✅ Apps updated")
+#                 continue
+
+#             if cmd in ["list", "-l"]:
+#                 print("\n📦 Apps:")
+#                 for a in sorted(apps_db):
+#                     print(" -", a)
+#                 continue
+
+#             parts = cmd.split()
+
+#             if "-a" in parts:
+#                 open_app_non_blocking(" ".join(p for p in parts if p != "-a"), apps_db)
+
+#             elif "-y" in parts:
+#                 open_youtube(" ".join(p for p in parts if p != "-y"))
+
+#             elif "-s" in parts:
+#                 web_search(" ".join(p for p in parts if p != "-s"))
+
+#             else:
+#                 if is_website_domain(cmd):
+#                     open_website(cmd)
+#                 elif cmd.lower() in apps_db:
+#                     open_app_non_blocking(cmd, apps_db)
+#                 else:
+#                     web_search(cmd)
+
+#         except KeyboardInterrupt:
+#             print("\n⚠ Interrupted")
+#         except Exception as e:
+#             print("❌ Error:", e)
+
+
+# # ========== START ==========
+# if __name__ == "__main__":
+#     main()
+
+# import webbrowser as web
+# import subprocess
+# import os
+# import json
+# import time
+# import threading
+# import re
+# from urllib.parse import quote
+# import winreg
+# import ctypes
+
+# # ========== FILE ==========
+# KNOWN_APPS_FILE = "known_apps.json"
+
+# # ========== WINDOWS: BRING TERMINAL TO FRONT ==========
+# def bring_terminal_to_front():
+#     try:
+#         hwnd = ctypes.windll.kernel32.GetConsoleWindow()
+#         if hwnd:
+#             ctypes.windll.user32.ShowWindow(hwnd, 5)  # SW_SHOW
+#             ctypes.windll.user32.SetForegroundWindow(hwnd)
+#     except:
+#         pass
+
+# # ========== APP DISCOVERY ==========
+# def discover_installed_apps():
+#     apps = {}
+
+#     registry_paths = [
+#         (winreg.HKEY_LOCAL_MACHINE, r"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths"),
+#         (winreg.HKEY_CURRENT_USER, r"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths"),
+#         (winreg.HKEY_LOCAL_MACHINE, r"SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\App Paths"),
+#     ]
+
+#     for hive, path in registry_paths:
+#         try:
+#             with winreg.OpenKey(hive, path) as key:
+#                 for i in range(winreg.QueryInfoKey(key)[0]):
+#                     app_name = winreg.EnumKey(key, i)
+#                     try:
+#                         with winreg.OpenKey(key, app_name) as app_key:
+#                             app_path, _ = winreg.QueryValueEx(app_key, "")
+#                             if app_path and os.path.exists(app_path):
+#                                 apps[app_name.replace(".exe", "").lower()] = app_path
+#                     except:
+#                         continue
+#         except:
+#             continue
+
+#     user = os.getlogin()
+#     common_apps = {
+#         "notepad": "notepad.exe",
+#         "calc": "calc.exe",
+#         "paint": "mspaint.exe",
+#         "cmd": "cmd.exe",
+#         "powershell": "powershell.exe",
+#         "explorer": "explorer.exe",
+#         "taskmgr": "taskmgr.exe",
+
+#         "chrome": r"C:\Program Files\Google\Chrome\Application\chrome.exe",
+#         "edge": r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe",
+#         "firefox": r"C:\Program Files\Mozilla Firefox\firefox.exe",
+
+#         "vscode": fr"C:\Users\{user}\AppData\Local\Programs\Microsoft VS Code\Code.exe",
+#         "telegram": fr"C:\Users\{user}\AppData\Roaming\Telegram Desktop\Telegram.exe",
+#         "whatsapp": fr"C:\Users\{user}\AppData\Local\WhatsApp\WhatsApp.exe",
+#     }
+
+#     apps.update(common_apps)
+#     return apps
+
+
+# def save_known_apps(apps):
+#     with open(KNOWN_APPS_FILE, "w") as f:
+#         json.dump(apps, f, indent=2)
+
+
+# def update_app_database():
+#     print("🔍 Scanning installed apps...")
+#     apps = discover_installed_apps()
+#     save_known_apps(apps)
+#     return apps
+
+
+# # ========== OPEN APP (BACKGROUND + TERMINAL FRONT) ==========
+# def open_app_non_blocking(app_name, apps_db):
+#     app = app_name.lower()
+
+#     def runner():
+#         if app in apps_db:
+#             try:
+#                 subprocess.Popen([apps_db[app]], shell=False)
+#                 time.sleep(0.3)  # allow app to grab focus
+#                 bring_terminal_to_front()
+#                 print(f"✅ Opened (background): {app}")
+#             except Exception as e:
+#                 print(f"❌ Open error: {e}")
+#         else:
+#             print("❌ App not found")
+
+#     threading.Thread(target=runner, daemon=True).start()
+
+
+# # ========== CLOSE APP ==========
+# def close_app(app_name):
+#     app = app_name.lower()
+
+#     def runner():
+#         try:
+#             subprocess.run(
+#                 ["taskkill", "/f", "/im", f"{app}.exe"],
+#                 stdout=subprocess.DEVNULL,
+#                 stderr=subprocess.DEVNULL,
+#                 shell=True
+#             )
+#             bring_terminal_to_front()
+#             print(f"🛑 Closed: {app}")
+#         except Exception as e:
+#             print(f"❌ Close error: {e}")
+
+#     threading.Thread(target=runner, daemon=True).start()
+
+
+# # ========== WEB ==========
+# def is_website_domain(text):
+#     return re.match(r"^[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)+$", text) is not None
+
+
+# def open_website(site):
+#     if not site.startswith("http"):
+#         site = "https://" + site
+#     threading.Thread(target=lambda: web.open(site), daemon=True).start()
+#     bring_terminal_to_front()
+#     print(f"🌐 Opening: {site}")
+
+
+# def web_search(query):
+#     url = f"https://www.google.com/search?q={quote(query)}"
+#     threading.Thread(target=lambda: web.open(url), daemon=True).start()
+#     bring_terminal_to_front()
+#     print(f"🔍 Searching: {query}")
+
+
+# def open_youtube(query):
+#     url = f"https://www.youtube.com/results?search_query={quote(query)}"
+#     threading.Thread(target=lambda: web.open(url), daemon=True).start()
+#     bring_terminal_to_front()
+#     print(f"🎬 YouTube: {query}")
+
+
+# # ========== UI ==========
+# def clear_screen():
+#     os.system("cls")
+
+
+# def banner():
+#     clear_screen()
+#     print("════════════════════════════════════")
+#     print("🚀 SMART COMMAND ASSISTANT")
+#     print("════════════════════════════════════")
+#     print("✔ Apps open in background")
+#     print("✔ Terminal always in front")
+#     print("✔ Open & Close apps")
+#     print("Type: help -h")
+#     print("════════════════════════════════════")
+
+
+# def help_menu():
+#     print("""
+# 📖 COMMANDS
+# --------------------------------
+# firefox -a        Open Firefox
+# firefox close     Close Firefox
+# close firefox     Close Firefox
+# firefox -x        Close Firefox
+# query -y          YouTube search
+# query -s          Google search
+# site.com          Open website
+# list -l           List apps
+# update -u         Update app database
+# clear -c          Clear screen
+# exit              Quit
+# --------------------------------
+# """)
+
+
+# # ========== MAIN ==========
+# def main():
+#     apps_db = update_app_database()
+#     banner()
+#     help_menu()
+
+#     while True:
+#         try:
+#             cmd = input("\n🎯 Command > ").strip().lower()
+#             if not cmd:
+#                 continue
+
+#             if cmd in ["exit", "quit"]:
+#                 print("👋 Goodbye!")
+#                 break
+
+#             if cmd in ["help", "-h"]:
+#                 help_menu()
+#                 continue
+
+#             if cmd in ["clear", "-c"]:
+#                 banner()
+#                 continue
+
+#             if cmd in ["update", "-u"]:
+#                 apps_db = update_app_database()
+#                 print("✅ Apps updated")
+#                 continue
+
+#             if cmd in ["list", "-l"]:
+#                 print("\n📦 Apps:")
+#                 for a in sorted(apps_db):
+#                     print(" -", a)
+#                 continue
+
+#             parts = cmd.split()
+
+#             if "close" in parts or "-x" in parts:
+#                 app = parts[0] if parts[0] not in ["close", "-x"] else parts[1]
+#                 close_app(app)
+
+#             elif "-a" in parts:
+#                 open_app_non_blocking(parts[0], apps_db)
+
+#             elif "-y" in parts:
+#                 open_youtube(" ".join(p for p in parts if p != "-y"))
+
+#             elif "-s" in parts:
+#                 web_search(" ".join(p for p in parts if p != "-s"))
+
+#             else:
+#                 if is_website_domain(cmd):
+#                     open_website(cmd)
+#                 elif cmd in apps_db:
+#                     open_app_non_blocking(cmd, apps_db)
+#                 else:
+#                     web_search(cmd)
+
+#         except KeyboardInterrupt:
+#             print("\n⚠ Interrupted")
+#         except Exception as e:
+#             print("❌ Error:", e)
+
+
+# # ========== START ==========
+# if __name__ == "__main__":
+#     main()
+
+
+
+
+import os
+import time
+import json
+import threading
+import subprocess
+import winreg
+import ctypes
+import re
+from difflib import get_close_matches
+
+# ================= CONFIG =================
+KNOWN_APPS_FILE = "known_apps.json"
+
+# ================= TERMINAL FOCUS =================
+def bring_terminal_front():
+    try:
+        hwnd = ctypes.windll.kernel32.GetConsoleWindow()
+        if hwnd:
+            ctypes.windll.user32.ShowWindow(hwnd, 5)
+            ctypes.windll.user32.SetForegroundWindow(hwnd)
+    except:
+        pass
+
+# ================= JARVIS VOICE =================
+def jarvis(text):
+    print(f"\n🤖 JARVIS: {text}")
+
+# ================= APP DISCOVERY =================
+def discover_apps():
+    apps = {}
+
+    registry_paths = [
+        (winreg.HKEY_LOCAL_MACHINE, r"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths"),
+        (winreg.HKEY_CURRENT_USER, r"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths"),
+    ]
+
+    for hive, path in registry_paths:
+        try:
+            with winreg.OpenKey(hive, path) as key:
+                for i in range(winreg.QueryInfoKey(key)[0]):
+                    name = winreg.EnumKey(key, i)
+                    with winreg.OpenKey(key, name) as sub:
+                        exe, _ = winreg.QueryValueEx(sub, "")
+                        if exe and os.path.exists(exe):
+                            apps[name.replace(".exe","").lower()] = exe
+        except:
+            pass
+
+    common = {
+        "chrome": r"C:\Program Files\Google\Chrome\Application\chrome.exe",
+        "firefox": r"C:\Program Files\Mozilla Firefox\firefox.exe",
+        "edge": r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe",
+        "vscode": fr"C:\Users\{os.getlogin()}\AppData\Local\Programs\Microsoft VS Code\Code.exe",
+        "notepad": "notepad.exe",
+        "explorer": "explorer.exe"
+    }
+
+    apps.update(common)
+    return apps
+
+def load_apps():
+    if os.path.exists(KNOWN_APPS_FILE):
+        with open(KNOWN_APPS_FILE) as f:
+            return json.load(f)
+    apps = discover_apps()
+    save_apps(apps)
+    return apps
+
+def save_apps(apps):
+    with open(KNOWN_APPS_FILE, "w") as f:
+        json.dump(apps, f, indent=2)
+
+# ================= AUTO UPDATE =================
+def auto_update(apps):
+    while True:
+        time.sleep(60)
+        new = discover_apps()
+        if new != apps:
+            apps.clear()
+            apps.update(new)
+            save_apps(apps)
+            jarvis("I noticed some new apps and updated myself 🧠")
+
+# ================= SPELL FIX =================
+def correct_text(text, vocab):
+    words = text.split()
+    fixed = []
+
+    for w in words:
+        if w.isalpha():
+            m = get_close_matches(w.lower(), vocab, n=1, cutoff=0.8)
+            fixed.append(m[0] if m else w)
+        else:
+            fixed.append(w)
+
+    return " ".join(fixed)
+
+# ================= APP CONTROL =================
+def open_app(app, apps):
+    subprocess.Popen([apps[app]], shell=False)
+    time.sleep(0.3)
+    bring_terminal_front()
+    jarvis(f"{app} is open. What's next? 😄")
+
+def close_app(app):
+    subprocess.run(
+        ["taskkill","/f","/im",f"{app}.exe"],
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+        shell=True
+    )
+    jarvis(f"Closed {app} 👍")
+
+# ================= FILE SEARCH =================
+def search_files(name):
+    jarvis(f"Searching for '{name}' 📁")
+    for root, _, files in os.walk("C:\\"):
+        for f in files:
+            if name.lower() in f.lower():
+                print("📄", os.path.join(root, f))
+                return
+    jarvis("I couldn't find it 😅")
+
+# ================= AI EXPLAIN =================
+def ai_explain(topic, research=False):
+    jarvis("Alright, let me explain 😊")
+
+    if research:
+        print(f"""
+📘 {topic.upper()} — DETAILED
+
+{topic} is widely used in modern technology.
+
+🔥 Common uses:
+• Automation
+• AI & ML
+• Web development
+• Data science
+
+💡 Why people love it:
+• Easy to learn
+• Huge community
+• Cross-platform
+""")
+    else:
+        print(f"{topic} is a popular technology used in many areas.")
+
+# ================= FRIEND CHAT MODE =================
+def friend_chat(msg):
+    msg = msg.lower()
+
+    if any(w in msg for w in ["sad","tired","bored"]):
+        jarvis("Hey, it's okay. Everyone feels that way sometimes. I'm here with you 🤝")
+
+    elif "how are you" in msg:
+        jarvis("I'm doing great, especially because you're talking to me 😄")
+
+    elif "thank" in msg:
+        jarvis("Always welcome, my friend 💙")
+
+    elif "who are you" in msg:
+        jarvis("I'm your personal JARVIS — always with you, always loyal 🤖")
+
+    else:
+        jarvis("I'm listening 😊 Tell me more.")
+
+# ================= INTENT ENGINE =================
+def jarvis_engine(cmd, apps):
+    bring_terminal_front()
+
+    # FRIEND MODE
+    if cmd.startswith("-f"):
+        friend_chat(cmd.replace("-f","").strip())
+        return
+
+    corrected = correct_text(cmd, list(apps.keys()) + cmd.split())
+    if corrected != cmd:
+        print(f"✍️ Did you mean: {corrected}")
+
+    q = corrected.lower()
+
+    if "open" in q:
+        for a in apps:
+            if a in q:
+                open_app(a, apps)
+                return
+
+    if "close" in q:
+        for a in apps:
+            if a in q:
+                close_app(a)
+                return
+
+    if q.startswith("file -s"):
+        search_files(q.replace("file -s","").strip())
+        return
+
+    if "-r" in q:
+        topic = q.replace("-r","").replace("tell me","").replace("about","")
+        ai_explain(topic.strip(), True)
+        return
+
+    if "tell me" in q or "about" in q:
+        topic = q.replace("tell me","").replace("about","")
+        ai_explain(topic.strip())
+        return
+
+    jarvis("I didn’t fully understand that. Try explaining or use -f to chat 😄")
+
+# ================= UI =================
+def banner():
+    os.system("cls")
+    print("""
+══════════════════════════════════════
+🤖 J A R V I S  (Terminal Edition)
+══════════════════════════════════════
+• Typing only
+• Friend mode: -f
+• Smart intent engine
+• Terminal always active
+══════════════════════════════════════
+""")
+
+# ================= MAIN =================
+def main():
+    apps = load_apps()
+    banner()
+
+    threading.Thread(target=auto_update, args=(apps,), daemon=True).start()
+
+    while True:
+        try:
+            cmd = input("\n🧠 You > ").strip()
+            if cmd in ["exit","quit"]:
+                jarvis("Bye my friend 👋 I’ll be right here when you return.")
+                break
+            jarvis_engine(cmd, apps)
+        except KeyboardInterrupt:
+            print()
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment Distribution Calculator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .main-content {
+            padding: 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .input-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            border: 2px solid #e9ecef;
+        }
+        
+        .input-group {
+            margin-bottom: 25px;
+        }
+        
+        .level-inputs {
+            margin-top: 15px;
+            padding-left: 20px;
+            border-left: 3px solid #667eea;
+        }
+        
+        .user-inputs {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .results-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            border: 2px solid #e9ecef;
+            overflow-y: auto;
+            max-height: 600px;
+        }
+        
+        .results {
+            display: none;
+        }
+        
+        .result-item {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .result-header {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .result-value {
+            font-size: 1.1em;
+            color: #666;
+        }
+        
+        .summary-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        .user-distribution {
+            background: #e9ecef;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+        
+        .level-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 600;
+            margin-right: 5px;
+        }
+        
+        .red-badge {
+            background: #dc3545;
+            color: white;
+        }
+        
+        .green-badge {
+            background: #28a745;
+            color: white;
+        }
+        
+        .violet-badge {
+            background: #6f42c1;
+            color: white;
+        }
+        
+        .highlight {
+            color: #667eea;
+            font-weight: 600;
+        }
+        
+        .admin-amount {
+            background: #ffc107;
+            color: #333;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1.2em;
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .calculation-note {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+            font-style: italic;
+        }
+        
+        .distribution-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        
+        .distribution-table th {
+            background: #667eea;
+            color: white;
+            padding: 8px;
+            text-align: left;
+        }
+        
+        .distribution-table td {
+            padding: 8px;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .distribution-table tr:hover {
+            background: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Investment Distribution Calculator</h1>
+            <div class="subtitle">Calculate profit distribution based on individual principal amounts</div>
+        </header>
+        
+        <div class="main-content">
+            <div class="input-section">
+                <h2 style="color: #333; margin-bottom: 20px;">Input User Data</h2>
+                
+                <div class="input-group">
+                    <label>Number of Red Users</label>
+                    <input type="number" id="redCount" min="0" value="5" onchange="createRedUserInputs()">
+                    <div id="redUserInputs" class="level-inputs"></div>
+                </div>
+                
+                <div class="input-group">
+                    <label>Number of Green Users</label>
+                    <input type="number" id="greenCount" min="0" value="9" onchange="createGreenUserInputs()">
+                    <div id="greenUserInputs" class="level-inputs"></div>
+                </div>
+                
+                <div class="input-group">
+                    <label>Number of Violet Users</label>
+                    <input type="number" id="violetCount" min="0" value="9" onchange="createVioletUserInputs()">
+                    <div id="violetUserInputs" class="level-inputs"></div>
+                </div>
+                
+                <button onclick="calculateDistribution()">Calculate Distribution</button>
+            </div>
+            
+            <div class="results-section">
+                <h2 style="color: #333; margin-bottom: 20px;">Distribution Results</h2>
+                <div id="results" class="results">
+                    <!-- Results will be displayed here -->
+                </div>
+                <div id="noResults" style="text-align: center; color: #666; padding: 40px;">
+                    Enter user data and click "Calculate Distribution" to see results
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize with sample data
+        document.addEventListener('DOMContentLoaded', function() {
+            createRedUserInputs();
+            createGreenUserInputs();
+            createVioletUserInputs();
+        });
+
+        // Create input fields for Red users
+        function createRedUserInputs() {
+            const count = parseInt(document.getElementById('redCount').value) || 0;
+            const container = document.getElementById('redUserInputs');
+            container.innerHTML = '';
+            
+            for (let i = 1; i <= count; i++) {
+                const inputGroup = document.createElement('div');
+                inputGroup.className = 'user-inputs';
+                inputGroup.innerHTML = `
+                    <div>
+                        <label>Red User ${i}</label>
+                        <input type="number" id="redUser${i}" step="0.01" min="0" placeholder="$" value="${getDefaultRedValue(i)}">
+                    </div>
+                `;
+                container.appendChild(inputGroup);
+            }
+        }
+
+        // Create input fields for Green users
+        function createGreenUserInputs() {
+            const count = parseInt(document.getElementById('greenCount').value) || 0;
+            const container = document.getElementById('greenUserInputs');
+            container.innerHTML = '';
+            
+            for (let i = 1; i <= count; i++) {
+                const inputGroup = document.createElement('div');
+                inputGroup.className = 'user-inputs';
+                inputGroup.innerHTML = `
+                    <div>
+                        <label>Green User ${i}</label>
+                        <input type="number" id="greenUser${i}" step="0.01" min="0" placeholder="$" value="1">
+                    </div>
+                `;
+                container.appendChild(inputGroup);
+            }
+        }
+
+        // Create input fields for Violet users
+        function createVioletUserInputs() {
+            const count = parseInt(document.getElementById('violetCount').value) || 0;
+            const container = document.getElementById('violetUserInputs');
+            container.innerHTML = '';
+            
+            for (let i = 1; i <= count; i++) {
+                const inputGroup = document.createElement('div');
+                inputGroup.className = 'user-inputs';
+                inputGroup.innerHTML = `
+                    <div>
+                        <label>Violet User ${i}</label>
+                        <input type="number" id="violetUser${i}" step="0.01" min="0" placeholder="$" value="${getDefaultVioletValue(i)}">
+                    </div>
+                `;
+                container.appendChild(inputGroup);
+            }
+        }
+
+        // Get default values for Red users
+        function getDefaultRedValue(index) {
+            const defaults = [0.1, 0.2, 0.004, 1, 1];
+            return index <= defaults.length ? defaults[index - 1] : 1;
+        }
+
+        // Get default values for Violet users
+        function getDefaultVioletValue(index) {
+            const defaults = [0.5, 3, 1, 1, 1, 1, 1, 1, 1];
+            return index <= defaults.length ? defaults[index - 1] : 1;
+        }
+
+        // Main calculation function - BASED ON INDIVIDUAL PRINCIPAL AMOUNTS
+        function calculateDistribution() {
+            // Collect user investments
+            const redUsers = collectUserInvestments('red');
+            const greenUsers = collectUserInvestments('green');
+            const violetUsers = collectUserInvestments('violet');
+
+            // Calculate totals
+            const totalRed = redUsers.reduce((sum, val) => sum + val, 0);
+            const totalGreen = greenUsers.reduce((sum, val) => sum + val, 0);
+            const totalViolet = violetUsers.reduce((sum, val) => sum + val, 0);
+
+            // Calculate doubled values
+            const mulRed = totalRed * 2;
+            const mulGreen = totalGreen * 2;
+            const mulViolet = totalViolet * 2;
+
+            let resultHTML = '';
+            let adminShare = 0;
+            let totalDistributed = 0;
+            let distributionDetails = {};
+            
+            // Check which group is smallest
+            if (totalRed < totalGreen && totalRed < totalViolet) {
+                let sumPredication = totalGreen + totalViolet;
+                resultHTML += `
+                    <div class="result-item">
+                        <div class="result-header"><span class="level-badge red-badge">Red</span> is Smallest Group</div>
+                        <div class="result-value">Total of others (Green + Violet): <span class="highlight">$${sumPredication.toFixed(2)}</span></div>
+                    </div>
+                `;
+                
+                if (sumPredication > mulRed) {
+                    // Calculate INDIVIDUAL user distribution (20% of EACH user's principal)
+                    let totalUserDistribution = 0;
+                    const redUserShares = redUsers.map(investment => {
+                        const userShare = (investment * 20) / 100; // 20% of individual principal
+                        totalUserDistribution += userShare;
+                        return { investment, userShare };
+                    });
+                    
+                    resultHTML += `
+                        <div class="result-item">
+                            <div class="result-header">Total Distributed to Red Users</div>
+                            <div class="result-value">20% of each user's principal: <span class="highlight">$${totalUserDistribution.toFixed(2)}</span></div>
+                            <div class="calculation-note">Each user gets 20% of their own investment</div>
+                        </div>
+                    `;
+                    
+                    // Display individual user distribution table
+                    resultHTML += '<div class="result-item">';
+                    resultHTML += '<div class="result-header">Individual Red User Distribution</div>';
+                    resultHTML += '<table class="distribution-table">';
+                    resultHTML += '<tr><th>User</th><th>Principal</th><th>20% Distribution</th><th>Amount Received</th></tr>';
+                    
+                    redUserShares.forEach((item, index) => {
+                        resultHTML += `
+                            <tr>
+                                <td>Red User ${index + 1}</td>
+                                <td>$${item.investment.toFixed(3)}</td>
+                                <td>20%</td>
+                                <td class="highlight">$${item.userShare.toFixed(3)}</td>
+                            </tr>
+                        `;
+                    });
+                    resultHTML += '</table></div>';
+                    
+                    // Calculate INDIVIDUAL level distribution (30% of EACH user's principal)
+                    let totalLevelDistribution = 0;
+                    const redLevelShares = redUsers.map(investment => {
+                        const levelShare = (investment * 30) / 100; // 30% of individual principal
+                        totalLevelDistribution += levelShare;
+                        return { investment, levelShare };
+                    });
+                    
+                    resultHTML += `
+                        <div class="result-item">
+                            <div class="result-header">Total Level Distribution for Red Users</div>
+                            <div class="result-value">30% of each user's principal: <span class="highlight">$${totalLevelDistribution.toFixed(2)}</span></div>
+                            <div class="calculation-note">Each user gets 30% of their own investment as level distribution</div>
+                        </div>
+                    `;
+                    
+                    // Display level distribution table
+                    resultHTML += '<div class="result-item">';
+                    resultHTML += '<div class="result-header">Level Distribution Details</div>';
+                    resultHTML += '<table class="distribution-table">';
+                    resultHTML += '<tr><th>User</th><th>Principal</th><th>30% Level</th><th>Amount Received</th></tr>';
+                    
+                    redLevelShares.forEach((item, index) => {
+                        resultHTML += `
+                            <tr>
+                                <td>Red User ${index + 1}</td>
+                                <td>$${item.investment.toFixed(3)}</td>
+                                <td>30%</td>
+                                <td class="highlight">$${item.levelShare.toFixed(3)}</td>
+                            </tr>
+                        `;
+                    });
+                    resultHTML += '</table></div>';
+                    
+                    // Calculate admin's share
+                    adminShare = sumPredication - totalUserDistribution - totalLevelDistribution;
+                    totalDistributed = totalUserDistribution + totalLevelDistribution;
+                    
+                    // Store distribution details for summary
+                    distributionDetails = {
+                        smallestGroup: 'Red',
+                        userDistributionTotal: totalUserDistribution,
+                        levelDistributionTotal: totalLevelDistribution,
+                        individualUserShares: redUserShares,
+                        individualLevelShares: redLevelShares
+                    };
+                    
+                    resultHTML += `
+                        <div class="admin-amount">
+                            The Rest amount for admin is: <span style="font-size: 1.4em;">$${adminShare.toFixed(2)}</span>
+                        </div>
+                    `;
+                } else {
+                    adminShare = sumPredication;
+                    resultHTML += `
+                        <div class="admin-amount">
+                            Not enough funds for distribution. All amount goes to admin: <span style="font-size: 1.4em;">$${adminShare.toFixed(2)}</span>
+                        </div>
+                    `;
+                }
+                
+            } else if (totalGreen < totalRed && totalGreen < totalViolet) {
+                let sumPredication = totalRed + totalViolet;
+                resultHTML += `
+                    <div class="result-item">
+                        <div class="result-header"><span class="level-badge green-badge">Green</span> is Smallest Group</div>
+                        <div class="result-value">Total of others (Red + Violet): <span class="highlight">$${sumPredication.toFixed(2)}</span></div>
+                    </div>
+                `;
+                
+                if (sumPredication > mulGreen) {
+                    // Calculate INDIVIDUAL user distribution (20% of EACH user's principal)
+                    let totalUserDistribution = 0;
+                    const greenUserShares = greenUsers.map(investment => {
+                        const userShare = (investment * 20) / 100; // 20% of individual principal
+                        totalUserDistribution += userShare;
+                        return { investment, userShare };
+                    });
+                    
+                    resultHTML += `
+                        <div class="result-item">
+                            <div class="result-header">Total Distributed to Green Users</div>
+                            <div class="result-value">20% of each user's principal: <span class="highlight">$${totalUserDistribution.toFixed(2)}</span></div>
+                            <div class="calculation-note">Each user gets 20% of their own investment</div>
+                        </div>
+                    `;
+                    
+                    // Display individual user distribution table
+                    resultHTML += '<div class="result-item">';
+                    resultHTML += '<div class="result-header">Individual Green User Distribution</div>';
+                    resultHTML += '<table class="distribution-table">';
+                    resultHTML += '<tr><th>User</th><th>Principal</th><th>20% Distribution</th><th>Amount Received</th></tr>';
+                    
+                    greenUserShares.forEach((item, index) => {
+                        resultHTML += `
+                            <tr>
+                                <td>Green User ${index + 1}</td>
+                                <td>$${item.investment.toFixed(2)}</td>
+                                <td>20%</td>
+                                <td class="highlight">$${item.userShare.toFixed(3)}</td>
+                            </tr>
+                        `;
+                    });
+                    resultHTML += '</table></div>';
+                    
+                    // Calculate INDIVIDUAL level distribution (30% of EACH user's principal)
+                    let totalLevelDistribution = 0;
+                    const greenLevelShares = greenUsers.map(investment => {
+                        const levelShare = (investment * 30) / 100; // 30% of individual principal
+                        totalLevelDistribution += levelShare;
+                        return { investment, levelShare };
+                    });
+                    
+                    resultHTML += `
+                        <div class="result-item">
+                            <div class="result-header">Total Level Distribution for Green Users</div>
+                            <div class="result-value">30% of each user's principal: <span class="highlight">$${totalLevelDistribution.toFixed(2)}</span></div>
+                            <div class="calculation-note">Each user gets 30% of their own investment as level distribution</div>
+                        </div>
+                    `;
+                    
+                    // Display level distribution table
+                    resultHTML += '<div class="result-item">';
+                    resultHTML += '<div class="result-header">Level Distribution Details</div>';
+                    resultHTML += '<table class="distribution-table">';
+                    resultHTML += '<tr><th>User</th><th>Principal</th><th>30% Level</th><th>Amount Received</th></tr>';
+                    
+                    greenLevelShares.forEach((item, index) => {
+                        resultHTML += `
+                            <tr>
+                                <td>Green User ${index + 1}</td>
+                                <td>$${item.investment.toFixed(2)}</td>
+                                <td>30%</td>
+                                <td class="highlight">$${item.levelShare.toFixed(3)}</td>
+                            </tr>
+                        `;
+                    });
+                    resultHTML += '</table></div>';
+                    
+                    // Calculate admin's share
+                    adminShare = sumPredication - totalUserDistribution - totalLevelDistribution;
+                    totalDistributed = totalUserDistribution + totalLevelDistribution;
+                    
+                    // Store distribution details for summary
+                    distributionDetails = {
+                        smallestGroup: 'Green',
+                        userDistributionTotal: totalUserDistribution,
+                        levelDistributionTotal: totalLevelDistribution,
+                        individualUserShares: greenUserShares,
+                        individualLevelShares: greenLevelShares
+                    };
+                    
+                    resultHTML += `
+                        <div class="admin-amount">
+                            The Rest amount for admin is: <span style="font-size: 1.4em;">$${adminShare.toFixed(2)}</span>
+                        </div>
+                    `;
+                } else {
+                    adminShare = sumPredication;
+                    resultHTML += `
+                        <div class="admin-amount">
+                            Not enough funds for distribution. All amount goes to admin: <span style="font-size: 1.4em;">$${adminShare.toFixed(2)}</span>
+                        </div>
+                    `;
+                }
+                
+            } else if (totalViolet < totalRed && totalViolet < totalGreen) {
+                let sumPredication = totalRed + totalGreen;
+                resultHTML += `
+                    <div class="result-item">
+                        <div class="result-header"><span class="level-badge violet-badge">Violet</span> is Smallest Group</div>
+                        <div class="result-value">Total of others (Red + Green): <span class="highlight">$${sumPredication.toFixed(2)}</span></div>
+                    </div>
+                `;
+                
+                if (sumPredication > mulViolet) {
+                    // Calculate INDIVIDUAL user distribution (30% of EACH user's principal for Violet)
+                    let totalUserDistribution = 0;
+                    const violetUserShares = violetUsers.map(investment => {
+                        const userShare = (investment * 30) / 100; // 30% of individual principal (Violet gets 30%)
+                        totalUserDistribution += userShare;
+                        return { investment, userShare };
+                    });
+                    
+                    resultHTML += `
+                        <div class="result-item">
+                            <div class="result-header">Total Distributed to Violet Users</div>
+                            <div class="result-value">30% of each user's principal: <span class="highlight">$${totalUserDistribution.toFixed(2)}</span></div>
+                            <div class="calculation-note">Violet users get 30% of their own investment</div>
+                        </div>
+                    `;
+                    
+                    // Display individual user distribution table
+                    resultHTML += '<div class="result-item">';
+                    resultHTML += '<div class="result-header">Individual Violet User Distribution</div>';
+                    resultHTML += '<table class="distribution-table">';
+                    resultHTML += '<tr><th>User</th><th>Principal</th><th>30% Distribution</th><th>Amount Received</th></tr>';
+                    
+                    violetUserShares.forEach((item, index) => {
+                        resultHTML += `
+                            <tr>
+                                <td>Violet User ${index + 1}</td>
+                                <td>$${item.investment.toFixed(2)}</td>
+                                <td>30%</td>
+                                <td class="highlight">$${item.userShare.toFixed(3)}</td>
+                            </tr>
+                        `;
+                    });
+                    resultHTML += '</table></div>';
+                    
+                    // Calculate INDIVIDUAL level distribution (30% of EACH user's principal)
+                    let totalLevelDistribution = 0;
+                    const violetLevelShares = violetUsers.map(investment => {
+                        const levelShare = (investment * 30) / 100; // 30% of individual principal
+                        totalLevelDistribution += levelShare;
+                        return { investment, levelShare };
+                    });
+                    
+                    resultHTML += `
+                        <div class="result-item">
+                            <div class="result-header">Total Level Distribution for Violet Users</div>
+                            <div class="result-value">30% of each user's principal: <span class="highlight">$${totalLevelDistribution.toFixed(2)}</span></div>
+                            <div class="calculation-note">Each user gets 30% of their own investment as level distribution</div>
+                        </div>
+                    `;
+                    
+                    // Display level distribution table
+                    resultHTML += '<div class="result-item">';
+                    resultHTML += '<div class="result-header">Level Distribution Details</div>';
+                    resultHTML += '<table class="distribution-table">';
+                    resultHTML += '<tr><th>User</th><th>Principal</th><th>30% Level</th><th>Amount Received</th></tr>';
+                    
+                    violetLevelShares.forEach((item, index) => {
+                        resultHTML += `
+                            <tr>
+                                <td>Violet User ${index + 1}</td>
+                                <td>$${item.investment.toFixed(2)}</td>
+                                <td>30%</td>
+                                <td class="highlight">$${item.levelShare.toFixed(3)}</td>
+                            </tr>
+                        `;
+                    });
+                    resultHTML += '</table></div>';
+                    
+                    // Calculate admin's share
+                    adminShare = sumPredication - totalUserDistribution - totalLevelDistribution;
+                    totalDistributed = totalUserDistribution + totalLevelDistribution;
+                    
+                    // Store distribution details for summary
+                    distributionDetails = {
+                        smallestGroup: 'Violet',
+                        userDistributionTotal: totalUserDistribution,
+                        levelDistributionTotal: totalLevelDistribution,
+                        individualUserShares: violetUserShares,
+                        individualLevelShares: violetLevelShares
+                    };
+                    
+                    resultHTML += `
+                        <div class="admin-amount">
+                            The Rest amount for admin is: <span style="font-size: 1.4em;">$${adminShare.toFixed(2)}</span>
+                        </div>
+                    `;
+                } else {
+                    adminShare = sumPredication;
+                    resultHTML += `
+                        <div class="admin-amount">
+                            Not enough funds for distribution. All amount goes to admin: <span style="font-size: 1.4em;">$${adminShare.toFixed(2)}</span>
+                        </div>
+                    `;
+                }
+            } else {
+                const totalAll = totalRed + totalGreen + totalViolet;
+                adminShare = totalAll;
+                resultHTML += `
+                    <div class="admin-amount">
+                        All groups have equal or no clear smallest group. All amount goes to admin: <span style="font-size: 1.4em;">$${adminShare.toFixed(2)}</span>
+                    </div>
+                `;
+            }
+
+            // Add totals display at the beginning
+            resultHTML = `
+                <div class="result-item">
+                    <div class="result-header">Total Investments</div>
+                    <div class="result-value">
+                        <div><span class="level-badge red-badge">Red</span> Total: $${totalRed.toFixed(3)} (${redUsers.length} users)</div>
+                        <div><span class="level-badge green-badge">Green</span> Total: $${totalGreen.toFixed(2)} (${greenUsers.length} users)</div>
+                        <div><span class="level-badge violet-badge">Violet</span> Total: $${totalViolet.toFixed(2)} (${violetUsers.length} users)</div>
+                        <div style="margin-top: 10px; font-weight: 600;">Total Pool: $${(totalRed + totalGreen + totalViolet).toFixed(2)}</div>
+                    </div>
+                </div>
+            ` + resultHTML;
+
+            // Add summary of what happened
+            if (distributionDetails.smallestGroup) {
+                resultHTML += `
+                    <div class="summary-box">
+                        <div style="font-size: 1.2em; margin-bottom: 10px;">📊 Distribution Summary</div>
+                        <div><span class="level-badge ${distributionDetails.smallestGroup.toLowerCase()}-badge">${distributionDetails.smallestGroup}</span> is the smallest group</div>
+                        <div>✅ User Distribution (20% of each principal): $${distributionDetails.userDistributionTotal?.toFixed(2) || '0.00'}</div>
+                        <div>✅ Level Distribution (30% of each principal): $${distributionDetails.levelDistributionTotal?.toFixed(2) || '0.00'}</div>
+                        <div>💰 Total Distributed: $${((distributionDetails.userDistributionTotal || 0) + (distributionDetails.levelDistributionTotal || 0)).toFixed(2)}</div>
+                        <div>👑 Admin Share: $${adminShare.toFixed(2)}</div>
+                    </div>
+                `;
+            }
+
+            // Display results
+            document.getElementById('results').innerHTML = resultHTML;
+            document.getElementById('results').style.display = 'block';
+            document.getElementById('noResults').style.display = 'none';
+        }
+
+        // Helper function to collect user investments
+        function collectUserInvestments(level) {
+            const countInput = document.getElementById(level + 'Count');
+            const count = parseInt(countInput.value) || 0;
+            const investments = [];
+            
+            for (let i = 1; i <= count; i++) {
+                const input = document.getElementById(level + 'User' + i);
+                if (input) {
+                    const value = parseFloat(input.value) || 0;
+                    investments.push(value);
+                }
+            }
+            
+            return investments;
+        }
+    </script>
+</body>
+</html>

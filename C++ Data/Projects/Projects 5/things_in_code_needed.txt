@@ -1,0 +1,39 @@
+🔹 Core Modules
+
+Admin Panel
+
+Add / remove doctors
+
+View hospital statistics
+
+Doctor Module
+
+View appointments
+
+Update patient diagnosis & prescription
+
+Patient Module
+
+Register patient
+
+Book appointment
+
+View medical history
+
+Billing System
+
+Auto bill generation
+
+Store payment records
+
+🔹 Features
+
+Login system (Admin / Doctor / Patient)
+
+Unique ID generation
+
+File-based database
+
+Search, update, delete records
+
+Date & time handling

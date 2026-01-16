@@ -1,0 +1,39 @@
+<!-- h is use to make heading -->
+<!-- lable is used for lable on website-->
+<!-- lorem is used fro rendon word -->
+<!-- caption is used for caption -->
+<!-- table is used for table boder -->
+<!-- ol is use for order list -->
+<!-- ul is use for unorder list -->
+<!-- we use li for ul or ol data-->
+<!-- dl is use for defination list-->
+<!-- dt is use for defination title-->
+<!-- dd is use for defanition data-->
+<!-- thead is use for header -->
+<!-- tbody is used for body-->
+<!-- tfoot is use for fotter-->
+<!-- tr is use for row or to make new row-->
+<!-- in tr we use td for table table data-->
+
+
+<!-- form is use for get data and get is use for single  data and post is use for get multiple data -->
+
+<!-- input is use for get data from user -->
+
+<!-- div is use to new line use like breakline -->
+ 
+<!-- Text area is use like comment to write -->
+
+<!-- option is use to select option like bussiness
+                                         personal -->
+                                         
+<!-- id is use for css costimization is is not same for other
+id="namr"-->
+<!-- class is also use for costimization is can be same-->
+<!-- video for add video for run control must written and after control we can write mute,loop,poster,autoplay
+
+
+                                         
+                                         
+                                             
+                                             

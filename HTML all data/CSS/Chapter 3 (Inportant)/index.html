@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selector Types In Css</title>
+</head>
+
+<body>
+    <!-- <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+     -->
+    
+    <h1>Main Types Of Selectors</h1>
+
+    <head>
+        <ol>
+            <li>Class Selector</li>
+            <li>ID Selector</li>
+            <li>Child Selector</li>
+            <li>Descendant Selector</li>
+            <li>Universal Selector</li>
+            <li>Pseudo Selector</li>
+        </ol>
+    </head>
+
+    <main>
+
+        <ol>
+            <li>Class Selector : is important selector where where we declare the same class the css change there there
+            </li>
+            <ul>
+                <li>For Example:</li>
+            </ul>
+            <pre>&lt;style&gt;
+    .classselector{
+        color: red;
+        background-color: yellow
+    }
+    <style>
+        
+        .classselector{
+            color: red;
+            background-color: yellow
+        }
+        </style>
+    &lt;/style&gt;
+    
+&lt;div class="classselector"&gt;Hello I Am Example Of Class selector&lt;/div&gt;
+&lt;p class="classselector"&gt;Hello i am para example of class selector&lt;/&gt;
+</pre>
+            <p class="classselector">Hello i am para example of class selector</p>
+            <div class="classselector">Hello I Am Example Of Class selector</div>
+            <pre>
+
+</pre>
+            <li>ID Selector: This is most important in css this id is declare only in one artribute where we delcare
+            </li>
+            <ul>
+
+                <li> For Example:</li>
+            </ul>
+            <pre>
+&lt;style&gt;
+#idselector{
+color: red;
+background-color: yellow
+}
+&lt;/style&gt;
+<style>  #idselector{
+color: red;
+background-color: yellow
+}
+</style>
+&lt;div &gt;Hello I Am Div Example Of ID selector&lt;/div
+<div id="idselector">Hello I Am Div Example Of ID selector</div>
+</pre>
+            <li>Child Selector: mean if i do div > p(para inside div) then change the para color this is only when work
+                when para is directly child of div (not work if div then article the para)</li>
+            <ul>
+                <li>For Example</li>
+            </ul>
+                <pre>
+        <style>
+            div > p{
+                color: red;
+                background-color: yellow;
+            }
+        </style>
+
+&lt;style&gt;
+div &gt; p{
+color: red;
+background-color: yellow;
+}
+&lt;/style&gt;
+
+&lt;div&gt;Hello i am div Example of child selector
+&lt;p&gt;I Am para child of div&lt;/p&gt;
+&lt;/div&gt;
+
+<div>Hello i am div Example of child selector
+    <p>I Am para child of div</p>
+</div>
+Not work id para in not direct child or inside of div.
+</pre>
+<li>Descendant selector</li>
+<pre>
+This Is use If p is not direct or child of div
+</pre>
+<li>Universal Selector</li>
+<pre>
+This Is Used If we Want to Select all the thing in program .
+</pre>
+<li>Pseudo Selector is use for change color of link after visiteing</li>
+<li>use tag a:visited</li>
+<ul>
+    <li>For Example</li>
+</ul>
+<ol/>
+<style>
+    a:visited{
+        color: red;
+    
+    }
+</style>
+<pre>
+    
+&lt;style&gt;
+a:visited{
+color:red;
+}
+a:visited is use for change color when link is visited
+for creating link:
+&lt;a href="http://www.google.com"&gt;Go To Google&lt;/a&gt;
+
+&lt;style&gt;
+a:link{
+color:red;
+}
+<style>
+    a:link{
+        color: green;
+    }
+</style>
+a:link is use for change color when link is Not Visited
+for creating link:
+&lt;a href="http://www.facebook.com"&gt;Go To Facebook&lt;/a&gt;
+
+&lt;style&gt;
+a:active{
+background-color:pink;
+}
+a:active is use for change Background-color when link is clicked
+for creating link:
+&lt;a href="http://www.Instagram.com"&gt;Go To Instagram&lt;/a&gt;
+
+&lt;style&gt;
+
+<style>
+    a:active{
+        background-color: rgb(255, 7, 193);
+    }
+
+    
+    </style>
+    a:hover is use when our cursor go on input
+</pre>
+
+<a target="_blank" href="http://www.google.com ">Go To Google</a>
+<a target="_blank" href="http://www.Facebook.com ">Go To Facebook</a>
+<a target="_blank" href="http://www.Instagram.com ">Go To Instagram</a>
+</main>
+
+<tfoot>
+    Copyright&copy;2025
+</tfoot>
+</body>
+
+</html>

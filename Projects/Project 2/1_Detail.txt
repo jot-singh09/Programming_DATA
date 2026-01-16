@@ -1,0 +1,7 @@
+The Name is :karan
+The Age is :16
+The Date Of Birth is :12\12\2009
+The Addhar card No is :1231321
+The Mobile No is 947510939
+The Account Opening Date is : 24\10\2025
+The Opening Balance is :15000

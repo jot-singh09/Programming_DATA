@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms Lets- Study About It</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Registration</h1>
+    <h4>Enter The Details </h4>
+    <form action="post">
+        <!-- form is use for get data and get is use for single  data and post is use for get multiple data -->
+        <div>
+
+
+            <label for="username">Enter Your Username</label>
+            <!-- lable is use for write firstly of username enter box -->
+            <input type="text" id="username" name="username" placeholder=" Enter your username">
+            <!-- input is use for get data from user -->
+        </div>
+        <div>
+
+            <label for="password"> Enter Your Password. </label>
+            <input type="text" name="password" id="password" placeholder="password">
+        </div>
+        <!-- div is use to new line use like breakline -->
+
+
+     
+        <input type="radio" id="male" name="gender" value="male">
+        <label for="male">Male</label>
+        <!-- label is use for get user data and ratio is use for selection only -->
+        <input type="radio" id="Female" name="gender" value="Female">
+        <label for="Female">Female</label>
+    </form>
+    
+    
+    <form action="post">
+        <input type="checkbox" name="Term and conditions" id="conditions">
+        <!-- check box is used for bocx tick -->
+        <label for="conditions">Terms and Conditions</label>
+    </form>
+    <form action="post">
+        <h4>Are you 18+</h4>
+        <input type="radio" id="Yes" name="Yes" value="Yes">
+        <label for="Yes">Yes</label>
+
+        <input type="radio" id="No" name="Yes" value="No">
+        <label for="No">No</label>
+        
+        <div>
+            <div>
+                <link rel="stylesheet" href="lable.css">
+                <label1 for="comment">Enter Your Comment Here</label1>
+            </div>
+            <textarea name="comment" id="comment" rows="4" cols="40"></textarea>
+            <!-- Text area is use like comment to write -->
+        </div>
+        <div>
+            <select name="Account" id="Account">
+                <option value="Bussiness">Bussiness</option>
+                <option value="Personal">Personal</option>
+                <option value="Teen">Teen</option>
+                <!-- option is use to select option like bussiness
+                                                         personal  -->
+            </select>
+        </div>
+
+    </form>
+</body>
+
+</html>

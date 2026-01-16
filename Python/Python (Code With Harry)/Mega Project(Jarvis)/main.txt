@@ -1,0 +1,94 @@
+import webbrowser as web
+import subprocess
+
+
+
+print("Hello")
+print("Select Option!")
+print("\n")
+print("1.Open Apps")
+print("2.Youtube")
+print("3.Search")
+try:
+    num=int(input(":"))
+    if (num==1):
+          
+          print("System & Utilities")
+          print("\n")
+          print("# notepad")
+          print("# calc (calculator)")
+          print("# shot ( screenshot)")
+          print("# record (voice Recorder)")
+          print("# record (file explorer)")
+          print("# cmd (command propmt)")
+          print("# wl (window terminal)")
+          print("\n")
+          print("Browsers")
+          print("# chrome")
+          print("# edge (microsoft edge)")
+          print("# fox ()")
+          print("\n")
+          print("Development & Programming")
+          print("\n")
+          print("code (vs code)")
+
+        
+          app=(input("Enter The App Name :"))
+          if(app=="notepad" or app=="Notepad"):
+                subprocess.Popen("notepad")
+                print("Opening App...")
+          elif(app=="Chrome" or app=="chrome"):
+               subprocess.Popen("chrome")
+               print("Opening App...")               
+          elif(app=="Calculator"or app=="calc"or app=="calculator"or app=="Calc"):
+               subprocess.Popen("calc")
+               print("Opening App...")
+          elif(app=="Shot"or app=="shot"):
+               subprocess.Popen("snippingtool")
+               print("Opening App...")
+          elif(app=="Record"or app=="record"):
+               subprocess.Popen("soundrecorder") 
+               print("Opening App...")
+          elif(app=="File"or app=="file"):
+               subprocess.Popen("explorer")  
+               print("Opening App...")
+          elif(app=="cmd"or app=="Cmd"):
+               subprocess.Popen("cmd")   
+               print("Opening App...")
+          elif(app=="wl"or app=="Wl"):
+               subprocess.Popen("wt")   
+               print("Opening App...")
+          elif(app=="Clock"or app=="clock"):
+               subprocess.Popen("clock")    
+               print("Opening App...")
+          elif(app=="Edge"or app=="edge"):
+               subprocess.Popen("msedge")    
+               print("Opening App...")
+          elif(app=="Fox"or app=="fox"):
+               subprocess.Popen("firefox")     
+               print("Opening App...")
+          elif(app=="code"or app=="Code"):
+               subprocess.Popen("firefox")     
+               print("Opening App...")
+    elif(num==2):
+         serach=input(("search :"))
+         print("#chrome")
+         print("#edge")
+         print("#fox")
+         browser=input("Enter Browser :")
+         url=f"https://www.youtube.com/results?search_query={search}"
+         if (browser=="chrome" or browser=="Chrome"):
+              web.Chrome("chrome").open(url)
+       
+
+
+
+
+
+except Exception as e:
+    print(e)
+    print("'The Value in Numbers only'")
+
+
+
+python -u "c:\Users\karan\Documents\Mega Project(Jarvis)\test.py"python -u "c:\Users\karan\Documents\Mega Project(Jarvis)\test.py"

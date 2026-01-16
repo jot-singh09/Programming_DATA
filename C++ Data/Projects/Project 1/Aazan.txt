@@ -1,0 +1,8 @@
+The Registration Date is :10\10\2025
+The DOB is :30\07\2007
+The Name is :Aazan
+The Class is :Collage
+The Section is :BCA
+The Roll No is : 2
+The Father Name is : 
+The Mother Name is :

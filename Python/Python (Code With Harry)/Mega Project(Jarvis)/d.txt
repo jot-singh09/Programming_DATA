@@ -1,0 +1,97 @@
+import webbrowser as web
+import subprocess
+from urllib.parse import quote
+
+
+
+print("Hello")
+print("Select Option!")
+print("\n")
+print("1.Open Apps")
+print("2.Youtube")
+print("3.Search")
+try:
+    num=int(input(":"))
+    if (num==1):
+          try:
+          
+            print("System & Utilities")
+            print("\n")
+            print("# notepad")
+            print("# calc (calculator)")
+            print("# shot ( screenshot)")
+            print("# record (voice Recorder)")
+            print("# record (file explorer)")
+            print("# cmd (command propmt)")
+            print("# wl (window terminal)")
+            print("\n")
+            print("Browsers")
+            print("# chrome")
+            print("# edge (microsoft edge)")
+            print("# fox ()")
+            print("\n")
+            print("Development & Programming")
+            print("\n")
+            print("code (vs code)")
+
+            
+            app=(input("Enter The App Name :")).lower()
+            if(app=="notepad" ):
+                    subprocess.Popen("notepad")
+                    print("Opening App...")
+            elif( app=="chrome"):
+                subprocess.Popen( r"C:\Program Files\Google\Chrome\Application\chrome.exe")
+                print("Opening App...")               
+            elif( app=="calc"or app=="calculator"):
+                subprocess.Popen("calc")
+                print("Opening App...")
+            elif( app=="shot"):
+                subprocess.Popen("snippingtool")
+                print("Opening App...")
+            elif( app=="record"):
+                subprocess.Popen("soundrecorder") 
+                print("Opening App...")
+            elif( app=="file"):
+                subprocess.Popen("explorer")  
+                print("Opening App...")
+            elif(app=="cmd"):
+                subprocess.Popen("cmd")   
+                print("Opening App...")
+            elif(app=="wl"):
+                subprocess.Popen("wt")   
+                print("Opening App...")
+            elif( app=="clock"):
+                subprocess.Popen("explorer shell:AppsFolder\Microsoft.WindowsAlarms_8wekyb3d8bbwe!App")    
+                print("Opening App...")
+            elif( app=="edge"):
+                subprocess.Popen("msedge")    
+                print("Opening App...")
+            elif( app=="fox"):
+                subprocess.Popen(r"C:\Program Files\Mozilla Firefox\firefox.exe")
+                print("Opening App...")
+            elif(app=="code"):
+                subprocess.Popen(r"C:\Users\YourUsername\AppData\Local\Programs\Microsoft VS Code\Code.exe")  
+                print("Opening App...")
+          except Exception as open_app:
+              print(open_app)
+              print("'App Not Found!'")
+              
+    elif(num==2):
+        import webbrowser
+
+    search = input("Search: ").lower()
+    url = f"https://www.youtube.com/results?search_query={search.replace(' ', '+')}"
+    webbrowser.open(url)
+    print("Searching...")
+            
+
+
+
+
+
+except Exception as e:
+    print(e)
+    print("'The Value in Numbers only'")
+
+
+

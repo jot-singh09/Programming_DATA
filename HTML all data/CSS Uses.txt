@@ -1,0 +1,36 @@
+<!-- we use style in html to do css in html like <style> div{
+color: red; <style/> this is inline css
+-->
+<!-- 2 way link.css in vs code short cut  -->
+<!-- 3 way in tags like <div style"color: red;">About Me<div/>   this is internal css-->
+
+
+Main Types Of Selectors
+
+    Class Selector
+    ID Selector
+    Child Selector
+    Descendant Selector
+    Universal Selector
+    Pseudo Selector
+
+    Class Selector : is important selector where where we declare the same class the css change there there
+        For Example:
+ID Selector: This is most important in css this id is declare only in one artribute where we delcare
+        For Example:
+ Child Selector: mean if i do div > p(para inside div) then change the para color this is only when work when para is directly child of div (not work if div then article the para)
+        For Example
+Descendant selector :This Is use If p is not direct or child of div
+Universal Selector :This Is Used If we Want to Select all the thing in program .
+
+    Pseudo Selector is use for change color of link 
+    a:visited is use for change color when link is visited
+    a:link is use for change color when link is Not Visited
+    a:active is use for change Background-color when link is clicked
+    a:hover is use when our cursor go on input
+    p:firstchild{
+    is use if p is child of first like div then p
+    }
+<!-- padding is use for outer space of box -->
+<!-- margin is use to increase background color of box -->
+<!-- boder: 4px solid blue ; for boder color -->

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Local File Saver — Upload & Save</title>
+  <style>
+    body{font-family:sans-serif;background:#0f172a;color:#eee;margin:0;padding:20px}
+    h1{margin:0 0 20px}
+    .panel{background:#1e293b;padding:16px;border-radius:12px;margin-bottom:20px}
+    button,label{background:#334155;color:#fff;padding:8px 14px;border:none;border-radius:8px;cursor:pointer;margin-right:8px}
+    button.primary{background:#06b6d4;color:#032022;font-weight:bold}
+    input[type=file]{display:none}
+    #list{margin-top:12px}
+    .item{margin-bottom:6px;font-size:14px}
+  </style>
+</head>
+<body>
+  <h1>Local File Saver</h1>
+
+  <div class="panel">
+    <h3>Step 1: Pick destination folder</h3>
+    <button id="pickDir" class="primary">Pick Destination Folder</button>
+    <button id="revokePerms">Revoke Permission</button>
+    <p id="picked">No folder picked yet.</p>
+  </div>
+
+  <div class="panel">
+    <h3>Step 2: Select files</h3>
+    <label for="file">Choose Files</label>
+    <input id="file" type="file" multiple />
+    <div id="list"></div>
+  </div>
+
+  <div class="panel">
+    <h3>Step 3: Save</h3>
+    <button id="save" class="primary">Save All</button>
+    <p id="note">If your browser does not support folder saving, files will be downloaded with a Save As dialog one by one.</p>
+  </div>
+
+<script>
+let destDirHandle = null;
+let queue = [];
+
+const supportsFS = 'showDirectoryPicker' in window;
+
+function renderList(){
+  const list = document.getElementById('list');
+  list.innerHTML = '';
+  queue.forEach(f => {
+    const div = document.createElement('div');
+    div.className = 'item';
+    div.textContent = `${f.name} (${(f.size/1024).toFixed(1)} KB)`;
+    list.appendChild(div);
+  });
+}
+
+function addFiles(files){
+  queue.push(...Array.from(files));
+  renderList();
+}
+
+// Pick destination folder (Chromium only)
+document.getElementById('pickDir').onclick = async () => {
+  if(!supportsFS){
+    alert('Folder picker not supported in this browser. Files will download instead.');
+    return;
+  }
+  try{
+    destDirHandle = await window.showDirectoryPicker({mode:'readwrite'});
+    document.getElementById('picked').textContent = '✅ Destination folder selected.';
+  }catch(e){
+    console.log(e);
+  }
+};
+
+document.getElementById('revokePerms').onclick = () => {
+  destDirHandle = null;
+  document.getElementById('picked').textContent = 'No folder picked yet.';
+};
+
+document.getElementById('file').addEventListener('change', (e)=> addFiles(e.target.files));
+
+// Save all
+async function saveAll(){
+  if(queue.length===0){ alert('No files selected'); return; }
+
+  if(supportsFS && destDirHandle){
+    for(const file of queue){
+      const handle = await destDirHandle.getFileHandle(file.name, {create:true});
+      const writable = await handle.createWritable();
+      await writable.write(file);
+      await writable.close();
+    }
+    alert('All files saved to selected folder!');
+  } else {
+    // Fallback: download one by one
+    for(const file of queue){
+      const url = URL.createObjectURL(file);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = file.name;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+    alert('All files downloaded via Save As prompts.');
+  }
+}
+
+document.getElementById('save').onclick = saveAll;
+</script>
+</body>
+</html>

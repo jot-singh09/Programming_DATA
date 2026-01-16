@@ -1,0 +1,7 @@
+The Name is :raman
+The Age is :12
+The Date Of Birth is :24\04\2014
+The Addhar card No is :213124
+The Mobile No is 9056369141
+The Account Opening Date is : 24\10\2025
+The Opening Balance is :100
