@@ -1,0 +1,3 @@
+12 factorial 
+14 digit counter
+15 reverse number
