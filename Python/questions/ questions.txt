@@ -1,0 +1,423 @@
+I'll create a comprehensive Python practice curriculum with questions ranging from easy to difficult for each concept. Let's master Python step by step!
+
+## **CONCEPT 1: VARIABLES AND DATA TYPES**
+
+### Easy Questions:
+1. Create variables of different types (integer, float, string, boolean) and print them
+2. Swap two variables without using a third variable
+3. Calculate the area of a rectangle using length and width variables
+4. Convert temperature from Celsius to Fahrenheit
+5. Find the remainder when 15 is divided by 4
+
+### Medium Questions:
+6. Create a program that takes user input for their name, age, and city, then prints a formatted sentence
+7. Calculate compound interest using principal, rate, and time variables
+8. Write a program to check if a number is even or odd using modulo operator
+9. Create variables to store your favorite things (movie, song, food) and print them in a creative way
+10. Calculate the BMI using weight and height variables
+
+### Difficult Questions:
+11. Create a program that swaps the values of three variables in a cyclic manner
+12. Write a program to find the ASCII value of a character entered by user
+13. Create variables to represent a person's details and calculate their birth year from age
+14. Implement a simple currency converter (USD to EUR, GBP, etc.)
+15. Create a program that takes a 5-digit number and prints each digit separately
+
+---
+
+## **CONCEPT 2: STRINGS**
+
+### Easy Questions:
+1. Take a string input and print its length
+2. Convert a string to uppercase and lowercase
+3. Concatenate two strings with a space in between
+4. Print the first and last character of a string
+5. Count how many times a specific character appears in a string
+
+### Medium Questions:
+6. Check if a string is a palindrome (reads same forwards and backwards)
+7. Remove all vowels from a string
+8. Count the number of words in a sentence
+9. Reverse a string without using [::-1]
+10. Check if two strings are anagrams
+
+### Difficult Questions:
+11. Write a program to find the longest word in a sentence
+12. Remove duplicate characters from a string while preserving order
+13. Implement a basic password strength checker (length, uppercase, lowercase, numbers, special chars)
+14. Find all occurrences of a substring in a string and print their positions
+15. Write a program to compress a string (e.g., "aaabbc" → "a3b2c1")
+
+---
+
+## **CONCEPT 3: LISTS**
+
+### Easy Questions:
+1. Create a list of 5 fruits and print each one
+2. Add an item to the end of a list and insert an item at a specific position
+3. Remove an item from a list by value and by index
+4. Find the maximum and minimum in a list of numbers
+5. Sort a list in ascending and descending order
+
+### Medium Questions:
+6. Find the second largest number in a list
+7. Remove duplicates from a list
+8. Merge two sorted lists into one sorted list
+9. Find common elements between two lists
+10. Rotate a list to the right by k positions
+
+### Difficult Questions:
+11. Implement a function to find the missing number in a list from 1 to n
+12. Find the pair of numbers in a list that sum to a target value
+13. Flatten a nested list (e.g., [1,[2,3],4,[5,[6,7]]] → [1,2,3,4,5,6,7])
+14. Find the longest increasing subsequence in a list
+15. Implement a matrix multiplication using nested lists
+
+---
+
+## **CONCEPT 4: TUPLES AND SETS**
+
+### Easy Questions:
+1. Create a tuple with 5 elements and access the third element
+2. Try to modify a tuple element and observe the error
+3. Convert a list to a tuple and vice versa
+4. Create a set from a list with duplicates and observe what happens
+5. Add and remove elements from a set
+
+### Medium Questions:
+6. Find the intersection, union, and difference of two sets
+7. Check if one set is a subset of another
+8. Count the frequency of elements in a list using a set
+9. Find symmetric difference between two sets
+10. Create a tuple of tuples representing coordinates and find the distance between two points
+
+### Difficult Questions:
+11. Find common elements in three lists using sets
+12. Remove all duplicates from a list while preserving order using a set
+13. Create a program to find all unique pairs in a list that sum to zero
+14. Implement a simple spell checker using sets
+15. Find the longest consecutive sequence in a list using sets
+
+---
+
+## **CONCEPT 5: DICTIONARIES**
+
+### Easy Questions:
+1. Create a dictionary of 3 students with their ages
+2. Add a new student to the dictionary
+3. Update the age of an existing student
+4. Print all keys and values separately
+5. Check if a specific key exists in the dictionary
+
+### Medium Questions:
+6. Count the frequency of each character in a string using a dictionary
+7. Merge two dictionaries
+8. Find the student with the highest score from a dictionary of scores
+9. Invert a dictionary (swap keys and values)
+10. Create a dictionary from two lists (one for keys, one for values)
+
+### Difficult Questions:
+11. Group words by their length from a list of words
+12. Implement a nested dictionary to store student information (name, age, grades)
+13. Find the most frequent element in a list using a dictionary
+14. Create a phonebook application with add, search, delete, and update operations
+15. Build a word counter that ignores common stop words
+
+---
+
+## **CONCEPT 6: CONDITIONAL STATEMENTS (if/elif/else)**
+
+### Easy Questions:
+1. Check if a number is positive, negative, or zero
+2. Find the largest of three numbers
+3. Check if a year is a leap year
+4. Determine if a person is eligible to vote (age >= 18)
+5. Check if a character is a vowel or consonant
+
+### Medium Questions:
+6. Create a simple calculator with +, -, *, / operations
+7. Determine the grade based on marks (A: 90+, B: 80-89, C: 70-79, etc.)
+8. Check if a triangle is valid based on three angles
+9. Compare two strings lexicographically
+10. Determine the type of triangle based on sides (equilateral, isosceles, scalene)
+
+### Difficult Questions:
+11. Create a rock-paper-scissors game against computer
+12. Implement a simple ATM system with balance check, withdraw, deposit
+13. Create a number guessing game with hints
+14. Build a simple quiz with multiple-choice questions and scoring
+15. Implement a basic text-based adventure game with choices
+
+---
+
+## **CONCEPT 7: LOOPS (for and while)**
+
+### Easy Questions:
+1. Print numbers from 1 to 10 using both for and while loops
+2. Calculate the sum of first n natural numbers
+3. Print the multiplication table of a given number
+4. Count the number of digits in a number
+5. Print all even numbers from 1 to 50
+
+### Medium Questions:
+6. Find the factorial of a number
+7. Print the Fibonacci sequence up to n terms
+8. Check if a number is prime
+9. Find all factors of a number
+10. Print patterns (right triangle, pyramid, diamond)
+
+### Difficult Questions:
+11. Implement the Collatz conjecture (hailstone sequence)
+12. Find all perfect numbers up to 1000
+13. Create a Pascal's triangle
+14. Implement the Sieve of Eratosthenes for prime numbers
+15. Find the GCD and LCM of two numbers using Euclidean algorithm
+
+---
+
+## **CONCEPT 8: FUNCTIONS**
+
+### Easy Questions:
+1. Write a function that takes two numbers and returns their sum
+2. Create a function to check if a number is even or odd
+3. Write a function to find the maximum of three numbers
+4. Create a function to reverse a string
+5. Write a function to calculate the area of a circle
+
+### Medium Questions:
+6. Write a function that checks if a string is palindrome
+7. Create a function to count vowels and consonants in a string
+8. Write a recursive function for factorial
+9. Create a function that returns multiple values (min, max, average of a list)
+10. Write a function with default arguments for simple interest calculation
+
+### Difficult Questions:
+11. Implement a decorator to measure function execution time
+12. Write a recursive function for the Tower of Hanoi
+13. Create a lambda function to sort a list of tuples by second element
+14. Implement a function that accepts variable number of arguments (*args and **kwargs)
+15. Write a function to generate all permutations of a string
+
+---
+
+## **CONCEPT 9: LIST COMPREHENSIONS**
+
+### Easy Questions:
+1. Create a list of squares from 1 to 10 using list comprehension
+2. Create a list of even numbers from 1 to 20
+3. Create a list of all vowels from a given string
+4. Convert all strings in a list to uppercase
+5. Create a list of lengths of each word in a sentence
+
+### Medium Questions:
+6. Create a list of tuples (number, square, cube) for numbers 1-10
+7. Flatten a matrix (2D list) into a 1D list
+8. Create a list of all prime numbers between 1 and 50
+9. Extract all words from a sentence that have length > 4
+10. Create a list of common elements from two lists
+
+### Difficult Questions:
+11. Create a list comprehension with nested loops for multiplication table
+12. Generate all possible pairs from two lists that sum to an even number
+13. Create a 3x3 identity matrix using nested list comprehension
+14. Transpose a matrix using list comprehension
+15. Create a list comprehension with conditional logic (if-else)
+
+---
+
+## **CONCEPT 10: FILE HANDLING**
+
+### Easy Questions:
+1. Write a program to create a text file and write "Hello, World!" to it
+2. Read the contents of a file and print them
+3. Append a line to an existing file
+4. Count the number of lines in a file
+5. Read a file line by line and print each line
+
+### Medium Questions:
+6. Count the number of words in a file
+7. Find the longest word in a file
+8. Copy the contents of one file to another
+9. Count the frequency of each word in a file
+10. Create a program to merge two files
+
+### Difficult Questions:
+11. Create a log file analyzer that counts error types
+12. Implement a simple phonebook that stores contacts in a file
+13. Create a program to split a large file into smaller files of n lines each
+14. Implement a basic student database using CSV file
+15. Create a program to encrypt and decrypt a text file using Caesar cipher
+
+---
+
+## **CONCEPT 11: EXCEPTION HANDLING**
+
+### Easy Questions:
+1. Handle division by zero exception
+2. Handle file not found exception when opening a file
+3. Handle ValueError when converting string to integer
+4. Use try-except to handle multiple exceptions
+5. Use finally clause to ensure file is closed
+
+### Medium Questions:
+6. Create a custom exception for age validation (age must be 18-60)
+7. Implement a robust calculator that handles all types of errors
+8. Use try-except-else to validate user input
+9. Handle IndexError when accessing list elements
+10. Create a program with nested try-except blocks
+
+### Difficult Questions:
+11. Implement a retry mechanism for file operations (try 3 times)
+12. Create a program that gracefully handles keyboard interrupt
+13. Build a simple banking system with custom exceptions for insufficient funds
+14. Implement a parser that handles malformed JSON gracefully
+15. Create a program with context manager (with statement) for file handling
+
+---
+
+## **CONCEPT 12: OOP - CLASSES AND OBJECTS**
+
+### Easy Questions:
+1. Create a simple `Person` class with name and age attributes
+2. Add a method to display person details
+3. Create a `Car` class with make, model, year attributes
+4. Add a method to calculate car's age
+5. Create multiple objects of the same class
+
+### Medium Questions:
+6. Create a `BankAccount` class with deposit, withdraw, and balance methods
+7. Implement a `Student` class with name, roll number, and marks list
+8. Add a method to calculate average marks
+9. Create a `Rectangle` class with area and perimeter methods
+10. Implement inheritance with `Animal` parent class and `Dog`, `Cat` child classes
+
+### Difficult Questions:
+11. Create a library management system with `Book`, `Member`, and `Library` classes
+12. Implement polymorphism with different shape classes (Circle, Square, Triangle)
+13. Create a class with class methods, static methods, and instance methods
+14. Implement encapsulation with private attributes and property decorators
+15. Create a simple game with `Player`, `Enemy`, and `Weapon` classes
+
+---
+
+## **CONCEPT 13: MODULES AND PACKAGES**
+
+### Easy Questions:
+1. Import the math module and use sqrt(), pi, and factorial()
+2. Import the random module to generate random numbers
+3. Use datetime module to print current date and time
+4. Import only specific functions from a module
+5. Create your own simple module and import it
+
+### Medium Questions:
+6. Use os module to list all files in a directory
+7. Use sys module to get command-line arguments
+8. Create a package with multiple modules
+9. Use json module to read and write JSON data
+10. Use re module for basic pattern matching
+
+### Difficult Questions:
+11. Create a package for mathematical operations (basic, advanced, statistics)
+12. Implement a module for various sorting algorithms
+13. Use requests module to fetch data from an API
+14. Create a module with configuration management
+15. Implement a simple web scraper using BeautifulSoup
+
+---
+
+## **CONCEPT 14: ADVANCED TOPICS**
+
+### Decorators and Generators:
+1. Create a simple decorator that prints function name before execution
+2. Implement a generator for Fibonacci sequence
+3. Create a decorator to cache function results
+4. Write a generator to read large files line by line
+5. Create a decorator to validate function arguments
+
+### Lambda and Map/Filter/Reduce:
+6. Use map to convert list of strings to integers
+7. Use filter to get even numbers from a list
+8. Use reduce to find product of list elements
+9. Sort list of dictionaries by a specific key using lambda
+10. Combine map and filter to process data
+
+### Regular Expressions:
+11. Validate email addresses using regex
+12. Extract all phone numbers from a text
+13. Find all URLs in a string
+14. Replace all occurrences of a pattern with another string
+15. Validate password strength using regex
+
+### Working with APIs:
+16. Fetch weather data from an API
+17. Create a simple currency converter using API
+18. Build a GitHub user info fetcher
+19. Implement a news headline aggregator
+20. Create a random joke generator using API
+
+---
+
+## **CONCEPT 15: COMPREHENSIVE PROJECTS**
+
+### Beginner Projects:
+1. **Number Guessing Game** - Computer picks a number, player guesses
+2. **Hangman Game** - Classic word guessing game
+3. **Mad Libs Generator** - Takes words and creates a story
+4. **Dice Rolling Simulator** - Simulates rolling dice
+5. **Rock Paper Scissors Lizard Spock** - Extended version
+
+### Intermediate Projects:
+6. **Tic-Tac-Toe Game** - Two-player or vs computer
+7. **Contact Book** - Store, search, edit contacts
+8. **Quiz Application** - Multiple choice questions with scoring
+9. **Password Generator** - Creates strong random passwords
+10. **To-Do List App** - Add, complete, delete tasks
+
+### Advanced Projects:
+11. **Snake Game** - Classic snake game using pygame
+12. **Web Scraper** - Scrape and analyze website data
+13. **Weather App** - GUI application showing weather
+14. **Chat Application** - Simple client-server chat
+15. **Expense Tracker** - Track and visualize expenses
+16. **File Organizer** - Automatically organize files by type
+17. **Sudoku Solver** - Solves any Sudoku puzzle
+18. **Text-Based RPG** - Adventure game with inventory
+19. **Markdown to HTML Converter** - Convert markdown files
+20. **Personal Diary** - Encrypted diary application
+
+---
+
+## **How to Use This Guide:**
+
+1. **Start with Concept 1** and work your way through
+2. For each concept, try to solve ALL easy questions first
+3. Move to medium, then difficult as you gain confidence
+4. **Don't skip concepts** - each builds on previous ones
+5. Write code for every question, even if you think you know it
+6. Try to solve each question in multiple ways
+7. Time yourself on difficult questions
+8. Create your own variations of these questions
+9. Use online Python environments like Replit or Google Colab
+10. Join Python communities for help when stuck
+
+### Tips for Success:
+- Code every single day, even if just for 30 minutes
+- Read others' code to learn different approaches
+- Debug your own code before looking for solutions
+- Use print statements to understand what's happening
+- Comment your code to explain your logic
+- Test edge cases (empty input, negative numbers, etc.)
+- Refactor your code to make it more efficient
+- Keep a coding journal of what you learn
+
+### Recommended Learning Path:
+1. Start with basics (Concepts 1-7)
+2. Practice with small projects
+3. Move to intermediate concepts (8-11)
+4. Build more complex projects
+5. Tackle OOP and advanced topics (12-14)
+6. Finally, attempt comprehensive projects
+
+Remember: **Consistency is key!** It's better to practice 30 minutes daily than 5 hours once a week.
+
+Would you like me to provide solutions to any specific questions, or would you like more questions on particular concepts?
