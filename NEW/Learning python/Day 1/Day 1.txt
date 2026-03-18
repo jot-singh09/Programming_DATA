@@ -1,0 +1,9 @@
+wrt a program which only sun interger number
+wrt a program which only sun Float number
+wrt a program which only sun int and float number
+wrt a program which input age and convert in int and print type
+
+
+
+
+
