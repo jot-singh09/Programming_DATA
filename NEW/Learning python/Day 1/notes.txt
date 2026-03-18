@@ -1,0 +1,44 @@
+the ram stores the data in the form of bits.
+the storage is based on the datatype we choose like int,float,etc
+and the size of datatype calrible is based on the data we enter 
+like a datatype of int boll are store in ram but tempory 
+by the help of print(type(a )) we can detect the datatype
+and for make a to int no need to write int float pyhton auto detect it 
+
+--------------- input & Output----------
+normaly we can use ( a=5 ) the value web enter 
+but for input from user we can use ( a=input("enter the value") ) 
+and the input is take the input on string bases by default for input in different datatype we can do ( a= int(input("Enter the value )))
+but int or float function() we can use int or any other data type input
+
+---------------------------- sum ( addition )------------------------
+
+we can easily add the int to int 
+float to float and int to float 
+string to string
+but we can't add string to int or float 
+
+----------------------- Type Casting (converting datatype) ----------------------------
+
+we can convert the datatype by using (int(),float(),str())
+like a=int("5) in this string is convert to int like same we can convert other
+but in a=int("5.6") it will give error because we can't convert float to int
+
+
+---------------------- the float or int detect function--------------
+by the eval function we can detect that the user input is in float or in integar but not detect string 
+it only detect numbers 
+
+------------------------ swaping logic without thrid varible ----------------------
+
+like num=10
+num2=5
+and if we add the num1 and num2 in num1 we get 15
+num1=num1+num2
+and num2=num1-num2 mean 15 -5 so we get num 1 value to num2 
+ and to get num2 value in num1 we do 
+ num1=num1-num2
+and now num1=10 and num2=5
+
+
+
