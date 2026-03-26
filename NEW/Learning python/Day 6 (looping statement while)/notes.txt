@@ -1,0 +1,4 @@
+the difference of while and for loops
+while loop has no starting and ending number it only runs while the statement is true when statement is false so the loop end 
+and for loop has starting and ending number it end when number reach 
+the while loop has only conditions 

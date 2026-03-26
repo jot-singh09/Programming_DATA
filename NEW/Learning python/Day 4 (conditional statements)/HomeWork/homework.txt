@@ -1,0 +1,4 @@
+1. wrt program in which input user form 1 to 7 no if 1 monday 2 tues etc. if other no show error
+2. electricity bill input unit if unit 100 or less 100 per unit 5 rs else unit 100 or less 300 so 7 rs per unit ,high than 300 10 rs per unit 
+3. input salary if salary above than 50000 bonus =20%, print with bonus also if less than 50000 and =to 30000 or above bonus=10%,less than 30000 bonus = 5%
+

@@ -1,0 +1,21 @@
+-------------------------- Bitwise operater------------------------
+
+1. and  the sign is & in this is there is a and b and output is in a and b if one is zero and one will 1 sothe output is 0
+is both is 1 so main statement is 1 
+& so the output in zero or in one (4 & 3)=0  and if print(4 & 4 )=4
+
+2. or sign is | in this same a and b and oputput if a is 0 and b is 1 so main output is 1 
+in this one will 1 so main output is 1 if both si zero so main output is 0
+it convert both number in binary than add the binary then the answer of binary in number 
+
+3. xor sign is ^ in this is the a and b is same so output is 0 and is the a and b is diff so output is 1
+
+4. left shift sign << it is use to do fast multiplaction 
+like (4 << 1) in this the answer is 8 because 1 mean 2 power1 is 2 and 4X2 is =8
+
+
+5. right shift sign is >> it is use to do fast divide same like multiply power in this 4*2 =2
+
+6. not sign is ~ it oposite the value if the a is 1 so output is 0 there is only a and output not b
+to show the ouput py user 2s' formula showrt cut method is = - (n+1)
+- (5+1)=-6 if - (-5+1)=4

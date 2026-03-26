@@ -1,6 +1,6 @@
 the ram stores the data in the form of bits.
 the storage is based on the datatype we choose like int,float,etc
-and the size of datatype calrible is based on the data we enter 
+and the size of datatype is based on the data we enter 
 like a datatype of int boll are store in ram but tempory 
 by the help of print(type(a )) we can detect the datatype
 and for make a to int no need to write int float pyhton auto detect it 
@@ -25,7 +25,7 @@ like a=int("5) in this string is convert to int like same we can convert other
 but in a=int("5.6") it will give error because we can't convert float to int
 
 
----------------------- the float or int detect function--------------
+---------------------- the float or int detect function (eval function)--------------
 by the eval function we can detect that the user input is in float or in integar but not detect string 
 it only detect numbers 
 

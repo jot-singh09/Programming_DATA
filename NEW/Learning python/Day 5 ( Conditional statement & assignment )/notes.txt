@@ -1,0 +1,3 @@
+the conditions is use to make decisions by using if ,elif,or else
+nested if is use to add more conditions in if elif or else more conditions 
+like if then inside if 2nd if etc.
