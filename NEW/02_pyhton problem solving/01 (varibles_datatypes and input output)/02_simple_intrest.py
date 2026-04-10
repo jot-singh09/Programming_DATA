@@ -1,0 +1,5 @@
+print("Let's Calculate Simple Intrest")
+principle_amo=eval(input("Enter Your Principle Amount :"))
+rate=eval(input("Enter the Rate of Intrest :"))
+time=eval(input("Enter the Year (Time):"))
+print(f"The Simple Intrest is {(principle_amo * rate * time) / 100}")

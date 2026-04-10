@@ -1,0 +1,3 @@
+1. make a fun which acept arbitary arguments and return the count values [lenght] wihtout len fun
+2. make a fun acept arbitrary arguments and retun larger value
+3. arbitrary keyward arguments make a fun this only print only values 

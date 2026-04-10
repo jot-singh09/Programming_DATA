@@ -1,0 +1,2 @@
+make a func for leap year
+2. input ending and starting point and sum it

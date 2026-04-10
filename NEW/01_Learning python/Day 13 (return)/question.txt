@@ -1,0 +1,16 @@
+1. make a fun retrn biggerst numbr amoung 3 numbr
+2. make a fun take a numbre and return by reversing it 
+3. make a fun user enter value and print fibonaki series
+4. enter range and check even num in fun
+5. make a fun that return user eligible in for bonus if salary is upper than 50000
+6. make a login system  pass = 1234 login sucessfull and user name = admin
+7. print a star patren 
+   *
+  * *
+ * * *
+* * * *
+
+* *  * *
+* *  * *
+* *  * *
+* *  * *

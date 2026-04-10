@@ -1,0 +1,2 @@
+in return we retun values without print it and print outside fun by taking value in  new varibale or datatytpe 
+like a= funname()
