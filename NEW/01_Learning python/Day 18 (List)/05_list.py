@@ -6,3 +6,5 @@ while start<len(l):
     sum+=l[start]
     start+=1
 print(sum)
+
+
