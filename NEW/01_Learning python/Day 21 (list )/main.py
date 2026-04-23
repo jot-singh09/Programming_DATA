@@ -12,8 +12,22 @@ def sum(n):
     for i in n :
         sum+=i
     return sum 
+
+def pass_fail(n,noofsub):
+    percentage= ( n/(noofsub *100) )*100
+    print(f"Your Precentage is : {percentage}")
+    if percentage>=27:
+        return True
+    else:
+        return False
+
 sub=int(input("Enter the Subjects Number :"))
 l=nosub(sub)
 print(l)
 print()
-print(sum(l))
+Sum=sum(l)
+check = pass_fail(Sum,sub)
+if check==True:
+    print("You are Pass")
+else:
+    print("You are Fail")
