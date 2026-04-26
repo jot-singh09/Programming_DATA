@@ -1,0 +1,1 @@
+1. take valus from user and make set then ask to user that user want to add the new valuse or not want t sadd the valuse and if user said to add then add that value one by one and if said to remove than ask the value to remove and then again ask and add q for exit 
