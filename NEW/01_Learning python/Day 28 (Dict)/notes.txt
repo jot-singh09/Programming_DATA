@@ -1,0 +1,7 @@
+dictorary has the ke and values pair by the loop we can acess the key and by entering the key in index option we can acess the values
+the dict has i read 4 fun keys for acessing only keys 
+values for acessing only values
+item to acessing key and value in seprate tuple form 
+update to update the key and value 
+we can also update like 
+d["key name"]=value     

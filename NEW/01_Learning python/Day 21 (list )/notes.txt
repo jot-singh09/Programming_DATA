@@ -1,0 +1,12 @@
+in list we have 
+append add the val in last
+extend join two lists
+insert add value in list at last
+clear clear all list 
+remove remove val
+pop remove val
+update update the value in list
+sort for accending or decending order 
+del keyword for remove 
+list comprension (loop inside the list )
+reverse () for reverse the list     
