@@ -1,0 +1,12 @@
+in dict the fun are
+pop
+popitem
+clear
+items
+keys
+values
+get
+setdefault
+update
+copy
+fromkeys
