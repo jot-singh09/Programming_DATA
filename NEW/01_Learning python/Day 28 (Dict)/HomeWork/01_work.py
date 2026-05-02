@@ -16,6 +16,7 @@ while True:
         print("Enter Q for exit")
         print("1. To Create New dict")
         print("2. To Update dict")
+        print("3. To Remove ")
         select=input("Choose The Value :").lower()
         if select =="q":
             break
@@ -69,12 +70,24 @@ while True:
                         
                         value=input("Enter the Value :")
                         new_dict[key]=value
+        elif select==3:
+            print(f"1. select the key to remove {d.keys()}")
+            print(f"2. select the key to remove {new_dict.keys()}")
+            choose=int(input(""))
+            if choose==1:
+                key=input("select the key :")
+                d.pop(key)
+            elif choose==2:
+                key=input("select the key :")
+                new_dict.pop(key)
+
 
 # is new list is created
     elif count>1:
         print("Enter Q for exit")
         print("1. To add  New val dict")
         print("2. To Update dict")
+        print("2. To Remove Dict")
         select=input("Choose The Value :").lower()
         if select =="q":
             break
@@ -122,14 +135,22 @@ while True:
                         
                         value=input("Enter the Value :")
                         new_dict[key]=value
+        elif select==3:
+            print(f"1. select the key to remove {d.keys()}")
+            print(f"2. select the key to remove {new_dict.keys()}")
+            choose=int(input(""))
+            if choose==1:
+                key=input("select the key :")
+                d.pop(key)
+            elif choose==2:
+                key=input("select the key :")
+                new_dict.pop(key)
 
 print(f"1. for Print First Dict")
 print(f"2. for Print Second Dict",end="")
 pri=int(input(" :"))
-if pri==1:
-    print(d)
-elif pri ==2 :
-    print(new_dict)
+print(d)
+print(new_dict)
             
 
         
