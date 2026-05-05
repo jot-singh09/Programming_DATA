@@ -87,7 +87,7 @@ while True:
         print("Enter Q for exit")
         print("1. To add  New val dict")
         print("2. To Update dict")
-        print("2. To Remove Dict")
+        print("3. To Remove Dict")
         select=input("Choose The Value :").lower()
         if select =="q":
             break
@@ -146,9 +146,7 @@ while True:
                 key=input("select the key :")
                 new_dict.pop(key)
 
-print(f"1. for Print First Dict")
-print(f"2. for Print Second Dict",end="")
-pri=int(input(" :"))
+
 print(d)
 print(new_dict)
             

@@ -75,7 +75,7 @@ def option2(dic1,dic2):
             else:
                 print("Thanks!")
         #  return dic2
-    final()
+    
 
 def option3 (dic1,dic2):
     print(f"1. To remove in {dic1}")
@@ -83,15 +83,18 @@ def option3 (dic1,dic2):
     option=int(input(""))
     if option==1:
         print(f"Select the Key {dic1} :",end="")
-        key=int(input(""))
+        key=input("")
         dic1.pop(key)
     elif option==2:
         print(f"Select the Key {dic2} :",end="")
-        key=int(input(""))
+        key=input("")
         dic2.pop(key)
     
 
 def final():
+    dict2 = {
+
+    }
     count=1
     val=int(input("Enter how many value is added in Dict"))
     dict1 = start_l(val)
