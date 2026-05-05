@@ -1,7 +1,7 @@
 s=input("Enter the Value :")
 
-s1=s[-1::-1]
+s1=s[::-1]
 if s1==s:
-    print(f"{s} is Paladrum!")
+    print(f"{s} is Palindrome!")
 else :
-    print("This is not Paladrum!")
+    print("This is not Palindrome!")

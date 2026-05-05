@@ -1,5 +1,4 @@
 s = input("Enter the Value ").lower()
-
 '''
 a=3
 e=1
