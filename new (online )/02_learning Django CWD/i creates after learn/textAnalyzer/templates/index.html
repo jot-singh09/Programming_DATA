@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>Django Website — Form</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:        #0d0f14;
+      --bg-card:   #13161e;
+      --bg-input:  #1a1e28;
+      --bg-hover:  #1f2434;
+      --border:    #2a2f42;
+      --green:     #44b378;
+      --green-lt:  #6fcf97;
+      --text:      #e8eaf0;
+      --muted:     #6b7280;
+      --dim:       #3a3f52;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* grid bg */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image:
+        linear-gradient(rgba(68,179,120,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(68,179,120,.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+    }
+
+    /* ── Navbar ── */
+    nav {
+      position: sticky; top: 0; z-index: 99;
+      background: rgba(13,15,20,.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 13px 20px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .logo {
+      width: 32px; height: 32px; background: var(--green);
+      border-radius: 7px; display: flex; align-items: center; justify-content: center;
+      font-family: 'Fira Code', monospace; font-size: 13px; font-weight: 600; color: #0d0f14;
+    }
+    .brand span { font-size: 16px; font-weight: 700; color: var(--text); }
+    .ver {
+      font-family: 'Fira Code', monospace; font-size: 10px; padding: 3px 10px;
+      background: rgba(68,179,120,.1); color: var(--green);
+      border: 1px solid rgba(68,179,120,.25); border-radius: 20px;
+    }
+
+    /* ── Page wrap ── */
+    main {
+      position: relative; z-index: 1;
+      padding: 28px 18px 56px;
+      max-width: 460px; margin: 0 auto;
+    }
+
+    /* ── Page heading ── */
+    .ph { text-align: center; margin-bottom: 28px; }
+    .tag {
+      display: inline-block;
+      font-family: 'Fira Code', monospace; font-size: 11px;
+      color: var(--green); background: rgba(68,179,120,.1);
+      border: 1px solid rgba(68,179,120,.2);
+      border-radius: 20px; padding: 4px 12px;
+      margin-bottom: 12px; letter-spacing: .4px;
+    }
+    .ph h1 { font-size: 27px; font-weight: 700; letter-spacing: -.8px; margin-bottom: 8px; }
+    .ph h1 em { font-style: normal; color: var(--green); }
+    .ph p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+    /* ── Card ── */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px 20px;
+      position: relative; overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--green), var(--green-lt), transparent);
+    }
+
+    /* ── Field label ── */
+    .lbl {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 11px; font-weight: 700; color: var(--muted);
+      text-transform: uppercase; letter-spacing: .8px;
+      margin-bottom: 8px;
+    }
+    .lbl::before { content: ''; width: 5px; height: 5px; background: var(--green); border-radius: 50%; }
+
+    /* ── Inputs ── */
+    input[type="text"],
+    textarea {
+      display: block; width: 100%;
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 13px 16px;
+      font-family: 'Space Grotesk', sans-serif; font-size: 15px;
+      color: var(--text); outline: none; resize: none;
+      transition: border-color .18s, box-shadow .18s, background .18s;
+      -webkit-appearance: none;
+      margin-bottom: 20px;
+    }
+    input[type="text"]::placeholder, textarea::placeholder { color: var(--dim); }
+    input[type="text"]:focus, textarea:focus {
+      border-color: var(--green);
+      background: var(--bg-hover);
+      box-shadow: 0 0 0 3px rgba(68,179,120,.13);
+    }
+    textarea { min-height: 112px; line-height: 1.65; }
+
+    /* ── Divider ── */
+    .div {
+      display: flex; align-items: center; gap: 12px;
+      margin: 4px 0 18px;
+    }
+    .div::before, .div::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .div span { font-family: 'Fira Code', monospace; font-size: 10px; color: var(--dim); letter-spacing: .5px; }
+
+    /* ── Checkbox items (CSS-only toggle) ── */
+    .cb-group { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+
+    /* hide the real checkbox */
+    .cb-group input[type="checkbox"] { display: none; }
+
+    .cb-group label {
+      display: flex; align-items: center; gap: 14px;
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 16px;
+      cursor: pointer;
+      transition: border-color .18s, background .18s;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .cb-group label:hover { background: var(--bg-hover); border-color: rgba(68,179,120,.3); }
+
+    /* checked state — sibling label after the hidden checkbox */
+    .cb-group input[type="checkbox"]:checked + label {
+      border-color: rgba(68,179,120,.45);
+      background: rgba(68,179,120,.07);
+    }
+
+    /* custom checkbox box */
+    .box {
+      width: 20px; height: 20px;
+      border: 2px solid var(--border);
+      border-radius: 5px; background: var(--bg);
+      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      transition: all .18s;
+    }
+    /* tick SVG inside .box — hidden by default */
+    .box::after {
+      content: '';
+      display: block;
+      width: 10px; height: 6px;
+      border-left: 2.5px solid #0d0f14;
+      border-bottom: 2.5px solid #0d0f14;
+      transform: rotate(-45deg) translateY(-1px);
+      opacity: 0;
+      transition: opacity .15s;
+    }
+    input[type="checkbox"]:checked + label .box {
+      background: var(--green);
+      border-color: var(--green);
+    }
+    input[type="checkbox"]:checked + label .box::after { opacity: 1; }
+
+    .em { font-size: 18px; flex-shrink: 0; }
+    .cb-text { flex: 1; }
+    .cb-name { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+    .cb-desc { font-size: 12px; color: var(--muted); line-height: 1.4; }
+
+    /* ── Submit button ── */
+    .btn {
+      display: flex; align-items: center; justify-content: center; gap: 9px;
+      width: 100%;
+      background: var(--green); color: #0d0f14;
+      border: none; border-radius: 8px;
+      padding: 16px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 15px; font-weight: 700; letter-spacing: .3px;
+      cursor: pointer; text-decoration: none;
+      transition: background .18s, transform .18s, box-shadow .18s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .btn:hover {
+      background: var(--green-lt);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 22px rgba(68,179,120,.3);
+    }
+    .btn:active { transform: translateY(0); box-shadow: none; }
+
+    /* arrow icon using CSS */
+    .btn::after {
+      content: '→';
+      font-size: 17px;
+    }
+
+    footer {
+      text-align: center; padding: 22px;
+      font-size: 11px; color: var(--dim);
+      font-family: 'Fira Code', monospace;
+      position: relative; z-index: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="brand" href="index.html">
+      <div class="logo">Dj</div>
+      <span>DjangoSite</span>
+    </a>
+    <span class="ver">v4.2</span>
+  </nav>
+
+  <main>
+
+    <div class="ph">
+      <div class="tag">// submit form</div>
+      <h1>Share Your <em>Feedback</em></h1>
+      <p>Fill in the details and pick your preferences.</p>
+    </div>
+
+    <div class="card">
+      <form action="analyze/" method="get">
+
+        <!-- Heading -->
+        <div class="lbl">Heading</div>
+        <input type="hidden" name="heading" placeholder="Enter your heading here…" maxlength="80" required />
+
+        <!-- Message -->
+        <div class="lbl">Message</div>
+        <form action="analyze/" method="get">
+        <textarea name="message" placeholder="Write your message or feedback…" maxlength="400" required></textarea>
+
+        <!-- Divider -->
+        <div class="div"><span>SELECT OPTIONS</span></div>
+
+        <!-- Checkboxes — pure CSS toggle using hidden checkbox + sibling label -->
+        <div class="cb-group">
+
+          <input type="checkbox" id="c1" name="punch"  />
+          <label for="c1">
+            <span class="box"></span>
+            <span class="em">📧</span>
+            <span class="cb-text">
+              <div class="cb-name">Punchation</div>
+              <div class="cb-desc">Remove the Punchation Symblos!</div>
+            </span>
+          </label>
+
+          <input type="checkbox" id="c2" name="captalize"  />
+          <label for="c2">
+            <span class="box"></span>   
+            <span class="em">🔔</span>
+            <span class="cb-text">
+              <div class="cb-name">Capitalized</div>
+              <div class="cb-desc">Capitalized the message!</div>
+            </span>
+          </label>
+
+          <input type="checkbox" id="c3" name="rmvspc" />
+          <label for="c3">
+            <span class="box"></span>
+            <span class="em">🧪</span>
+            <span class="cb-text">
+              <div class="cb-name">Remove Space</div>
+              <div class="cb-desc">Try experimental Django features</div>
+            </span>
+          </label>
+
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" class="btn">Submit Form</button>
+        </form>
+      </form>
+    </div>
+
+  </main>
+
+  <footer>built with Django &amp; ❤️ · dark mode</footer>
+
+</body>
+</html>

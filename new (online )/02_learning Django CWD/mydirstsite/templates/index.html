@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>This is Django Website</title>
+  </head>
+  <body>
+    <h1>This is django website</h1>
+    <form action="/analyze" method="get">
+      <textarea name="text" style="height: 70px; width: 526px; margin: 0px">
+      </textarea>
+      <br />
+
+      <br />
+      <input type="checkbox" name="removepunc" />
+      <label for="removepunc">Remove Punctuation</label>
+      <br />
+      <br />
+      <input type="checkbox" name="captalize" />
+      <label for="captalize">Capitalize Text</label>
+      <br />
+      
+      <br />
+      <input type="checkbox" name="removespace" />
+      <label for="removespace">Remove Extra Spaces</label>
+      <br />
+      <button type="submit">Go to Analyze Page</button>
+    </form>
+  </body>
+</html>
