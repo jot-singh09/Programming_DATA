@@ -29,5 +29,5 @@ class Table(Wood):
 t1=Table(1500,"lalchandan","Table")
 t1.showtable()
 print()
-c1=Chair(1500,"lalchandan","Table")
+c1=Chair(500,"lalchandan","Table")
 c1.showchair()
