@@ -1,0 +1,11 @@
+:root {
+  --colour: #2563eb;
+}
+
+.navbar ul li a:hover{
+    font-weight: 600;
+    color: rgb(54, 49, 205);
+}
+.navbar ul button:hover{
+    font-weight: 600;
+    color:black;}

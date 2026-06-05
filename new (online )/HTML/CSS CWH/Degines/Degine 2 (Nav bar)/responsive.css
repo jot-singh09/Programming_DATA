@@ -1,0 +1,14 @@
+@media screen and (max-width: 570px) {
+    .box{
+        display: none;
+    }
+    .responisive{
+        display: flex;
+        width: 90%;
+        
+        justify-content: end;
+    }
+    .responisive h4 {
+        padding: 20px;
+    }
+}
