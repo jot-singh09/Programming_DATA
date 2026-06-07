@@ -33,6 +33,11 @@ nav {
   padding-left: 50px;
   margin-top: 7px;
 }
+.mobilebuttons{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .buttons {
   display: flex;
   padding: 0 30px;

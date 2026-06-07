@@ -1,0 +1,82 @@
+@media screen and (max-width: 850px) {
+  :root {
+    --white: #e1e4e4;
+    --buttons: #1a5aed;
+    --text: #2160ef;
+    --body: #010e1d;
+    --nav: #020c1a: ;
+  }
+
+  /* body */
+  .container {
+    display: none;
+  }
+  .mobilecontainer {
+    display: flex;
+  }
+ 
+  .mobileleft{
+    padding: 40px 30px;
+  }
+
+
+  .mobileleft h1{
+    font-size: 12.5vw;
+    line-height: 1.2; 
+  }
+  .mobileleft h1 span{
+    color: var(--text );
+  }
+  .mobileleft p{
+    padding-top: 10px;
+    width: 79vw;
+  }
+  .mobilebodybuttons{
+    display: flex;
+    padding-top: 20px;
+    gap: 20px;
+    
+  }
+  .mobilebodybuttons   button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 45px;
+    font-size: 13px;
+    font-weight: 550;
+    color: var(--white);
+
+  }
+  .mobileright{
+    overflow: hidden;
+    padding: 40px 0;
+
+    
+  }
+  .mobileright img{
+    width: 100%;
+  }
+
+  .features{
+    height: 200px;
+    /* background: red; */
+    /* display: flex; */
+    /* flex-direction: column; */
+  }
+  .dotext{
+      padding-left: 30px;
+      width: 150px;
+      font-size: 25px;
+    }
+    .dotext{
+    border-bottom: 3px solid var(--text);
+    border-radius: 17px;
+  }
+    
+
+  
+
+    
+}
+

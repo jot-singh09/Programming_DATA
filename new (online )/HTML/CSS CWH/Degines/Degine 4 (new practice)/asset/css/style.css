@@ -1,0 +1,100 @@
+  :root {
+    --white: #e1e4e4;
+    --buttons: #1a5aed;
+    --body: #010e1d;
+    --nav: #020c1a: ;
+    --text:#2160EF;
+  }
+  /* body  */
+  .container{
+    /* background: green; */
+    height: 500px; 
+    width: 100%;
+    display: flex;
+    
+  }
+  .left{
+    width: 33.5%;
+    /* background-color:  crimson; */
+    padding: 60px 90px;
+    height: 280px;
+
+  }
+  .left h1 span{
+    color: var(--text);
+  }
+  .left h1{
+    font-size: 5vw;
+    line-height: 1.2; 
+  }
+  .left p{
+    padding: 13px 10px;
+    font-size: 1.5vw;
+    width: 32vw;
+  }
+  .bodybuttons{
+    display: flex;
+    padding: 10px 10px;
+    gap: 45px;
+    height: 70px;
+  }
+  .bodybuttons button{
+    width:63vw;
+    height: 9vh;
+    font-size:  1.3vw;
+    font-weight: 600;
+    color: var(--white);
+    
+  }
+  #mobilestartbtn{
+    background-color: var(--buttons);
+    border: 2px solid var(--buttons);
+    border-radius: 5px;
+  }
+
+  #notbgbutton{
+    background-color: rgba(255, 255, 255, 0);
+    border: 1px solid rgba(255, 255, 255, 0.752);
+    border-radius: 5px;
+  }
+  .right{
+  /* background: green;  */
+    overflow: hidden;
+    height: 522px;
+    padding-top: 35px;
+    padding-right: 300px;
+  }  
+  .right img{
+    width: 49vw;
+  }
+  .mobilecontainer{display: none;}
+
+  /* card features  */
+  .cards{
+    display: flex;
+    justify-content: space-evenly;
+    /* background: red; */
+    position: absolute  ;
+    /* height: 400px; */
+  }
+  .displayicon{
+    /* background-color: green; */
+    display: flex;
+    width: 120px;
+    /* height: 100px; */
+  }
+  .displayicon img{
+    width:35px;
+    margin-right: 5px;
+  }
+  .displayicon p{
+  position: absolute;
+    padding-top: 24px;
+    padding-left: 43px;
+    font-size: 11px;
+    width: 10px;
+
+  }
+
+    
+      
