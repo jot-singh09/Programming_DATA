@@ -1,0 +1,23 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: black;
+    color: white;
+}
+.heading{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+  gap: 50px;
+}
+.nav{
+  background-color: crimson;
+  display: flex;
+  align-items: center;
+  margin: 20px;
+
+}

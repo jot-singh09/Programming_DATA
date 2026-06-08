@@ -1,0 +1,50 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: Helvetica, sans-serif;
+}
+
+body {
+    background-color: #333;
+    color: white;
+}
+.card{
+  display: flex;
+  padding: 50px 50px;
+  gap: 40px;
+
+} 
+.show{
+   padding: 30px 0;
+  text-align: center;
+  background: #222;
+  border: 1px solid #fff;
+  border-radius: 30px;
+  width: 300px;
+
+}
+.show img{
+  border: 1px solid #222;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  
+}
+.show h1{
+  padding: 10px 0;
+  font-size: 35px;
+}
+.show p{
+  padding-top: 10px ;
+  padding-bottom: 40px ;
+  font-size: 15px;
+}
+.show button{
+  background-color: rgb(255, 255, 255) ;
+  color: rgb(0, 0, 0);
+  padding: 10px 50px;
+  font-size: 16px;
+  font-weight: 600;
+  border: 2px solid #000000;
+  border-radius: 15px;
+} 

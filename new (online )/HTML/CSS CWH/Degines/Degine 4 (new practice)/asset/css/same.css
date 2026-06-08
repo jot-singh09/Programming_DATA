@@ -9,6 +9,10 @@
   margin: 0;
   padding: 0;
 }
+ a{
+    text-decoration: none;
+    color: var(--white);
+  }
 body {
     color: white;
   background-color: #010A13;
@@ -126,3 +130,4 @@ body {
 
   }
 }
+
