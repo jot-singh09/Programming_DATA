@@ -14,7 +14,7 @@
     const scrollingImages = images;
 
     return (
-        <div className="w-full overflow-hidden bg-gray-100 py-8">
+        <div className="w-full overflow-hidden bg-gray-100 py-8 ">
         <div className="relative flex overflow-x-hidden">
             {/* Scrolling container with just 2 images */}
             <div className="animate-scroll flex gap-5 whitespace-nowrap">
@@ -23,7 +23,7 @@
                 key={index}
                 src={src}
                 alt={`Gallery ${index}`}
-                className="w-90 h-64 object-cover rounded-lg shadow-md shrink-0"
+                className="w-90 h-54 object-cover rounded-lg shadow-md shrink-0 max-lg:w-60 "
                 />
             ))}
             </div>
@@ -35,7 +35,7 @@
                 key={`duplicate-${index}`}
                 src={src}
                 alt={`Gallery ${index}`}
-                className="w-90 h-64 object-cover rounded-lg shadow-md shrink-0"
+                className="w-90 h-54 object-cover rounded-lg shadow-md shrink-0 max-lg:w-60 "
                 />
             ))}
             </div>

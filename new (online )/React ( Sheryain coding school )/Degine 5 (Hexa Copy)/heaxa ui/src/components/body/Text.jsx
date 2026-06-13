@@ -1,26 +1,35 @@
 const Text = () => {
   return (
     <div>
-      
-
-    
-    <div className="flex items-center flex-col py-20 gap-10 bg-[#E3E9F1] max-lg:hidden">
-      <h1 className="text-7xl  font-semibold text-[#682ACD] ">
-        <span className="text-[#1C1F4C] ">Discover,</span> Trade & Create NFTs
-      </h1>
-      <p className="text-gray-700  text-2xl ">
-        Join the future of digital art trading
-      </p>
-      <a href="/auth" className="px-10 py-4 text-[19px] font-black text-white border-[#5E2ECC] border-2 rounded-[15px] bg-[#5E2ECC]">
-        Start Trading Now
-      </a>
-    </div>
-    <div className="lg:hidden flex flex-col  py-10 gap-5 bg-[#E3E9F1]">
-      <h1 className="text-4xl  font-semibold text-[#682ACD]"><span className="text-[#1C1F4C]">Discover,</span>Trade & Create NFTs </h1>
-       <p className="text-gray-700  text-xl ">
-        Join the future of digital art trading
-      </p>
-    </div>
+      <div className="flex items-center flex-col py-20 gap-10 bg-[#E3E9F1] max-lg:hidden">
+        <h1 className="text-7xl  font-semibold text-[#682ACD] ">
+          <span className="text-[#1C1F4C] ">Discover,</span> Trade & Create NFTs
+        </h1>
+        <p className="text-gray-700  text-2xl ">
+          Join the future of digital art trading
+        </p>
+        <a
+          href="/auth"
+          className="px-10 py-4 text-[19px] font-black text-white border-[#5E2ECC] border-2 rounded-[15px] bg-[#5E2ECC]"
+        >
+          Start Trading Now
+        </a>
+      </div>
+      <div className="lg:hidden flex flex-col items-center w-full py-10 gap-5 bg-[#E3E9F1]">
+        <h1 className="text-4xl  font-semibold text-[#682ACD] self-center">
+          <span className="text-[#1C1F4C]">Discover,</span>Trade <br /> & Creates
+          NFTs.
+        </h1>
+        <p className="text-gray-700  text-lg ">
+          Join the future of digital art trading
+        </p>
+          <a
+          href="/auth"
+          className="px-10 py-4 text-[19px] font-black text-white border-[#5E2ECC] border-2 rounded-[15px] bg-[#5E2ECC]"
+        >
+          Start Trading Now
+        </a>
+      </div>
     </div>
   );
 };
