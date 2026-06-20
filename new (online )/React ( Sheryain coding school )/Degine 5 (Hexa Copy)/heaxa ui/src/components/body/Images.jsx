@@ -23,7 +23,7 @@
                 key={index}
                 src={src}
                 alt={`Gallery ${index}`}
-                className="w-90 h-54 object-cover rounded-lg shadow-md shrink-0 max-lg:w-60 "
+                className="w-90 h-54 object-cover rounded-lg shadow-md shrink-0 max-lg:w-50 "
                 />
             ))}
             </div>
@@ -35,7 +35,7 @@
                 key={`duplicate-${index}`}
                 src={src}
                 alt={`Gallery ${index}`}
-                className="w-90 h-54 object-cover rounded-lg shadow-md shrink-0 max-lg:w-60 "
+                className="w-90 h-54 object-cover rounded-lg shadow-md shrink-0 max-lg:w-50 "
                 />
             ))}
             </div>
