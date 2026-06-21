@@ -1,3 +1,4 @@
+import Mode_icon from '../../assets/Light-Dark-Mode.png'
 const Buttons = () => {
   return (
     <div>
@@ -17,7 +18,10 @@ const Buttons = () => {
         >
           Contact
         </a>
-        <a className="text-[14px] text-neutral-900 hover:after:content-[''] after:scale-x-0 hover:after:scale-x-100  after:absolute after:origin-left after:bottom-0 after:left-0 after:bg-current after:w-full after:h-px after:transition-all relative after:ease-in-out " href="">Blog</a>
+        <button >
+          <img className='size-5.5' src={Mode_icon} alt="" />
+        </button>
+       
       </div>
     </div>
   );
