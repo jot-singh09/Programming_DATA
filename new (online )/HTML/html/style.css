@@ -1,0 +1,5 @@
+.text-accent-gradient {
+    color: #0000;
+    background: linear-gradient(#a855f7 0%, #5d00ff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;}

@@ -13,6 +13,7 @@ const Navbar = () => {
       </div>
       <div className="lg:hidden">
         <Logo/>
+        <Buttons/>
         <Mobilenav/>
       </div>
     </div>
