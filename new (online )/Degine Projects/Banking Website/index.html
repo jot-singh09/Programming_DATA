@@ -5,78 +5,125 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="./src/output.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css" rel="stylesheet" />
 </head>
 
-<body class=" bg-[#FAF0E6] ">
+<body class=" bg-[#FBFCFE] ">
     <header>
-        <nav class="fixed bg-transparent  w-full">
-            <div class="flex max-lg:justify-between max-lg:bg-yellow-400 max-lg:w-full items-center" >
-                <div class="flex items-center px-3 py-3">
-                    <h3><img id="navmenu" class="lg:hidden px-4" src="/assets/images/menu.png" alt=""></h3>
-                    <img class="w-12 " src="/assets/images/logo.png" alt="">
+        <nav class="fixed bg-transparent w-full order-1 lg:h-1 ">
+            <div class="flex justify-between bg-[#F7FAFF]   items-center order-2">
+                <div class="flex items-center bg-[#F7FAFF]  px-3 py-3">
+                    <img class="w-12 max-lg:w-9" src="/assets/images/logo.png" alt="">
                     <h1 class="font-black">TrustBank</h1>
-                </div>
-                <div class="lg:hidden px-10 flex gap-4">
-                    <img src="/assets/images/notifaction.png" alt="">
-                    <img src="/assets/images/email.png" alt="">
-                    <img class="" src="/assets/images/profilepic.png" alt="">
+                    <div class="font-black px-20 text-xl max-lg:hidden">
+                        <h>Dashboard</h1>
+
+                    </div>
                 </div>
 
-            </div>
-            <div class="flex  flex-col py-3 gap-4 w-45 transition-all duration-500 ease-in-out max-lg:opacity-0  opennav">
-                <div
-                    class="flex gap-2 bg-blue-200 w-[80%] p-1 mx-1 text-blue-700 font-black  border-blue-200 border rounded-sm px-2">
-                    <img class="w-6 h-auto " src="/assets/images/home-dashboard.png" alt="">
-                    <a  href="#">Dashboard</a>
+                <div class=" flex max-lg:hidden">
+                    <img src="" alt="">
+                    <input
+                        class="bg-white border border-gray-300 rounded-[7px] text-gray-900 p-1 px-5 w-100 text-[15px] pl-10 bg-no-repeat bg-size-[20px] bg-[url('/assets/images/search.svg')] bg-position-[left_10px_center]"
+                        type="text" name="search" placeholder="Search for transaction, account, cards... " id="">
+                </div>
 
-                </div>
-                <div class="flex gap-2 mx-1 px-2">
-                    <img class="w-6 h-auto" src="/assets/images/wallet-icon.png" alt="">
-                    <a class="text-gray-600" href="#">Account</a>
-                </div>
-                <div class="flex gap-2 mx-1 px-2">
-                    <img class="w-6 h-auto" src="/assets/images/card-icon.png" alt="">
-                    <a class="text-gray-600" href="#">Card</a>
-                </div>
-                <div class="flex gap-2 mx-1 px-2">
-                    <img class="w-6 h-auto" src="/assets/images/transaction-icon.png" alt="">
-                    <a class="text-gray-600" href="#">Transaction</a>
-                </div>
-                <div class="flex gap-2 mx-1 px-2">
-                    <img class="w-6 h-auto" src="/assets/images/payment-icon.png" alt="">
-                    <a class="text-gray-600" href="#">Payment</a>
-                </div>
-                <div class="flex gap-2 mx-1 px-2">
-                    <img class="w-6 h-auto" src="/assets/images/investment.png" alt="">
-                    <a class="text-gray-600" href="#">Investment</a>
-                </div>
-                <div class="flex gap-2 mx-1 px-2">
-                    <img class="w-6 h-auto" src="/assets/images/loans.png" alt="">
-                    <a class="text-gray-600" href="#">Loans</a>
-                </div>
-                <div class="flex gap-2 mx-1 px-2">
-                    <img class="w-6 h-auto" src="/assets/images/person.png" alt="">
-                    <a class="text-gray-600" href="#">Beneficiaries</a>
+                <div class=" flex gap-5 px-10 max-lg:px-5">
+                    <img src="/assets/images/notifaction.svg" class="w-6 max-lg:w-5" alt="">
+                    <!-- <img src="/assets/images/email.png" alt=""> -->
+                    <img src="/assets/images/email.svg" class="w-6 max-lg:w-5" alt="">
+                    <!-- <i class="ri-mail-unread-line"></i> -->
+                    <div class="flex gap-2 ">
+                        <img src="/assets/images/profilepix.svg"
+                            class="w-7 lg:w-8   border p-1 rounded-b-full rounded-r-full rounded-l-full" alt="">
+
+                    </div>
+                    <img id="navmenu" class="lg:hidden w-7 " src="/assets/images/navbar.svg" class="w-6" alt="">
                 </div>
             </div>
-            <div id="navopen1" class="py-25 gap-4 flex w-45 flex-col transition-all duration-500 ease-in-out max-lg:opacity-0 ">
-                <hr class="text-gray-300">
-                <div class="flex gap-2 mx-1 px-2">
-                    <img class="w-6 h-auto" src="/assets/images/settin.png" alt="">
-                    <a href="#">Setting</a>
+
+
+
+            <div
+                class="flex justify-between flex-col max-lg:overflow-y-scroll  bg-[#F7FAFF] w-45 h-full transition-all duration-500 ease-in-out max-lg:opacity-0  opennav">
+                <div class=" flex flex-col py-7 lg:py-4 gap-4">
+                    <div
+                        class="flex gap-2 bg-blue-200 w-[80%] p-1 mx-1 text-blue-700 font-black  border-blue-200 border rounded-sm px-2">
+                        <img class="w-6 h-auto " src="/assets/images/dashboard.svg" alt="">
+                        <a href="#">Dashboard</a>
+
+                    </div>
+                    <div class="flex gap-2 mx-1 px-2">
+                        <img class="w-6 h-auto" src="/assets/images/account.svg " alt="">
+                        <a class="text-gray-600" href="#">Account</a>
+                    </div>
+                    <div class="flex gap-2 mx-1 px-2">
+                        <img class="w-6 h-auto" src="/assets/images/card.svg" alt="">
+                        <a class="text-gray-600" href="#">Card</a>
+                    </div>
+                    <div class="flex gap-2 mx-1 px-2">
+                        <img class="w-6 h-auto" src="/assets/images/history.svg" alt="">
+                        <a class="text-gray-600" href="#">Transaction</a>
+                    </div>
+                    <div class="flex gap-2 mx-1 px-2">
+                        <img class="w-6 h-auto" src="/assets/images/payment.svg" alt="">
+                        <a class="text-gray-600" href="#">Payment</a>
+                    </div>
+                    <div class="flex gap-2 mx-1 px-2">
+                        <img class="w-6 h-auto" src="/assets/images/investment.svg" alt="">
+                        <a class="text-gray-600" href="#">Investment</a>
+                    </div>
+                    <div class="flex gap-2 mx-1 px-2">
+                        <img class="w-6 h-auto" src="/assets/images/loan.svg" alt="">
+                        <a class="text-gray-600" href="#">Loans</a>
+                    </div>
+                    <div class="flex gap-2 mx-1 px-2">
+                        <img class="w-6 h-auto" src="/assets/images/beneficial.svg" alt="">
+                        <a class="text-gray-600" href="#">Beneficiaries</a>
+                    </div>
                 </div>
-                <div class="flex gap-2 mx-1 px-2">
-                    <img class="w-6 h-auto" src="/assets/images/help.png" alt="">
-                    <a href="#">Help</a>
-                </div>
-                <div class="flex gap-2 mx-1 px-2">
-                    <img class="w-6 h-auto" src="/assets/images/logout.png
-                    " alt="">
-                    <a class="text-red-600" href="#">Log out</a>
+
+                <div id="navopen1"
+                    class="py-25  gap-4 flex w-45 flex-col transition-all duration-500 ease-in-out max-lg:opacity-0 bg-[#F7FAFF] rounded-br-xl">
+                    <hr class="text-gray-300">
+                    <div class="flex gap-2 mx-1 px-2">
+                        <img class="w-6 h-auto" src="/assets/images/setting.svg" alt="">
+                        <a href="#">Setting</a>
+                    </div>
+                    <div class="flex gap-2 mx-1 px-2">
+                        <img class="w-6 h-auto" src="/assets/images/help.svg" alt="">
+                        <a href="#">Help</a>
+                    </div>
+                    <div class="flex gap-2 mx-1 px-2">
+                        <img class="w-6 h-auto" src="/assets/images/gogout.svg" alt="">
+                        <a class="text-red-600" href="#">Log out</a>
+                    </div>
+
                 </div>
             </div>
         </nav>
     </header>
+    <main class=" px-50 py-20 max-lg:px-2 order-1">
+        <div class="flex text-white px-6 max-lg:px-0 ">
+            <div class="flex bg-blue-700 w-70 max-lg:w-full border border-blue-700 rounded-[7px] justify-between">
+                <div class=" flex flex-col gap-2 px-3 py-4">
+                    <h1>Total Balance</h1>
+                    <h1 class="text-3xl font-semibold"> $ 1,238.00</h1>
+                    <h1>Avaiable Balance</h1>
+                </div>
+                <div class="px-3 py-4 flex flex-col justify-between gap-3 ">
+                    <div class="flex justify-end">
+                        <img class="w-6 " src="/assets/images/3dots.svg" alt="sdf">
+
+                    </div>
+                    <div><img class="w-20 max-lg:w-28 " src="assets/images/bankimg.png" alt=""></div>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
 </body>
 <script src="/assets/js/script.js"></script>
+
 </html>
