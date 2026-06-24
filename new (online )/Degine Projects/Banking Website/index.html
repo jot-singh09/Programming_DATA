@@ -10,43 +10,43 @@
 
 <body class=" bg-[#FBFCFE] ">
     <header>
-        <nav class="fixed bg-transparent w-full order-1 lg:h-1 ">
-            <div class="flex justify-between bg-[#F7FAFF]   items-center order-2">
+        <nav class="max-md:fixed bg-transparent  order-1 md:h-1 ">
+            <div class="flex justify-between bg-[#F7FAFF] max-sm:gap-8 max-md:gap-90 items-center order-2">
                 <div class="flex items-center bg-[#F7FAFF]  px-3 py-3">
-                    <img class="w-12 max-lg:w-9" src="/assets/images/logo.png" alt="">
+                    <img class="w-12 max-md:w-9" src="/assets/images/logo.png" alt="">
                     <h1 class="font-black">TrustBank</h1>
-                    <div class="font-black px-20 text-xl max-lg:hidden">
+                    <div class="font-black px-20 text-xl max-md:hidden">
                         <h>Dashboard</h1>
 
                     </div>
                 </div>
 
-                <div class=" flex max-lg:hidden">
+                <div class=" flex max-md:hidden">
                     <img src="" alt="">
                     <input
                         class="bg-white border border-gray-300 rounded-[7px] text-gray-900 p-1 px-5 w-100 text-[15px] pl-10 bg-no-repeat bg-size-[20px] bg-[url('/assets/images/search.svg')] bg-position-[left_10px_center]"
                         type="text" name="search" placeholder="Search for transaction, account, cards... " id="">
                 </div>
 
-                <div class=" flex gap-5 px-10 max-lg:px-5">
-                    <img src="/assets/images/notifaction.svg" class="w-6 max-lg:w-5" alt="">
+                <div class=" flex gap-5 px-10 max-md:px-5">
+                    <img src="/assets/images/notifaction.svg" class="w-6 max-md:w-5" alt="">
                     <!-- <img src="/assets/images/email.png" alt=""> -->
-                    <img src="/assets/images/email.svg" class="w-6 max-lg:w-5" alt="">
+                    <img src="/assets/images/email.svg" class="w-6 max-md:w-5" alt="">
                     <!-- <i class="ri-mail-unread-line"></i> -->
                     <div class="flex gap-2 ">
                         <img src="/assets/images/profilepix.svg"
-                            class="w-7 lg:w-8   border p-1 rounded-b-full rounded-r-full rounded-l-full" alt="">
+                            class="w-7 md:w-8   border p-1 rounded-b-full rounded-r-full rounded-l-full" alt="">
 
                     </div>
-                    <img id="navmenu" class="lg:hidden w-7 " src="/assets/images/navbar.svg" class="w-6" alt="">
+                    <img id="navmenu" class="md:hidden w-7 " src="/assets/images/navbar.svg" class="w-6 md:hidden" alt="">
                 </div>
             </div>
 
 
 
             <div
-                class="flex justify-between flex-col max-lg:overflow-y-scroll  bg-[#F7FAFF] w-45 h-full transition-all duration-500 ease-in-out max-lg:opacity-0  opennav">
-                <div class=" flex flex-col py-7 lg:py-4 gap-4">
+                class="flex justify-between flex-col max-md:overflow-y-scroll  bg-[#F7FAFF] w-45 h-full transition-all duration-500 ease-in-out max-md:opacity-0  opennav">
+                <div class=" flex flex-col py-7 md:py-4 gap-4">
                     <div
                         class="flex gap-2 bg-blue-200 w-[80%] p-1 mx-1 text-blue-700 font-black  border-blue-200 border rounded-sm px-2">
                         <img class="w-6 h-auto " src="/assets/images/dashboard.svg" alt="">
@@ -84,7 +84,7 @@
                 </div>
 
                 <div id="navopen1"
-                    class="py-25  gap-4 flex w-45 flex-col transition-all duration-500 ease-in-out max-lg:opacity-0 bg-[#F7FAFF] rounded-br-xl">
+                    class="py-25  gap-4 flex w-45 flex-col transition-all duration-500 ease-in-out max-md:opacity-0 bg-[#F7FAFF] rounded-br-xl">
                     <hr class="text-gray-300">
                     <div class="flex gap-2 mx-1 px-2">
                         <img class="w-6 h-auto" src="/assets/images/setting.svg" alt="">
@@ -103,23 +103,43 @@
             </div>
         </nav>
     </header>
-    <main class=" px-50 py-20 max-lg:px-2 order-1">
-        <div class="flex text-white px-6 max-lg:px-0 ">
-            <div class="flex bg-blue-700 w-70 max-lg:w-full border border-blue-700 rounded-[7px] justify-between">
+    <main class=" px-50 py-20 max-md:px-2 order-1">
+        <div class="flex text-white px-6 max-md:px-0 max-md:flex-col gap-5 ">
+            <div class="flex bg-blue-700 w-70 max-md:w-full border border-blue-700 rounded-[7px] justify-between">
                 <div class=" flex flex-col gap-2 px-3 py-4">
-                    <h1>Total Balance</h1>
-                    <h1 class="text-3xl font-semibold"> $ 1,238.00</h1>
-                    <h1>Avaiable Balance</h1>
+                    <h1 class="font-mono">Total Balance</h1>
+                    <h1 class="text-3xl font-semibold"> $ 1,238.<span class="text-[25px]">00</span></h1>
+                    <h1 >Avaiable Balance</h1>
                 </div>
                 <div class="px-3 py-4 flex flex-col justify-between gap-3 ">
                     <div class="flex justify-end">
                         <img class="w-6 " src="/assets/images/3dots.svg" alt="sdf">
 
                     </div>
-                    <div><img class="w-20 max-lg:w-28 " src="assets/images/bankimg.png" alt=""></div>
+                    <div><img class="w-20 max-md:w-28 " src="assets/images/bankimg.svg  " alt=""></div>
                 </div>
 
             </div>
+
+            <!-- secound box     -->
+            <div class="flex bg-white w-76 max-md:w-35 border border-gray-300 rounded-[7px] text-black justify-between ">
+                <div class=" flex gap-14 pb-5">
+                    <div class="flex gap-4 w-full">
+                        
+                   
+                    <div >
+                        <h1><img class="w-17 mx-2 my-1 rounded-full" src="/assets/images/savingicon.svg" alt=""></h1>
+                    </div>
+                    <div class="flex flex-col gap-3">
+                        <h1 class="text-sm font-mono pt-3">Saving Account</h1>
+                    <h1 class="text-2xl font-semibold justify-center w-full items-center">$ 75,000.<span class="text-[20px]">00</span></h1>
+                    <h1 class="text-gray-700 text-[15px]">Account No. •••• 2345</h1>
+                </div>
+                 </div> 
+                <div class="flex items-center">
+                    <img class="w-5 max-md:w-6 " src="assets/images/arrow.svg" alt="">
+                </div>
+                </div>
 
         </div>
     </main>
