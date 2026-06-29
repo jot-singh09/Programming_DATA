@@ -10,7 +10,7 @@
 
 <body class=" bg-[#FBFCFE] ">
     <header>
-        <nav class="max-md:fixed bg-transparent  order-1 md:h-1 ">
+        <nav class="max-md:fixed bg-transparent pointer-events: none;  z-10 order-1 md:h-1 ">
             <div class="flex justify-between bg-[#F7FAFF] max-sm:gap-8 max-md:gap-90 items-center order-2">
                 <div class="flex items-center bg-[#F7FAFF]  px-3 py-3">
                     <img class="w-12 max-md:w-9" src="/assets/images/logo.png" alt="">
@@ -47,7 +47,7 @@
 
             <div
                 class="flex justify-between flex-col max-md:overflow-y-scroll  bg-[#F7FAFF] w-45 h-full transition-all duration-500 ease-in-out max-md:opacity-0  opennav">
-                <div class=" flex flex-col py-7 md:py-4 gap-4">
+                <div class=" flex flex-col pointer-events: none z-8 py-7 md:py-4 gap-4">
                     <div
                         class="flex gap-2 bg-blue-200 w-[80%] p-1 mx-1 text-blue-700 font-black  border-blue-200 border rounded-sm px-2">
                         <img class="w-6 h-auto " src="/assets/images/dashboard.svg" alt="">
@@ -106,7 +106,7 @@
     </header>
 
     <!-- boy part-->
-    <main class=" px-50 py-20 max-md:px-2 order-1">
+    <main class=" px-50 py-20 z-50 max-md:px-2 order-1">
         <div class="flex  text-white max-md:px-0 max-md:flex-col gap-5 px-6 w-full ">
             <div class="flex bg-blue-700 w-70 max-md:w-full border border-blue-700 rounded-[7px] justify-between">
                 <div class=" flex flex-col gap-2 px-3 py-4">

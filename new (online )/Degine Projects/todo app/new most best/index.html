@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo app</title>
+    <link href="./src/output.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="bg-gray-300 font-mono">
+    <header>
+
+        <div class="flex flex-col justify-center items-center py-2">
+            <h1 class="text-5xl font-black ">Todo</h1>
+            <h1 class="font-light text-gray-600 ">Add the task here </h1>
+        </div>
+
+    </header>
+
+    <main class="py-10">
+        <div class="flex justify-center">
+            <div class="flex justify-between gap-2 py-2 px-2 border w-100">
+                <input class="border border-gray-600 w-70 px-2 items-center rounded-lg" type="text" placeholder="Enter the Title Here ">
+                <button class="bg-green-800 rounded-lg px-6 py-0.5">Add</button>
+            </div>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>

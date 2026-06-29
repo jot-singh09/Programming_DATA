@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo app</title>
+    <link href="./src/output.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="bg-gray-300">
+    <header >
+        <div class='flex flex-col gap-2 items-center py-5 max-md:py-'>
+            <h1 class="text-4xl font-semibold">Todo --App</h1>
+            <h1 class="text-gray-800 ">Add tasks an get things done!</h1>
+
+        </div>
+        
+    </header>
+    <main>
+        <div class="flex flex-col items-center max-md:w-full gap-5">
+
+
+            <div class="border border-gray-700 py-4  rounded-lg bg-green-200/30 px-28">
+                <form class="flex max-md:flex-col gap-5 max-md:gap-2 max-md:w-full max-md:justify-center">
+                    <div class="">
+
+                        <input class="border rounded-sm px-2 max-md:w-70 w-90 border-gray-700" type="text"
+                        placeholder="Enter a task..." >
+                        <h1 id="textcountmbl" class=" md:hidden">0-500</h1>
+                        
+                    </div>
+                    <button id="addbtn"
+                        class="bg-green-800 max-md:w-30 p-1 px-5 py-0.5 rounded-md hover:scale-105 hover:ease-in-out hover:transition-all hover:duration-500  text-white">Add</button>
+                </form>
+                
+               
+                <div class="flex gap-2">
+                    <h1 id="textcount" class=" max-md:hidden">0-500</h1>
+                <div id="showtexterror"
+                    class="pt-1 w-70 opacity-0 absolute transition-opacity duration-700 ease-in-out">
+                    <div class="border border-gray-800 bg-red-200">
+                        <h1 class="text-red-700 px-2">Text Must is Greater the 5 Words!</h1>
+                    </div>
+                </div>
+                <div class="border border-gray-800 mt-5 bg-red-200">
+                    <h1 id="Writetext" class="text-red-700 px-2 hidden ">Add the Task First </h1>
+                </div>
+                </div>
+                
+
+                <div id="conform" class=" absolute opacity-0  pt-10 transition-opacity duration-700 ease-in-out">
+                    <div
+                        class="flex flex-col gap-3 py-2 items-center justify-center  border border-gray-600 rounded-lg ">
+                        <h1 class="text-xl font-bold">Conform to add in todo task</h1>
+                        <div class="flex gap-5 ">
+
+                            <button id="cancelbtn"
+                                class="hidepopup bg-red-700 p2 px-5 py-0.5 text-white hover:bg-red-800 rounded-lg hover:rounded-xl  hover:scale-120  ease-in-out hover:transition-all hover:duration-500">Cancel</button>
+                            <button id="conformbtn"
+                                class="hidepopup bg-green-700 p2 px-5 py-0.5 text-white hover:bg-green-800 hover:scale-120 rounded-lg hover:rounded-xl hover:transition-all ease-in-out hover:duration-500">Conform</button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div id="taskbox"
+                class="bg-white transition-all duration-700 w-[50%] opacity-0  delay-500   pb-10 border border-white rounded-xl">
+                <div>
+                    <h1 class=" px-5 text-shadow-green-800 py-3 text-3xl font-bold" id="showtasks">Your Tasks</h1>
+
+                </div>
+                <div id="previewtask" class="flex flex-col  gap-2 ">
+
+
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>
