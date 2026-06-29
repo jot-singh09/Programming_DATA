@@ -17,14 +17,14 @@ const Upper = () => {
           </h1>
         </div>
         <div className=" flex flex-col gap-5 max-xl:gap-2 max-xl:py-1 py-2">
-          <h1 className="text-6xl max-xl:text-4xl text-gray-200 font-black">
-            Delious Food <br /> delivered{" "}
+          <h1 className="text-6xl max-xl:text-4xl text-gray-300 font-black">
+            Delious food <br /> delivered{" "}
             <span className="text-orange-500">fast</span>
           </h1>
 
-          <h1 className="px-2 text-xl max-xl:text-sm  max-md:text-[13px] max-md:px-1">
-            Get{" "}
-            <span className="text-orange-500 border-b-2 border-b-orange-500 rounded-sm px-1">
+          <h1 className="px-2 text-gray-300 text-xl max-xl:text-sm  max-md:text-[13px] max-md:px-1">
+            Get
+            <span className="text-orange-500 border-b-2 border-b-orange-500 px-1">
               20% OFF
             </span>{" "}
             on your first order
