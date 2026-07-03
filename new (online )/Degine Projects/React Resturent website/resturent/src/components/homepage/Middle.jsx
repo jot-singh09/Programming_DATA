@@ -3,7 +3,7 @@ import Popular from "./Popular"
 
 const Middle = () => {
   return (
-    <div>
+    <div className="bg-zinc-950">
       <Popular/>
       <Featuresdishes/>
     </div>

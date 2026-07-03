@@ -7,7 +7,7 @@ import Mycart from "./pages/Mycart";
 import Errorpage from "./pages/Errorpage";
 const App = () => {
   return (
-    <div className="bg-zinc-950  h-100 w-full">
+    <div className="bg-zinc-950  h-100 w-full touch-pan-y selection:bg-orange-600 scroll-smooth">
       <BrowserRouter>
       <Routes>
         <Route index element={<Home/>}/>
