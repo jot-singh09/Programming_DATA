@@ -28,35 +28,35 @@ const Popular = () => {
         </h1>
       </div>
       <div className="grid grid-cols-6 cursor-pointer py-4 max-md:py-3 gap-4 max-md:gap-2 max-md:grid-cols-3 ">
-        <div className="border border-gray-700 rounded-lg flex flex-col items-center  justify-center py-1   bg-[#0A0C0E] hover:scale-110 transition-all duration-300 ease-in-out">
+        <div className="border border-gray-700 rounded-lg flex active:scale-120  flex-col items-center  justify-center py-1   bg-[#0A0C0E] hover:scale-110 transition-all duration-300 ease-in-out">
           <img src={pizza} className="w-35 brightness-90" alt="" />
           <h1 className="text-xl font-semibold text-gray-200">Pizza</h1>
         </div>
 
-        <div className="border border-gray-700 rounded-lg flex flex-col items-center justify-center py-1   bg-[#0A0C0E] hover:scale-110 transition-all duration-300 ease-in-out">
-          <img src={burger} className="w-35 brightness-90" alt="" />
+        <div className="border border-gray-700 rounded-lg flex active:scale-120  flex-col items-center justify-center py-1   bg-[#0A0C0E] hover:scale-110  transition-all duration-300 ease-in-out">
+          <img src={burger} className="w-35 brightness-90 " alt="" />
           <h1 className="text-xl font-semibold text-gray-200">Burger</h1>
         </div>
-        <div className="border border-gray-700 rounded-lg flex flex-col items-center justify-center py-1   bg-[#0A0C0E] hover:scale-110 transition-all duration-300 ease-in-out">
+        <div className="border border-gray-700 rounded-lg flex flex-col active:scale-120  items-center justify-center py-1   bg-[#0A0C0E] hover:scale-110 transition-all duration-300 ease-in-out">
           <img src={noddle} className="w-35 brightness-90" alt="" />
           <h1 className="text-xl font-semibold text-gray-200">Biryani</h1>
         </div>
-        <div className="border border-gray-700 rounded-lg flex flex-col items-center justify-center py-1   bg-[#0A0C0E] hover:scale-110 transition-all duration-300 ease-in-out">
+        <div className="border active:scale-120  border-gray-700 rounded-lg flex flex-col items-center justify-center py-1   bg-[#0A0C0E] hover:scale-110 transition-all duration-300 ease-in-out">
           <img src={pasty} className="w-35 brightness-90" alt="" />
           <h1 className="text-xl font-semibold text-gray-200">Disserts</h1>
         </div>
 
-        <div className="border border-gray-700 rounded-lg flex flex-col items-center justify-center py-0.5   bg-[#0A0C0E] hover:scale-110 transition-all duration-300 ease-in-out">
+        <div className="border active:scale-120  border-gray-700 rounded-lg flex flex-col items-center justify-center py-0.5   bg-[#0A0C0E] hover:scale-110 transition-all duration-300 ease-in-out">
           <img src={fingers} className="w-28 brightness-90 max-md:w-20" alt="" />
           <h1 className="text-xl font-semibold text-gray-200">Fast Food</h1>
         </div>
-        <div className="border border-gray-700 rounded-lg flex flex-col items-center justify-center py-1   bg-[#0A0C0E] hover:scale-110 transition-all duration-300 ease-in-out">
+        <div className="border active:scale-120  border-gray-700 rounded-lg flex flex-col items-center justify-center py-1   bg-[#0A0C0E] hover:scale-110 transition-all duration-300 ease-in-out">
           <img src={pasta} className="w-32 brightness-90" alt="" />
           <h1 className="text-xl font-semibold text-gray-200">Healthy</h1>
         </div>
 
         <div
-          className={`border border-gray-700 rounded-lg  flex-col items-center justify-center py-1   bg-[#0A0C0E] hover:scale-110 transition-all duration-300 ease-in-out ${dis}`}
+          className={`border active:scale-120  border-gray-700 rounded-lg  flex-col items-center justify-center py-1   bg-[#0A0C0E] hover:scale-110 transition-all duration-300 ease-in-out ${dis}`}
         >
           <img src={smothy} className="w-20 brightness-90" alt="" />
           <h1 className="text-xl max-lg:text-[17px] font-semibold text-gray-200">Beverages</h1>

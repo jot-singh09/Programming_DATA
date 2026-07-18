@@ -1,13 +1,13 @@
 import Left from "./Left"
 import Right from "./Right"
 
-const Down = () => {
+const Middle = () => {
   return (
-    <div className="flex gap-3 max-xl:gap-1 bg-zinc-950">
+    <div>
       <Left/>
       <Right/>
     </div>
   )
 }
 
-export default Down
+export default Middle

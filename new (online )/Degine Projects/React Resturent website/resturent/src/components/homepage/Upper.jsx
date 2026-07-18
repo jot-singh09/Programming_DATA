@@ -28,7 +28,7 @@ const Upper = () => {
             Limited Daily offer
           </h1>
         </div>
-        <div className=" flex flex-col gap-5 max-xl:gap-2 max-xl:py-1 py-2">
+        <div className=" flex flex-col z-10 gap-5 max-xl:gap-2 max-xl:py-1 py-2">
           <h1 className="text-6xl max-xl:text-4xl text-gray-300 font-black">
             Delious food <br /> delivered{" "}
             <span className="text-orange-500">fast</span>
@@ -64,7 +64,7 @@ const Upper = () => {
         <img src={another} className="flex  overflow-hidden w-50  " alt="" />
       </div>
       </div>
-      <div className="px-15 max-xl:py-5 max-md:hidden">
+      <div className="px-15 max-xl:py-5 max-md:hidden ">
         <img className="w-150 max-xl:w-120 max-lg:w-110 " src={burger} alt="" />
       </div>
      

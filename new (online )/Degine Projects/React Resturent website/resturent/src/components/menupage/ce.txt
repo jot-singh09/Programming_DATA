@@ -1,0 +1,265 @@
+import { useState } from "react";
+import Prneertikka from "../../assets/Menupage/Images/PneerTikka.png";
+import mint from "../../assets/Menupage/Images/MintMajito.png";
+import baryani from "../../assets/Menupage/Images/Biryani.png";
+import cake from "../../assets/Menupage/Images/ChocoLavacake.png";
+import butterchicken from "../../assets/Menupage/Images/ButterChicken.png";
+import heart from "../../assets/Menupage/heart.svg";
+import redheart from "../../assets/Menupage/Images/redheart.svg";
+import plus from "../../assets/addsign.svg";
+import add from '../../assets/addsign.svg'
+const Right = () => {
+  const [heartt, setheartt] = useState(`${heart}`);
+  const [seheartt, setseheartt] = useState(`${heart}`);
+  const [isactive, setisactive] = useState(false);
+  function chgheart() {
+    if (isactive == false) {
+      setheartt(`${redheart}`);
+      setisactive(true);
+    } else if (isactive == true) {
+      setheartt(`${heart}`);
+      setisactive(false);
+    }
+  }
+  function schgheart() {
+    if (isactive == false) {
+      setseheartt(`${redheart}`);
+      setisactive(true);
+    } else if (isactive == true) {
+      setseheartt(`${heart}`);
+      setisactive(false);
+    }
+  }
+  return (
+    <div>
+      <div className="bg-[#101113] max-lg:px-5 max-lg:w-full w-219 rounded-lg px-1  py-1 grid grid-cols-1 gap-3 max-sm:hidden">
+        {/* first */}
+        <div className="flex  border border-gray-800 justify-between rounded-md">
+          <div className="flex text-gray-200 gap-2">
+            <img src={Prneertikka} className="w-60 max-lg:w-" alt="" />
+            <div className="px-5  max-md:px-2 py-4 flex flex-col gap-2">
+              <h1 className="font-semibold text-2xl max-md:text-xl ">
+                Paneer Tikka
+              </h1>
+              <p className="w-70 ">
+                Cottage cheese cubes marinated in spices and grilled to
+                prefection{" "}
+              </p>
+              <div className="flex gap-3 py-2 text-gray-300 ">
+                <h1 className="border bg-zinc-800 border-gray-600 rounded-md px-2 ">
+                  Veg
+                </h1>
+                <h1 className="border bg-zinc-800 border-gray-600 rounded-md px-2 ">
+                  Mild
+                </h1>
+              </div>
+            </div>
+          </div>
+          <div className="text-gray-200 flex flex-col max-lg:w-full items-end px-2  ">
+            <div className="flex gap-20 px-7 max-lg:gap-10 py-5">
+              <h1 className="font-semibold">₹199</h1>
+              <img
+                src={`${heartt}`}
+                alt=""
+                onClick={chgheart}
+                className="w-6 duration-1000 transition-all hover:scale-120 "
+              />
+            </div>
+            <div className="max-lg:py-5 ">
+              <button className="max-lg:py-2 max-lg:px-5 bg-orange-600 hover:bg-orange-700 hover:scale-110 duration-300 transition-all flex gap-2 py-2  p-1 px-9  rounded-md">
+                Add to Cart
+                <img src={plus} className="w-6  border-l-black" alt="" />
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* secound */}
+        <div className="flex  border border-gray-800 justify-between rounded-md">
+          <div className="flex text-gray-200 gap-2">
+            <img src={butterchicken} className="w-60" alt="" />
+            <div className="px-5 py-4 flex flex-col gap-2">
+              <h1 className="font-semibold text-2xl ">Butter Chicken</h1>
+              <p className="w-75">
+                Tender chickencooked in ceramy tomato gravy with indian
+                spices{" "}
+              </p>
+              <div className="flex gap-3 py-2 text-gray-300 ">
+                <h1 className="border bg-zinc-800 border-gray-600 rounded-md px-2 ">
+                  Non-Veg
+                </h1>
+                <h1 className="border bg-zinc-800 border-gray-600 rounded-md px-2 ">
+                  Mild
+                </h1>
+              </div>
+            </div>
+          </div>
+          <div className="text-gray-200 flex flex-col max-lg:w-full items-end px-2 max-lg:justify-between ">
+            <div className="flex gap-20 px-7 max-lg:gap-10 py-5">
+              <h1 className="font-semibold">₹299</h1>
+              <img
+                src={`${seheartt}`}
+                alt=""
+                onClick={schgheart}
+                className="w-6 duration-1000 transition-all hover:scale-120 "
+              />
+            </div>
+            <div className="max-lg:py-5 ">
+              <button className="max-lg:py-2 max-lg:px-5 bg-orange-600 hover:bg-orange-700 hover:scale-110 duration-300 transition-all flex gap-2 py-2  p-1 px-9  rounded-md">
+                Add to Cart
+                <img src={plus} className="w-6  border-l-black" alt="" />
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* third */}
+
+        <div className="flex  border border-gray-800 justify-between rounded-md">
+          <div className="flex text-gray-200 gap-2">
+            <img src={baryani} className="w-60" alt="" />
+            <div className="px-5 py-4 flex flex-col gap-2">
+              <h1 className="font-semibold text-2xl ">Veg Biryani</h1>
+              <p className="w-75">
+                Anomatic basmiti rice cooked with mixed vegetable and spices.
+              </p>
+              <div className="flex gap-3 py-2 text-gray-300 ">
+                <h1 className="border bg-zinc-800 border-gray-600 rounded-md px-2 ">
+                  Veg
+                </h1>
+                <h1 className="border bg-zinc-800 border-gray-600 rounded-md px-2 ">
+                  Medium{" "}
+                </h1>
+              </div>
+            </div>
+          </div>
+          <div className="text-gray-200 flex flex-col max-lg:w-full items-end px-2  ">
+            <div className="flex gap-20 px-7 max-lg:gap-10 py-5">
+              <h1 className="font-semibold">₹249</h1>
+              <img
+                src={`${heartt}`}
+                alt=""
+                onClick={chgheart}
+                className="w-6 duration-1000 transition-all hover:scale-120 "
+              />
+            </div>
+            <div className="max-lg:py-5 ">
+              <button className="max-lg:py-2 max-lg:px-5 bg-orange-600 hover:bg-orange-700 hover:scale-110 duration-300 transition-all flex gap-2 py-2  p-1 px-9  rounded-md">
+                Add to Cart
+                <img src={plus} className="w-6  border-l-black" alt="" />
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* forth */}
+
+        <div className="flex  border border-gray-800 justify-between rounded-md">
+          <div className="flex text-gray-200 gap-2">
+            <img src={cake} className="w-60" alt="" />
+            <div className="px-5 py-4 flex flex-col gap-2">
+              <h1 className="font-semibold text-2xl ">Choco Lava Cake</h1>
+              <p className="w-75">
+                Warm Chocolate cake with a molten Chocolate center.{" "}
+              </p>
+              <div className="flex gap-3 py-2 text-gray-300 ">
+                <h1 className="border bg-zinc-800 border-gray-600 rounded-md px-2 ">
+                  Veg
+                </h1>
+                <h1 className="border bg-zinc-800 border-gray-600 rounded-md px-2 ">
+                  Mild
+                </h1>
+              </div>
+            </div>
+          </div>
+          <div className="text-gray-200 flex flex-col max-lg:w-full items-end px-2  ">
+            <div className="flex gap-20 px-7 max-lg:gap-10 py-5">
+              <h1 className="font-semibold">₹149</h1>
+              <img
+                src={`${heartt}`}
+                alt=""
+                onClick={chgheart}
+                className="w-6 duration-1000 transition-all hover:scale-120 "
+              />
+            </div>
+            <div className="max-lg:py-5 ">
+              <button className="max-lg:py-2 max-lg:px-5 bg-orange-600 hover:bg-orange-700 hover:scale-110 duration-300 transition-all flex gap-2 py-2  p-1 px-9  rounded-md">
+                Add to Cart
+                <img src={plus} className="w-6  border-l-black" alt="" />
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* fifth */}
+
+        <div className="flex  border border-gray-800 justify-between rounded-md">
+          <div className="flex text-gray-200 gap-2">
+            <img src={mint} className="w-60" alt="" />
+            <div className="px-5 py-4 flex flex-col gap-2">
+              <h1 className="font-semibold text-2xl ">Mint Majito</h1>
+              <p className="w-75">
+                Refreshing drinks with mint,lime, and a splash of soda{" "}
+              </p>
+              <div className="flex gap-3 py-2 text-gray-300 ">
+                <h1 className="border bg-zinc-800 border-gray-600 rounded-md px-2 ">
+                  Drink
+                </h1>
+                <h1 className="border bg-zinc-800 border-gray-600 rounded-md px-2 ">
+                  Majito
+                </h1>
+              </div>
+            </div>
+          </div>
+          <div className="text-gray-200 flex flex-col max-lg:w-full items-end px-2  ">
+            <div className="flex gap-20 px-7 max-lg:gap-10 py-5">
+              <h1 className="font-semibold">₹129</h1>
+              <img
+                src={`${heartt}`}
+                alt=""
+                onClick={chgheart}
+                className="w-6 duration-1000 transition-all hover:scale-120 "
+              />
+            </div>
+            <div className="max-lg:py-5 ">
+              <button className="max-lg:py-2 max-lg:px-5 bg-orange-600 hover:bg-orange-700 hover:scale-110 duration-300 transition-all flex gap-2 py-2  p-1 px-9  rounded-md">
+                Add to Cart
+                <img src={plus} className="w-6  border-l-black" alt="" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div className="sm:hidden px-1 w-full ">
+        <div className="grid grid-cols-1">
+         <div className="border max-md:flex border-gray-500 rounded-md  max-md:justify-between">
+                   
+                 <img src={Prneertikka} className='rounded-t-md w-26 max-sm:h-28' alt="" />
+                 <div>
+         
+                 <div className='flex justify-between px-3  pt-2'>
+                 <h1 className='font-black text-xl max-sm:text-xl text-gray-200'>Paneer Tikka</h1>
+                 <h1 className='font-bold flex text-lg gap-1 px-5'><img src={heart} className='w-6' alt="" /></h1>
+                 </div>
+         
+         
+                 <div className='px-3 py-2 max-sm:py-1'>
+                   <h1 className='text-gray-300 max-sm:text-sm w-5  0'> Cottage cheese cubes marinated in spices and grilled to
+                prefection</h1>
+                 </div>
+                 <div className='flex justify-around px-4 max-sm:py-1 py-2 items-center text-white'>
+                   <h1 className='text-2xl font-semibold'>₹199</h1>
+                   <button className='flex bg-orange-600 rounded-md  px-6 py-1 max-md:px-4'>Add <img src={add} className='w-6 ' alt="" /></button>
+                 </div>
+                 </div>
+                 </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Right;

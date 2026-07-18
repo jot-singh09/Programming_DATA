@@ -1,8 +1,9 @@
 import star from '../../assets/star.svg'
+import star_half from '../../assets/star-half.svg'
 const Left = () => {
   return (
-    <div className=" px-15  py-2 cursor-pointer">
-      <div className="border border-gray-800 w-70 rounded-md bg-[#101113] pb-5">
+    <div className=" px-15 max-xl:px-10  py-2 cursor-pointer max-lg:hidden">
+      <div className="border border-gray-800 w-70 max-xl:w-55 rounded-md bg-[#101113] pb-5">
         <div className="text-gray-100 flex py-2 justify-between px-3">
             <h1 className="font-semibold">Filters</h1>
             <h1 className="text-orange-600 font-medium">Clear All</h1>
@@ -84,11 +85,15 @@ const Left = () => {
     </div>
     
 <div><h1 className="text-[17px] text-gray-200 font-semibold px-3">Rating</h1></div>
-    <div className='flex px-2 py-1'>
+    <div className='flex px-3 py-1 gap-3'>
+      <div className='flex'>
+
         <img src={star} className='w-6' alt="" />
         <img src={star} className='w-6' alt="" />
         <img src={star} className='w-6' alt="" />
         <img src={star} className='w-6' alt="" />
+        <img src={star_half} className='w-5' alt="" />
+      </div>
         <h1 className='text-gray-400'>4.0 & above</h1>
     </div>
       </div>
