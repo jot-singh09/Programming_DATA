@@ -5,8 +5,7 @@ import plus from "../../assets/addsign.svg";
 import { DatauseProvider } from "../../contextApi/DatauseProvider";
 
 const Right = () => {
-  const { val, showcartpop, setShowcartpop,} =
-    useContext(DatauseProvider);
+  const { val, showcartpop, setShowcartpop } = useContext(DatauseProvider);
   const [items, setItems] = useState(val);
 
   const toggleHeart = (id) => {
@@ -16,21 +15,80 @@ const Right = () => {
       ),
     );
   };
-  const cart = (val)=>{
-    localStorage.setItem('cart',JSON.stringify([val]))
-  }
+
+  // ✅ Function to add item to cart in localStorage
+  const addToCart = (item) => {
+    // Get existing cart from localStorage
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+    // Check if item already exists in cart
+    const existingItemIndex = cart.findIndex(cartItem => cartItem.id === item.id);
+    
+    if (existingItemIndex !== -1) {
+      // If item exists, increase quantity
+      cart[existingItemIndex].quantity = (cart[existingItemIndex].quantity || 1) + 1;
+    } else {
+      // If new item, add it with quantity 1
+      cart.push({
+        ...item,
+        quantity: 1,
+        addedAt: new Date().toISOString()
+      });
+    }
+    
+    // Save back to localStorage
+    localStorage.setItem('cart', JSON.stringify(cart));
+    
+    // Update button text
+    const updatedItems = items.map(i => 
+      i.id === item.id ? { ...i, button: 'In Cart', iscart: true } : i
+    );
+    setItems(updatedItems);
+    
+    // Show popup
+    setShowcartpop("fixed");
+    setTimeout(() => {
+      setShowcartpop("invisible");
+    }, 2000);
+  };
+
+  // ✅ Function to remove from cart
+  const removeFromCart = (itemId) => {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart = cart.filter(item => item.id !== itemId);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    
+    // Update button text
+    const updatedItems = items.map(i => 
+      i.id === itemId ? { ...i, button: 'Add to Cart', iscart: false } : i
+    );
+    setItems(updatedItems);
+  };
+
+  // ✅ Function to check if item is in cart
+  const isItemInCart = (itemId) => {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    return cart.some(item => item.id === itemId);
+  };
+
+  // ✅ Get total cart count
+  const getCartCount = () => {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    return cart.reduce((total, item) => total + (item.quantity || 1), 0);
+  };
 
   return (
     <div className="flex flex-col gap-5 px-3 max-sm:px-1">
       {/* Popup notification */}
       <h2
-        className={`bg-orange-700 py-2 mt-3 px-5  text-green-100 fixed top-0 right-0 rounded-md duration-500 transition-all ${showcartpop}`}
+        className={`bg-orange-700 py-2 mt-3 px-5 text-green-100 fixed top-0 right-0 rounded-md duration-500 transition-all ${showcartpop}`}
       >
         Item Added Successfully
       </h2>
 
       {items.map((val) => {
         const heartIcon = val.isLiked ? redheart : heart;
+        const isInCart = isItemInCart(val.id);
 
         return (
           <div key={val.id} className="w-210 max-sm:w-full max-xl:w-200">
@@ -79,26 +137,22 @@ const Right = () => {
                   />
                 </div>
 
-                <div
-                  className="py-1 sm:py-5 w-full sm:w-auto max-md:px-5"
-                  onClick={() => {
-                    const id = val.id - 1;
-                    if (items[id].button === "Add to Cart") {
-                      items[id].iscart = true;
-                      console.log(items[id].iscart);
-                    }
-                    // 👇 Set popup to show
-                    setShowcartpop("fixed");
-
-                    setTimeout(() => {
-                      setShowcartpop("invisible"); // or whatever
-                    }, 2000);
-                  }}
-                >
-                  <button className="w-full sm:w-auto py-1.5 sm:py-2 px-4 sm:px-6 text-sm sm:text-base items-center font-semibold bg-orange-600 hover:bg-orange-700 hover:scale-105 sm:hover:scale-110 duration-300 transition-all flex gap-2 rounded-md justify-center" onClick={()=>{
-                    cart(val)
-                  }}>
-                    {val.button}
+                <div className="py-1 sm:py-5 w-full sm:w-auto max-md:px-5">
+                  <button 
+                    className={`w-full sm:w-auto py-1.5 sm:py-2 px-4 sm:px-6 text-sm sm:text-base items-center font-semibold 
+                      ${isInCart ? 'bg-orange-800 hover:bg-orange-900' : 'bg-orange-600 hover:bg-orange-700'} 
+                      hover:scale-105 sm:hover:scale-110 duration-700 transition-all flex gap-2 rounded-md justify-center`}
+                    onClick={() => {
+                      if (isInCart) {
+                        // If already in cart, remove it
+                        removeFromCart(val.id);
+                      } else {
+                        // Add to cart
+                        addToCart(val);
+                      }
+                    }}
+                  >
+                    {isInCart ? 'Remove ' : 'Add to Cart'}
                     <img
                       src={plus}
                       className="w-4 sm:w-6 hidden sm:block"
