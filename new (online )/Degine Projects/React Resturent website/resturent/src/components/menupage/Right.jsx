@@ -127,7 +127,7 @@ const Right = () => {
               <div className="flex flex-row sm:flex-col items-center sm:items-end justify-between sm:justify-normal px-3 sm:px-2 py-3 sm:py-0 w-full sm:w-auto">
                 <div className="flex items-center gap-4 sm:gap-20 px-0 sm:px-7 py-0 sm:py-5 w-full sm:w-auto justify-between sm:justify-normal">
                   <h1 className="font-semibold text-lg max-md:px-2 max-sm:text-2xl sm:text-xl">
-                    {val.price}
+                    ₹{val.price}
                   </h1>
                   <img
                     src={heartIcon}
@@ -152,10 +152,10 @@ const Right = () => {
                       }
                     }}
                   >
-                    {isInCart ? 'Remove ' : 'Add to Cart'}
+                    {isInCart ? 'Remove ' : 'Add Cart'}
                     <img
                       src={plus}
-                      className="w-4 sm:w-6 hidden sm:block"
+                      className="w-3 sm:w-6 hidden sm:block"
                       alt=""
                     />
                   </button>

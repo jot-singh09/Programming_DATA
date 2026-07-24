@@ -14,7 +14,7 @@ const Featuresdishes = () => {
       <div className="grid grid-cols-4 py-4 gap-2 max-md:gap-3 max-md:grid-cols-1 text-gray-200">
 
         <div className="border max-md:flex border-gray-500 rounded-md  max-md:justify-between">
-          <h1 className='absolute border border-orange-700 bg-orange-600 rounded-full px-1 text-[13px] m-1'>20% off</h1>
+          <h1 className='absolute border border-orange-700 bg-orange-600 rounded-full px-1 text-[13px] m-1'>25% off</h1>
         <img src={pizza} className='rounded-t-md max-md:w-50 max-sm:w-30 max-sm:h-25' alt="" />
         <div>
 

@@ -3,7 +3,7 @@ import Right from "./Right"
 
 const Middle = () => {
   return (
-    <div>
+    <div className="flex justify-between ">
       <Left/>
       <Right/>
     </div>

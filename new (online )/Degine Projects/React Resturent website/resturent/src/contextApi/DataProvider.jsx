@@ -19,7 +19,7 @@ const DataProvider = (props) => {
       desc: "Cottage cheesecubes marinated in spices and grilled to perfection",
       type: ["Veg", "Mild"],
       isLiked: false, // Using boolean for better control
-      price: "₹199",
+      price: "199",
       iscart: false,
       button:'Add to Cart',
     },
@@ -30,7 +30,7 @@ const DataProvider = (props) => {
       desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero, molestiae vitae!", 
       type: ["Non-Veg", "Mild"],
       isLiked: false, // Using boolean for better control
-      price: "₹299",
+      price: "299",
       iscart: false,
       button:'Add to Cart',
     },
@@ -41,7 +41,7 @@ const DataProvider = (props) => {
       desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero, molestiae vitae!", 
       type: ["Veg", "Mild"],
       isLiked: false, // Using boolean for better control
-      price: "₹149",
+      price: "149",
       iscart: false,
       button:'Add to Cart',
     },
@@ -52,7 +52,7 @@ const DataProvider = (props) => {
       desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero, molestiae vitae!", 
       type: ["Veg", "Chocklate"],
       isLiked: false, // Using boolean for better control
-      price: "₹129",
+      price: "129",
       iscart: false,
       button:'Add to Cart',
     },
@@ -63,7 +63,7 @@ const DataProvider = (props) => {
       desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero, molestiae vitae!", 
       type: ["Organic", "Drink"],
       isLiked: false, // Using boolean for better control
-      price: "₹89",
+      price: "89",
       iscart: false,
       button:'Add to Cart',
     },

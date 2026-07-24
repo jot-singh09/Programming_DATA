@@ -13,7 +13,7 @@ const MobileNav = () => {
   const navItems = [
     { icon: home, label: 'Home', path: '/' },
     { icon: menu, label: 'Menu', path: '/menu' },
-    { icon: cart, label: 'Cart', path: '/cart' },
+    { icon: cart, label: 'Cart', path: '/mycart' },
     { icon: order, label: 'Order', path: '/order' },
   ];
 
