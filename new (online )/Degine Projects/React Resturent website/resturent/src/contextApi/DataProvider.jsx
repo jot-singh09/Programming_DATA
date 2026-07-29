@@ -8,9 +8,12 @@ import MintMijito from "../assets/Menupage/Images/MintMajito.png";
 const DataProvider = (props) => {
   const [clicksearch, setclicksearch] = useState("hidden");
   const [opennav, setopennav] = useState("invisible");
+  const [delivery, setdelivery] = useState(0);
   const [seth, setH] = useState("invisible");
   const [showcartpop, setShowcartpop] = useState("invisible");
+  const [orderplace, setOderplace] = useState("invisible");
 
+  const [total, settotal] = useState()
   const val=[
         {
       id: 1,
@@ -74,7 +77,7 @@ const DataProvider = (props) => {
   return (
     <div>
       <DatauseProvider.Provider
-        value={{ clicksearch, setclicksearch, opennav,setopennav,seth,setH,val,showcartpop,setShowcartpop,}}
+        value={{ clicksearch, setclicksearch, opennav,setopennav,seth,setH,val,showcartpop,setShowcartpop,total,settotal,orderplace,setOderplace,delivery,setdelivery}}
       >
         {props.children}
       </DatauseProvider.Provider>
