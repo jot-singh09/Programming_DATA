@@ -1,6 +1,7 @@
 import logo from '../../assets/logo.png';
 import Twitter from '../../assets/Homepage/Twiter.jpg';
 import Telegram from '../../assets/Homepage/Telegram.png';
+import insta from '../../assets/Homepage/insta.png';
 
 const Down = () => {
   return (
@@ -28,12 +29,12 @@ const Down = () => {
               </button>
 
               {/* Discord */}
-              <button
+              {/* <button
                 className="w-9 h-9 rounded-xl bg-[#111736] border border-slate-800 hover:border-purple-500/50 hover:bg-purple-600/20 text-slate-300 hover:text-purple-300 flex items-center justify-center transition-all cursor-pointer text-lg"
                 title="Discord"
               >
-                💬
-              </button>
+                
+              </button> */}
 
               {/* Telegram */}
               <button
@@ -50,7 +51,7 @@ const Down = () => {
                 title="Instagram"
               >
                 
-                <img src={Telegram} alt="Twitter" className="w-full h-full object-contain" />
+                <img src={insta} alt="Twitter" className="size-20 object-contain" />
               </button>
             </div>
           </div>
