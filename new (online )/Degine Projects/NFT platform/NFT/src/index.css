@@ -1,9 +1,35 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
 
 @theme {
-  --font-poppins: "Poppins", sans-serif;
+  --font-sans: 'Poppins', 'Helvetica', Arial, sans-serif;
+  --font-poppins: 'Poppins', 'Helvetica', sans-serif;
+  --font-helvetica: 'Helvetica', Arial, sans-serif;
 }
-@theme {
-  --font-poppins: "Poppins", sans-serif;
+
+@utility font-poppins {
+  font-family: 'Poppins', 'Helvetica', sans-serif;
 }
-@import "tailwindcss";
+
+@utility font-helvetica {
+  font-family: 'Helvetica', Arial, sans-serif;
+}
+
+@utility font-sans {
+  font-family: 'Poppins', 'Helvetica', Arial, sans-serif;
+}
+
+:root, body, #root {
+  font-family: 'Poppins', 'Helvetica', Arial, sans-serif;
+}
+
+.font-poppins {
+  font-family: 'Poppins', 'Helvetica', sans-serif !important;
+}
+
+.font-helvetica {
+  font-family: 'Helvetica', Arial, sans-serif !important;
+}
+
+.font-sans {
+  font-family: 'Poppins', 'Helvetica', Arial, sans-serif !important;
+}

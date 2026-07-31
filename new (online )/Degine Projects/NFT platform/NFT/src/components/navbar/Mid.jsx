@@ -38,7 +38,7 @@ useEffect(() => {
 
 
   return (
-    <div className={`${dis} pl-30 gap-8`}>
+    <div className={`${dis} pl-30 gap-8 max-lg:pl-8 max-lg:gap-5`}>
       <a
         href="/"
         className={`text-blue-950 text-lg font-bold  after:w-0 after:duration-300 after:transition-all after:ease-in-out hover:after:w-full after:bg-blue-900 relative after:absolute after:h-0.5 after:bottom-0 after:left-0`}

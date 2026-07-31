@@ -11,7 +11,7 @@ const App = () => {
   // const {name} = useContext(Datauseprovider)
  
   return (
-    <div>
+    <div className="selection:bg-purple-700 bg-[#EDF1FB]  ">
       <BrowserRouter>
       <Routes>
         <Route index element={<Home/>}/>

@@ -3,7 +3,7 @@ import Homepage from "../components/Homepage/Homepage"
 
 const Home = () => {
   return (
-    <div>
+    <div className="bg-[#FCFDFE] ">
         <Homepage/>
     </div>
   )
