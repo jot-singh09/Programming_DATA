@@ -3,8 +3,9 @@ import nftHeroMbl from '../../assets/NFTIMgmbl.png';
 import topsubheadingarrow from '../../assets/Homepage/topheadingarrow.svg';
 
 const Upper = () => {
+  
   return (
-    <section className="relative overflow-hidden py-8 sm:py-12 lg:py-16 bg-[#EDF1FB]">
+    <section className="relative  overflow-hidden py-8 sm:py-12 lg:py-16 bg-[#EDF1FB]">
       {/* Ambient background glow effects */}
       <div className="absolute top-10 left-1/4 w-80 h-80 bg-purple-300/30 rounded-full blur-[100px] pointer-events-none"></div>
       <div className="absolute top-40 right-10 w-80 h-80 bg-indigo-300/30 rounded-full blur-[100px] pointer-events-none"></div>
@@ -34,21 +35,21 @@ const Upper = () => {
 
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-1">
-            <button
+            <a href='/dashboard'
               className="bg-[#5139E6] hover:bg-[#3E29C2] text-white font-bold text-sm sm:text-base px-6 py-3.5 rounded-2xl shadow-lg shadow-purple-500/25 transition-all duration-300 hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2 cursor-pointer group"
             >
               <span>Explore Marketplace</span>
               <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
               </svg>
-            </button>
+            </a>
 
-            <button
+            <a href='/create'
               className="bg-white hover:bg-slate-50 border border-purple-200 text-[#5139E6] font-bold text-sm sm:text-base px-6 py-3.5 rounded-2xl shadow-sm transition-all duration-300 hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2 cursor-pointer"
             >
               <span>Create NFT</span>
               <span className="text-purple-600 font-black">+</span>
-            </button>
+            </a>
           </div>
 
           {/* Value Propositions */}

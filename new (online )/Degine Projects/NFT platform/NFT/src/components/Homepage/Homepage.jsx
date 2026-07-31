@@ -5,7 +5,7 @@ import Down from "./Down";
 
 const Homepage = () => {
   return (
-    <div className="bg-[#EDF1FB] text-gray-900 min-h-screen font-sans selection:bg-purple-700 selection:text-white">
+    <div className="bg-[#EDF1FB]  text-gray-900 min-h-screen font-sans selection:bg-purple-700 selection:text-white">
       <Navbar />
       <main className="w-full">
         <Upper />

@@ -51,10 +51,10 @@ const Right = () => {
         </svg>
         <span>Connect Wallet</span>
       </button>
-
+      {/* menu btn */}
       <button
         onClick={toggleMobileNav}
-        className={`md:hidden max-md:${menu} p-2 text-purple-950 hover:text-purple-900 bg-white rounded-lg border border-purple-950`}
+        className={`md:hidden max-md:${menu} p-2 text-white  hover:text-purple-900 	bg-violet-700 rounded-lg border border-purple-950`}
       >
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
