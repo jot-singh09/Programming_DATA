@@ -1,103 +1,73 @@
 import { useContext } from "react";
 import { Datauseprovider } from "../../ContextAPi/Datauseprovider";
-import home from "../../assets/home.svg";
-import arrow from "../../assets/navarrow.svg";
-import dashboard from "../../assets/dashboard.svg";
-import marketplace from "../../assets/marketplace.svg";
-import create from "../../assets/create.svg";
-import tree from "../../assets/teamtree.svg";
-import wallet from '../../assets/wallet.svg'
+import { Link, useLocation } from "react-router-dom";
+
 const Mobilenav = () => {
-  const { setw, opennav } = useContext(Datauseprovider);
+  const { opennav,setopennav } = useContext(Datauseprovider);
+  const location = useLocation();
+
+  const navItems = [
+    { name: "Dashboard", path: "/dashboard" },
+    { name: "Home", path: "/" },
+    { name: "Trade", path: "/trade" },
+    { name: "Create", path: "/create" },
+    { name: "Team-tree", path: "/team" },
+  ];
+  
+
   return (
+    
     <div
-      className={`overflow-hidden ${opennav}  duration-700 transition-all ease-in-out `}
+      className={`overflow-hidden transition-all duration-1000 ease-in-out border-b shadow-sm shadow-black border-slate-800/80 bg-white ${
+        opennav === "h-0" || !opennav ? "max-h-0 opacity-0 py-0" : "max-h-125 opacity-100 py-4"
+      }`}
     >
-        <div
-          className={`bg-linear-to-b from-white to-blue-100  pt-5   h-full justify-between flex flex-col`}
-          >
-            <div className="flex flex-col gap-5 px-2">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-1">
-              <img src={home} className="w-7" alt="" />
-              <a
-                href="/"
-                className={`text-blue-950 text-lg font-bold  after:w-0 after:duration-300 after:transition-all after:ease-in-out hover:after:w-full after:bg-blue-900 relative after:absolute after:h-0.5 after:bottom-0 after:left-0`}
+      <div className="px-4 flex flex-col gap-3">
+        <div className="flex flex-col gap-1 pt-1">
+          {navItems.map((item) => {
+            // Check if current path matches this item's path
+            const isActive = location.pathname === item.path || 
+                           (item.path !== "/" && location.pathname.startsWith(item.path));
+            
+            return (
+              <Link
+              onClick={()=>{
+                setopennav("h-0")
+              }}
+                key={item.name}
+                to={item.path}
+                className={`flex items-center justify-between p-2.5 rounded-xl transition-colors ${
+                  isActive 
+                    ? "text-white bg-purple-700 hover:text-purple-300" 
+                    : "text-black-200 hover:text-black hover:bg-slate-800/60"
+                }`}
               >
-                Home
-              </a>
-            </div>
-            <div className="pr-3">
-              <img src={arrow} className="w-5" alt="" />
-            </div>
-          </div>
-
-          <div className="flex gap-1 items-center justify-between">
-            <div className="flex items-center gap-1">
-              <img src={dashboard} className="w-7" alt="" />
-              <a
-                href="/dashboard"
-                className={`text-blue-950 text-lg font-bold   after:duration-300 after:transition-all after:ease-in-out hover:after:w-full after:bg-blue-900 relative after:absolute after:h-0.5 after:bottom-0 after:left-0`}
-              >
-                Dashboard
-              </a>
-            </div>
-            <div className="pr-3">
-              <img src={arrow} className="w-5" alt="" />
-            </div>
-          </div>
-          <div className="flex gap-1 items-center justify-between">
-            <div className="flex items-center gap-1">
-              <img src={marketplace} className="w-7" alt="" />
-              <a
-                href="/trade"
-                className={`text-blue-950 text-lg font-bold  after:duration-300 after:transition-all after:ease-in-out hover:after:w-full after:bg-blue-900 relative after:absolute after:h-0.5 after:bottom-0 after:left-0`}
-              >
-                Trade
-              </a>
-            </div>
-            <div className="pr-3">
-              <img src={arrow} className="w-5" alt="" />
-            </div>
-          </div>
-          <div className="flex gap-1 items-center justify-between">
-            <div className="flex items-center gap-1">
-              <img src={create} className="w-7" alt="" />
-              <a
-                href="/create"
-                className={`text-blue-950 text-lg font-bold after:duration-300 after:transition-all after:ease-in-out hover:after:w-full after:bg-blue-900 relative after:absolute after:h-0.5 after:bottom-0 after:left-0`}
-              >
-                Create
-              </a>
-            </div>
-
-            <div className="pr-3">
-              <img src={arrow} className="w-5" alt="" />
-            </div>
-          </div>
-          <div className="flex gap-1 items-center justify-between">
-            <div className="flex items-center gap-1">
-              <img src={tree} className="w-7" alt="" />
-              <a
-                href="/team"
-                className={`text-blue-950 text-lg font-bold   after:duration-300 after:transition-all after:ease-in-out hover:after:w-full after:bg-blue-900 relative after:absolute after:h-0.5 after:bottom-0 after:left-0`}
-              >
-                Tree
-              </a>
-            </div>
-
-            <div className="pr-3">
-              <img src={arrow} className="w-5" alt="" />
-            </div>
-          </div>
+                <span className="font-semibold text-sm">{item.name}</span>
+                <svg 
+                  className={`w-4 h-4 ${
+                    isActive ? "text-white" : "text-slate-500"
+                  }`} 
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+            );
+          })}
         </div>
-      <div className="pb-2 pl-1.5 pt-6 px-3 flex items-center justify-center">
-        <button className="bg-[#3A23B8] text-lg rounded-md text-white flex gap-4 w-full  justify-center px-3 py-2 "> <img className="w-6" src={wallet} alt="" />
-            Connect Wallet
-        </button>
-      </div>
-      </div>
 
+        {/* Mobile Connect Wallet Button */}
+        <div className="pt-2">
+          <button className="w-full bg-linear-to-r from-indigo-600 to-purple-600 text-white font-semibold text-sm py-3 rounded-xl shadow-lg shadow-indigo-600/30 flex items-center justify-center gap-2 active:scale-98 transition-all">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            <span>Connect Wallet</span>
+          </button>
+        </div>
+      </div>
     </div>
   );
 };

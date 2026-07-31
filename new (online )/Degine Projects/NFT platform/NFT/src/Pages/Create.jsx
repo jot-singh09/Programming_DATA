@@ -1,7 +1,8 @@
+import Navbar from "../components/navbar/Navbar"
 
 const Create = () => {
   return (
-    <div>Create</div>
+    <div><Navbar/></div>
   )
 }
 

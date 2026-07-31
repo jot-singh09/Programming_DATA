@@ -5,19 +5,18 @@ import Right from "./Right";
 
 const Navbar = () => {
   return (
-    <div className="w-full">
-      <div className="flex justify-between px-5 pt-1.5 max-md:px-2 border-b border-gray-200 pb-2 items-center shadow-sm shadow-gray-400  bg-[#02071F] max-md:">
+    <header className="sticky top-0 z-50 w-full bg-white backdrop-blur-md border-b border-slate-800/80 shadow-sm shadow-black/20">
+      <div className=" mx-auto px-2 sm:px-2 lg:px-4 py-3 flex justify-between items-center shadow-md shadow-black ">
         <Left />
-        <div className="max-md:hidden">
+        <div className="hidden md:flex items-center">
           <Mid />
         </div>
-
         <Right />
       </div>
-      <div className="md:hidden ">
+      <div className="md:hidden">
         <Mobilenav />
       </div>
-    </div>
+    </header>
   );
 };
 

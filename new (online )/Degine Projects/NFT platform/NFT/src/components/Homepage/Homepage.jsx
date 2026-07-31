@@ -1,18 +1,20 @@
 import Navbar from "../navbar/Navbar";
-// import Down from "./Down";
-// import Middle from "./Middle";
 import Upper from "./Upper";
+import Middle from "./Middle";
+import Down from "./Down";
 
 const Homepage = () => {
   return (
-    <div>
+    <div className="bg-[#EDF1FB] text-gray-900 min-h-screen font-sans selection:bg-purple-700 selection:text-white">
       <Navbar />
+      <main className="w-full">
+        <Upper />
 
-      <div className="md:px-10 pt-10 max-md:px-1.5  bg-[#EDF1FB]">
-      <Upper/>
-      {/* <Middle/> */}
-      {/* <Down/> */}
-      </div>
+        <div className="">
+        <Middle />
+        </div>
+      </main>
+      <Down />
     </div>
   );
 };
