@@ -4,24 +4,23 @@ import { Datauseprovider } from "../ContextAPi/Datauseprovider";
 import WelcomeAnimation from "./WelcomeAnimation";
 
 const Home = () => {
-const {setaniamtion , animation ,setstopaniamtion ,stopaniamtion} = useContext(Datauseprovider)
-useEffect(() => {
-  const timer = setTimeout(() => {
-    setaniamtion("visible")
-    setstopaniamtion("invisible")
-  }, 100); // 10000ms = 10 seconds
+const { setaniamtion, animation, setstopaniamtion, stopanimation } = useContext(Datauseprovider);
 
-  return () => clearTimeout(timer);
-}, []);
+useEffect(() => {
+  setaniamtion("visible");
+  setstopaniamtion("hidden");
+}, [setaniamtion, setstopaniamtion]);
+
   return (
     <div className="bg-[#070A18] min-h-screen">
-      <div className={`${animation} duration-1000 transition-all ease-in-out  `}>
-      <Homepage />
+      <div className={`${animation || "visible"} duration-1000 transition-all ease-in-out`}>
+        <Homepage />
       </div>
-      <div className={`${stopaniamtion}`}>
-      <WelcomeAnimation/>
-      </div>
-
+      {stopanimation === "visible" && (
+        <div className={`${stopanimation}`}>
+          <WelcomeAnimation/>
+        </div>
+      )}
     </div>
   );
 };

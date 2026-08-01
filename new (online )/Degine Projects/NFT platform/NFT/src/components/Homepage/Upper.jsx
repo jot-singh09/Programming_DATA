@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import nftHeroImg from '../../assets/NFTIMg.png';
 import nftHeroMbl from '../../assets/NFTIMgmbl.png';
 import topsubheadingarrow from '../../assets/Homepage/topheadingarrow.svg';
@@ -35,21 +36,21 @@ const Upper = () => {
 
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-1">
-            <a href='/dashboard'
+            <Link to='/trade'
               className="bg-[#5139E6] hover:bg-[#3E29C2] text-white font-bold text-sm sm:text-base px-6 py-3.5 rounded-2xl shadow-lg shadow-purple-500/25 transition-all duration-300 hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2 cursor-pointer group"
             >
               <span>Explore Marketplace</span>
               <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
               </svg>
-            </a>
+            </Link>
 
-            <a href='/create'
+            <Link to='/create'
               className="bg-white hover:bg-slate-50 border border-purple-200 text-[#5139E6] font-bold text-sm sm:text-base px-6 py-3.5 rounded-2xl shadow-sm transition-all duration-300 hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2 cursor-pointer"
             >
               <span>Create NFT</span>
               <span className="text-purple-600 font-black">+</span>
-            </a>
+            </Link>
           </div>
 
           {/* Value Propositions */}

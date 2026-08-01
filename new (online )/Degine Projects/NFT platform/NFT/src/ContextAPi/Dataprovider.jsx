@@ -4,8 +4,8 @@ import { Datauseprovider } from "./Datauseprovider"
 const Dataprovider = (props) => {
     const [opennav, setopennav] = useState("h-0")
     const [setw, setnavw] = useState("w-0")
-    const [animation, setaniamtion] = useState("invisible")
-    const [stopanimation, setstopaniamtion] = useState("visible")
+    const [animation, setaniamtion] = useState("visible")
+    const [stopanimation, setstopaniamtion] = useState("hidden")
   return (
    <div>
       <Datauseprovider.Provider value={{opennav,setopennav,setw,setnavw,animation,setaniamtion,stopanimation,setstopaniamtion}}>

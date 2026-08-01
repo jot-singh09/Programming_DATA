@@ -1,8 +1,9 @@
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 const Mid = () => {
   const location = useLocation();
-
+  const [hide, sethide] = useState("hidden")
   const navItems = [
     { name: "Home", path: "/" },
     { name: "Dashboard", path: "/dashboard" },
@@ -11,8 +12,20 @@ const Mid = () => {
     { name: "Create", path: "/create" },
   ];
 
+  useEffect(() => {
+    if (location.pathname=="/" || location.pathname=="/auth"){
+      sethide("hidden")
+    }
+    else{
+      sethide("flex")
+    }
+  
+    
+  }, [location.pathname])
+  
+
   return (
-    <nav className="flex items-center gap-6 lg:gap-8">
+    <nav className={`${hide} items-center gap-6 lg:gap-8`}>
       {navItems.map((item) => {
         const isActive = location.pathname === item.path;
         return (
