@@ -67,41 +67,71 @@ const Upper = () => {
   const fullAddress = "0xA1B23C4D5E6F78901234567890ABCDEF";
   const referralLink = "https://hexaway.io/auth?ref=0xA1B2C34D";
 
+  // Robust cross-browser copy function with execCommand fallback
+  const safeCopy = (text) => {
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).catch(() => {
+        fallbackCopy(text);
+      });
+    } else {
+      fallbackCopy(text);
+    }
+  };
+
+  const fallbackCopy = (text) => {
+    const textArea = document.createElement("textarea");
+    textArea.value = text;
+    textArea.style.position = "fixed";
+    textArea.style.left = "-999999px";
+    textArea.style.top = "-999999px";
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    try {
+      document.execCommand("copy");
+    } catch (err) {
+      console.error("Fallback copy failed", err);
+    }
+    document.body.removeChild(textArea);
+  };
+
   const triggerToast = (msg) => {
     setToastMessage(msg);
     setTimeout(() => {
       setToastMessage(null);
-    }, 2500);
+    }, 3000);
   };
 
-  const handleCopyRef = () => {
-    navigator.clipboard.writeText(referralLink);
+  const handleCopyRef = (e) => {
+    if (e) e.stopPropagation();
+    safeCopy(referralLink);
     setCopiedRef(true);
-    triggerToast("Referral link copied to clipboard!");
-    setTimeout(() => setCopiedRef(false), 2500);
+    triggerToast("Referral Link Copied to Clipboard!");
+    setTimeout(() => setCopiedRef(false), 3000);
   };
 
-  const handleCopyAddr = () => {
-    navigator.clipboard.writeText(fullAddress);
+  const handleCopyAddr = (e) => {
+    if (e) e.stopPropagation();
+    safeCopy(fullAddress);
     setCopiedAddr(true);
-    triggerToast("Wallet address copied to clipboard!");
-    setTimeout(() => setCopiedAddr(false), 2500);
+    triggerToast("Wallet Address Copied to Clipboard!");
+    setTimeout(() => setCopiedAddr(false), 3000);
   };
 
   return (
-    <div className="space-y-6">
-      {/* SMALL RIGHT-SIDE COPY POPUP TOAST NOTIFICATION */}
+    <div className="space-y-6 relative">
+      {/* FLOATING TOP-RIGHT POPUP NOTIFICATION (HIGHEST Z-INDEX) */}
       {toastMessage && (
-        <div className="fixed top-5 right-5 z-50 bg-slate-900 text-white px-4 py-3 rounded-2xl shadow-xl border border-slate-700/80 flex items-center gap-3 animate-slideInRight max-w-xs sm:max-w-sm">
-          <div className="w-7 h-7 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
-            <CheckCircle className="w-4 h-4 text-emerald-400" />
+        <div className="fixed top-6 right-6 z-[9999] bg-slate-900 text-white px-5 py-3.5 rounded-2xl shadow-2xl border border-purple-500/30 flex items-center gap-3 animate-bounceIn max-w-xs sm:max-w-sm">
+          <div className="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 border border-emerald-500/40">
+            <CheckCircle className="w-5 h-5 text-emerald-400" />
           </div>
-          <div className="flex-1 text-xs font-medium text-slate-200">
+          <div className="flex-1 text-xs sm:text-sm font-semibold text-slate-100">
             {toastMessage}
           </div>
           <button
             onClick={() => setToastMessage(null)}
-            className="text-slate-400 hover:text-white p-1 rounded-lg transition-colors cursor-pointer"
+            className="text-slate-400 hover:text-white p-1 rounded-lg transition-colors cursor-pointer shrink-0"
           >
             <X className="w-4 h-4" />
           </button>
