@@ -1,10 +1,13 @@
 import { Datauseprovider } from "./Datauseprovider"
 
 const Dataprovider = (props) => {
-    let name ='karn'
+    const token =[
+      {'name':'USDT','price':97},
+      {'name':'ETH','price':13000}
+    ]
   return (
     <div>
-        <Datauseprovider value={{name}}>
+        <Datauseprovider value={{token}}>
             {props.children}
         </Datauseprovider>
     </div>
