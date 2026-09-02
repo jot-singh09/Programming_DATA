@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task--Set</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body style="font-family: Helvetica, sans-serif;" class="">
+    <div class="bg-zinc-900 ">
+        <div class="p-20  w-full h-screen">
+            <div class="text-white transition-all duration-1000 ease-in-out ">
+                <form action="/create" method="post"
+                    class="flex flex-col gap-5 border border-gray-600 rounded-lg py-4 px-5">
+                    <input type="text" name="title"
+                        class=" rounded-md border-gray-800 outline-none text-3xl border px-3 py-2 bg-zinc-800"
+                        placeholder="Enter your title">
+                    <textarea name="desc"
+                        class="resize-none rounded-md border-gray-800 outline-none  text-3xl border px-3 py-2 bg-zinc-800"
+                        placeholder="Enter the Details "></textarea>
+                    <button class="bg-blue-600 px-8 py-2 w-fit rounded-md hover:bg-blue-700 transition">
+                        Create
+                    </button>
+                </form>
+            </div>
+            <div class="pt-10 flex gap-5 flex-wrap transition-all duration-1000 ease-in-out">
+
+                <% if (files.length> 0) { %>
+                    <% files.forEach((val)=>{ %>
+
+                        <div class="bg-zinc-800 w-70 px-4 py-2 rounded-md">
+                            <h1 class="text-3xl text-white">
+                                <%= val %>
+                            </h1>
+                            <a href="/file/<%= val %>"
+                                class="text-blue-500 pt-4  " id="click">
+                                Read More</>
+                        </div>
+                        <% }) %>
+                            <% } else { %>
+                                <h1>no text wet</h1>
+                                <% } %>
+
+
+            </div>
+           
+        </div>
+    </div>
+
+
+        </body>
+
+</html>

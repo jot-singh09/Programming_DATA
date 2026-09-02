@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskFlow</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+    <div class="bg-[#07080E] h-screen w-full transition-all duration-1000 relative ease-in-out flex flex-col items-center">
+        
+       
+        
+        <div class="py-15 font-black">
+            <h1 class="text-white text-4xl">Welcome back</h1>
+        </div>
+        
+        <div class="">
+            <form action="/login" method="post" class="text-white border rounded-2xl px-10 max-lg:px-3 max-lg:py-5 py-10 border-gray-600 flex flex-col gap-5">
+                 <!-- Error Message with Timer -->
+        <% if (message) { %>
+            <h1 id="errorMessage" class="text-xl bg-red-900 transition-all duration-1000 ease-in-out text-white absolute right-3 top-5 px-3 py-2 rounded-lg">
+               <%= message %>
+            </h1>
+        <% } %>
+                <div class="flex flex-col gap-2 relative justify-center">
+                    <h1 class="text-xl font-semibold px-2">Username</h1>
+                    <div>
+                        <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" class="absolute bottom-0">
+                            <rect width="44" height="44" rx="4" fill=""/>
+                            <rect x="13.5" y="15.5" width="17" height="13" rx="1.5" stroke="#B8BCC8" stroke-width="1.2"/>
+                            <path d="M14.5 17L22 22.5L29.5 17" stroke="#B8BCC8" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <input type="text" placeholder="Enter the Username" class="bg-[#13151C] border border-gray-800 px-12 py-2.5 rounded-md outline-none" name="username">
+                    </div>
+                </div>
+                
+                <div class="flex flex-col gap-2 relative justify-center">
+                    <h1 class="text-xl font-semibold px-2">Password</h1>
+                    <div>
+                        <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" class="absolute bottom-0">
+                            <rect width="44" height="44" rx="4" fill=""/>
+                            <rect x="14" y="20" width="16" height="11" rx="1.5" stroke="#B8BCC8" stroke-width="1.2"/>
+                            <path d="M17.5 20V16.5C17.5 14.01 19.51 12 22 12C24.49 12 26.5 14.01 26.5 16.5V20" stroke="#B8BCC8" stroke-width="1.2" stroke-linecap="round"/>
+                            <circle cx="22" cy="25" r="1.2" fill="#B8BCC8"/>
+                            <path d="M22 26.2V28" stroke="#B8BCC8" stroke-width="1.2" stroke-linecap="round"/>
+                        </svg>
+                        <input type="password" placeholder="Enter the Password" class="bg-[#13151C] border border-gray-800 px-12 py-2.5 rounded-md outline-none" name="pass">
+                    </div>
+                </div>
+                
+                <div class="flex justify-between">
+                    <h1><input type="checkbox"> Accept our Policy</h1>
+                    <h1 class="text-[#7C49D6]">Forget password..?</h1>
+                </div>
+                
+                <div class="">
+                    <button class="bg-[#7C49D6] w-full px-2 py-3 font-bold text-xl flex items-center justify-center rounded-lg hover:scale-98 active:scale-110 duration-300 ease-in-out">
+                        Login
+                    </button>
+                </div>
+
+                <div class="flex justify-between">
+                    <h1 class="text-gray-500">No account yet..</h1>
+                    <a href="/register" class="text-[#7C49D6]">Create New Account</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript for Auto-Hide Timer -->
+    <script>
+        // Wait for the page to load
+        document.addEventListener('DOMContentLoaded', function() {
+            const errorMessage = document.getElementById('errorMessage');
+            
+            // If error message exists, set timer to hide it after 5 seconds
+            if (errorMessage) {
+                // Add animation class for smooth fade out
+                errorMessage.style.transition = 'opacity 0.5s ease-in-out, transform 0.5s ease-in-out';
+                
+                // Hide after 5 seconds
+                setTimeout(function() {
+                    errorMessage.style.opacity = '0';
+                    errorMessage.style.transform = 'translateY(-20px)';
+                    
+                    // Remove from DOM after animation completes
+                    setTimeout(function() {
+                        errorMessage.style.display = 'none';
+                    }, 500); // Wait for fade animation to complete
+                }, 2000); // 5 seconds
+            }
+        });
+    </script>
+</body>
+</html>
