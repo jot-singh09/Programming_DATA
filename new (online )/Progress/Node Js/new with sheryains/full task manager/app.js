@@ -1,14 +1,14 @@
-const { urlencoded } = require("body-parser");
+const { urlencoded } = require("body-parser"); 
 const express = require("express");
 const fs = require("fs");
 const app = express();
 const port = 3000;
-const hostname = '192.168.1.11'; // Replace with your actual local IP
+const hostname = "192.168.1.11"; // Replace with your actual local IP
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
-app.use(express.static('public'));
+app.use(express.static("public"));
 app.get("/", (req, res) => {
   res.redirect("/login");
 });
@@ -30,7 +30,7 @@ app.post("/register", (req, res) => {
               fs.mkdir(`./files/${req.body.username}`, (err) => {
                 if (err) {
                   console.log("Error creating folder:", err);
-                } 
+                }
               });
               res.redirect("/");
             },
@@ -45,11 +45,11 @@ app.post("/register", (req, res) => {
 app.get("/login", (req, res) => {
   res.render("login", { message: "", response: "" });
 });
-let UserName = ''
+let UserName = "";
 
 app.post("/login", (req, res) => {
   const inpname = req.body.username;
-  UserName=inpname
+  UserName = inpname;
   // console.log(UserName)
   // let response = ''
   let checkpass = false;
@@ -69,7 +69,7 @@ app.post("/login", (req, res) => {
             if (err) console.log(err);
             else {
               if (inpass == file) {
-            //    localStorage.setItem('Islogin', userName);
+                //    localStorage.setItem('Islogin', userName);
                 res.redirect("/dashboard");
                 checkpass = false;
               } else if (inpass != file) {
@@ -85,10 +85,45 @@ app.post("/login", (req, res) => {
 });
 
 app.get("/dashboard", (req, res) => {
-    let setletter = UserName.split('')
-   
+  let setletter = UserName.split("");
+if (setletter== ''){
+  res.redirect('/')
+}
+else{
+  
+  fs.readdir(`./files/${UserName}`, (err, files) => {
+    const read = fs.readFile(`./files${UserName}`, "utf-8", (val, filedata) => {
+      res.render("Dashboard", { Username: UserName, letter: setletter,files: files, filedata: filedata });
+     files.forEach( (val)=>{
+      val.replace('.txt', '')
+      console.log(val)
+     })
+      
+      });
+    });
+  
 
-  res.render('Dashboard',{ Username : UserName,letter:setletter  });
+
+//   fs.readdir(`./files/${UserName}`, 'utf-8', (err, files) => {
+//     if (err) console.log(err)
+//       else {
+    
+//     files.map((val)=>{
+      
+      
+//       fs.readFile(`./files/${UserName}/${val}`,'utf-8',(err,filedata)=>{
+//         console.log(filedata)
+//       })
+      
+//     })
+    
+//   }
+// });
+}
+});
+
+app.post("/createtask", (req, res) => {
+  console.log(req.body);
 });
 
 app.listen(port, hostname, () => {
