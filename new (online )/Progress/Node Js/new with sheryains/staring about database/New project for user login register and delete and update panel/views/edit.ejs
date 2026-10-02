@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-black text-white">
+    <div>
+        <div class="pt-5 px-3">
+
+          <a class="text-xl text-blue-800 relative after:absolute after:w-0 hover:after:w-29 after:h-0.5 after:bottom-0 after:left-0 after:bg-blue-800 after:transition-all after:duration-300 after:ease-in-out" href="/read">Back to read</a>
+        </div>
+            <div  class="flex flex-col  justify-center items-center pt-20"    >
+
+                <form action="/edit/update/<%= user._id %>" method="post" class="flex flex-col gap-2">
+                    <input type="text" class="border border-gray-900 px-2 rounded-md" name="name" placeholder="Enter your name" value="<%=user.name%>">
+                    <input type="text" class="border border-gray-900 px-2 rounded-md" name="email" placeholder="Enter your email" value="<%=user.email%>">
+                    <input type="text" class="border border-gray-900 px-2 rounded-md" name="image" placeholder="Set the image" value="<%=user.image%>">
+                   
+                    <button class="bg-yellow-600 rounded-md">Update user info</button>
+                </form>
+            </div>
+    </div>
+</body>
+</html

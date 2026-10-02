@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+    <div>
+
+         <div class="absolute top-20 right-2">
+                 <% if (message.length!=0){%>
+                       
+                        <p class="bg-red-900 text-white px-4 py-1 rounded-md transition-all duration-1000 ease-in-out" ><%=message%></p>    
+                       <% }  %>
+            </div>
+        <!-- nav bar -->
+        <div class="bg-black ">
+            <div class=" flex gap-6 items-center h-12 justify-center">
+                <a href="/">Home</a>
+                <a href="/login">Login</a>
+                <a href="register">Register</a>
+            </div>
+        </div>
+          <div  class="flex flex-col  justify-center items-center pt-20"    >
+
+                <form action="/login" method="post" class="flex flex-col gap-2">
+                    <input type="text" class="border border-red-900 px-2 rounded-md" name="name" placeholder="Enter your name">
+                    <input type="text" class="border border-red-900 px-2 rounded-md" name="username" placeholder="Enter your username">
+                   
+                    <input type="password" class="border border-red-900 px-2 rounded-md" name="passward" placeholder="set the passward">
+                    <button class="bg-gray-600 rounded-md">login</button>
+                </form>
+            </div>
+
+  
+    </div>
+</body>
+</html>

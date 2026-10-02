@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-black text-white">
+    <div>
+        <!-- nav bar -->
+        <div class="bg-black text-white">
+          
+            <div class=" flex gap-6 items-center h-12 justify-center">
+                <a href="/">Home</a>
+                <a href="/read">Read</a>
+                <a href="register">Register</a>
+            </div>
+        </div>
+            <div  class="flex flex-col  justify-center items-center pt-20"    >
+
+                <form action="/register" method="post" class="flex flex-col gap-2">
+                    <input type="text" class="border border-red-900 px-2 rounded-md" name="name" placeholder="Enter your name">
+                    <input type="text" class="border border-red-900 px-2 rounded-md" name="email" placeholder="Enter your email">
+                    <input type="text" class="border border-red-900 px-2 rounded-md" name="image" placeholder="Set the image">
+                   
+                    <button class="bg-gray-600 rounded-md">Register</button>
+                </form>
+            </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "name": "new-project-for-user-login-register-and-delete-and-update-panel",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "ejs": "^6.0.1",
+    "express": "^5.2.1",
+    "mongoos": "^0.0.1-security",
+    "mongoose": "^9.10.2"
+  }
+}
