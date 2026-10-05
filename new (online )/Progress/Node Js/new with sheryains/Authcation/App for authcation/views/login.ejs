@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-black text-white">
+    <div class="px-90 pt-20">
+        <div >
+            <form action="/login/processing" method="post" class="flex gap-3 flex-col">
+                <!-- <input type="text" name="name" class="border border-white rounded-md px-3" placeholder="Enter the name"> -->
+                <input type="text" name="username" class="border border-white rounded-md px-3" placeholder="Enter the username">
+                <input type="text" name="passward" class="border border-white rounded-md px-3" placeholder="Enter the passward">
+                <button class="bg-blue-700 rounded-md px-5 py-1">login</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
