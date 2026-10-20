@@ -9,7 +9,7 @@ import Allbooks from "./pages/Allbooks"
 import Allhistory from "./pages/Allhistory"
 const App = () => {
   return (
-    <div className="w-full font-helvetica">
+    <div className="w-full font-helvetica bg-[#000A14] text-white">
    <BrowserRouter>
    <Routes>
       <Route path="/" element={<Home />} />

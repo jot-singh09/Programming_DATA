@@ -21,6 +21,11 @@ app.post("/adminlogin", (req, res) => {
     });
   }
 });
+
+app.post('/add-book',(req,res)=>{
+  console.log(req.body)
+  
+})
 app.listen(5000, () => {
   console.log("Server starting...");
   console.log("Listening on port 5000");
