@@ -3,9 +3,11 @@ mongoose.connect('mongodb://127.0.0.1:27017/liabrary')
 
 let bookSchema = mongoose.Schema({
     name:String,
-    Desc:String,
-    Stock:Number,
-    User:{
+    desc:String,
+    stock:Number,
+    author:String,
+    type:String,
+    user:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'user'
     }

@@ -3,109 +3,178 @@ import Navbar from "../navbar/Navbar";
 import book from "../assets/book.svg";
 import person from "../assets/person.svg";
 import layer from "../assets/layer.svg";
-import axios from 'axios'
+import axios from 'axios';
+import { FaPlusCircle, FaInfoCircle } from "react-icons/fa"; // Added some icons for the UI
+
 const Addbook = () => {
   const [author, setauthor] = useState("");
   const [Booktitle, setBooktitle] = useState("");
   const [desc, setdesc] = useState("");
   const [copies, setcopies] = useState("");
-  let createbook = async (e)=>{
-    e.preventDefault()
-   let res = axios.post('http://localhost:5000/add-book',{author,Booktitle,desc,copies}).catch((err)=>{
-    console.log(err);
-    
-   })
-  }
+  const [type, settype] = useState("");
+  const [loading, setLoading] = useState(false); // Added for UI feedback
+
+  let createbook = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      // Added 'await' here so the UI waits for the database to finish
+      await axios.post('http://localhost:5000/add-book', {
+        author, Booktitle, desc, copies, type
+      });
+      
+      // Optional: Clear form after success
+      setauthor(""); setBooktitle(""); setdesc(""); setcopies(""); settype("");
+      alert("Book added successfully!");
+      
+    } catch (err) {
+      console.log(err);
+      alert("Failed to add book.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
-    <div className="">
+    <div className="min-h-screen bg-[#020C18] text-white font-sans">
       <Navbar />
-      <div className="pl-70 pt-15 w-full">
-        <div>
-          <h1 className="text-4xl font-bold">Add New Book</h1>
-          <h1 className="pt-2 ">Add new book to your library collection</h1>
+      
+      {/* Main Content Area (Offset by ml-64 for the Navbar) */}
+      <div className="ml-64 p-10 w-full max-w-5xl">
+        
+        {/* Header */}
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold flex items-center gap-3">
+            <FaPlusCircle className="text-[#F5B041]" /> Add New Book
+          </h1>
+          <p className="text-gray-400 mt-2">Add a new book to your library collection.</p>
         </div>
 
-        <div className="pb-20 pt-10 flex gap-3 rounded-lg  w-full">
-          <div className="border border-gray-500/50 w-180 h-screen rounded-lg">
-            <form onSubmit={createbook} className="flex px-4 pt-10 text-white gap-9 flex-wrap ">
-              <div>
-                <h1 className="font-semibold pb-0.5">
-                  Book Title <span className="text-red-700">*</span>
-                </h1>
-                <div className="border bg-[#0B1C2B] w-75 py-1.5 rounded-sm border-gray-600 flex px-2 gap-0.5">
-                  <img src={book} className="w-6" alt="" />
-                  <input
-                    className="outline-none w-full px-3"
-                    type="text"
-                    name=""
-                    id=""
-                    value={Booktitle}
-                    onChange={(e) => {
-                      setBooktitle(e.target.value);
-                    }}
-                  />
+        <div className="flex gap-6">
+          
+          {/* --- Main Form Card --- */}
+          <div className="bg-[#0A1828] border border-gray-800 rounded-xl p-8 shadow-lg flex-1">
+            <form onSubmit={createbook} className="flex flex-col gap-6">
+              
+              {/* Grid for Top Inputs */}
+              <div className="grid grid-cols-2 gap-6">
+                
+                {/* Book Title */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                    Book Title <span className="text-red-500">*</span>
+                  </label>
+                  <div className="bg-[#04121E] border border-gray-700 rounded-lg flex items-center px-3 py-2.5 focus-within:border-[#F5B041] transition-colors">
+                    <img src={book} className="w-5 opacity-50" alt="book icon" />
+                    <input
+                      className="bg-transparent outline-none w-full px-3 text-white placeholder-gray-500"
+                      type="text"
+                      placeholder="e.g. Clean Code"
+                      value={Booktitle}
+                      onChange={(e) => setBooktitle(e.target.value)}
+                      required
+                    />
+                  </div>
+                </div>
+
+                {/* Author */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                    Author <span className="text-red-500">*</span>
+                  </label>
+                  <div className="bg-[#04121E] border border-gray-700 rounded-lg flex items-center px-3 py-2.5 focus-within:border-[#F5B041] transition-colors">
+                    <img src={person} className="w-5 opacity-50" alt="person icon" />
+                    <input
+                      className="bg-transparent outline-none w-full px-3 text-white placeholder-gray-500"
+                      type="text"
+                      placeholder="e.g. Robert C. Martin"
+                      value={author}
+                      onChange={(e) => setauthor(e.target.value)}
+                      required
+                    />
+                  </div>
+                </div>
+
+                {/* Copies */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                    Available Copies <span className="text-red-500">*</span>
+                  </label>
+                  <div className="bg-[#04121E] border border-gray-700 rounded-lg flex items-center px-3 py-2.5 focus-within:border-[#F5B041] transition-colors">
+                    <img src={layer} className="w-5 opacity-50" alt="layer icon" />
+                    <input
+                      className="bg-transparent outline-none w-full px-3 text-white placeholder-gray-500"
+                      type="number"
+                      placeholder="e.g. 10"
+                      value={copies}
+                      onChange={(e) => setcopies(e.target.value)}
+                      required
+                    />
+                  </div>
+                </div>
+
+                {/* Type */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                    Type / Category <span className="text-red-500">*</span>
+                  </label>
+                  <div className="bg-[#04121E] border border-gray-700 rounded-lg flex items-center px-3 py-2.5 focus-within:border-[#F5B041] transition-colors">
+                    <img src={layer} className="w-5 opacity-50" alt="layer icon" />
+                    <input
+                      className="bg-transparent outline-none w-full px-3 text-white placeholder-gray-500"
+                      type="text"
+                      placeholder="e.g. Programming"
+                      value={type}
+                      onChange={(e) => settype(e.target.value)}
+                      required
+                    />
+                  </div>
                 </div>
               </div>
 
+              {/* Description */}
               <div>
-                <h1 className="font-semibold pb-0.5">
-                  Author <span className="text-red-700">*</span>
-                </h1>
-                <div className="border bg-[#0B1C2B] w-75 py-1.5 rounded-sm border-gray-600 flex px-2 gap-0.5">
-                  <img src={person} className="w-6" alt="" />
-                  <input
-                    className="outline-none w-full px-3"
-                    type="text"
-                    name=""
-                    id=""
-                    value={author}
-                    onChange={(e) => {
-                      setauthor(e.target.value);
-                    }}
-                  />
-                </div>
-              </div>
-
-              <div>
-                <h1 className="font-semibold pb-0.5">
-                  Available Coppies <span className="text-red-700">*</span>
-                </h1>
-                <div className="border bg-[#0B1C2B] w-75 py-1.5 rounded-sm border-gray-600 flex px-2 gap-0.5">
-                  <img src={layer} className="w-6" alt="" />
-                  <input
-                    className="outline-none w-full px-3"
-                    type="text"
-                    name=""
-                    id=""
-                    value={copies}
-                    onChange={(e) => {
-                      setcopies(e.target.value);
-                    }}
-                  />
-                </div>
-              </div>
-
-              <div>
-                <h1 className="font-semibold pb-1 text-gray-200 text-sm">
+                <label className="block text-sm font-medium text-gray-300 mb-2">
                   Description
-                </h1>
-
-                <div className="bg-[#0B1C2B] relative w-75 max-w-md h-24 rounded-md border border-gray-600 flex flex-col p-3 transition-colors focus-within:border-blue-500">
+                </label>
+                <div className="bg-[#04121E] border border-gray-700 rounded-lg p-3 focus-within:border-[#F5B041] transition-colors">
                   <textarea
-                    className="bg-transparent   text-gray-300 outline-none w-full h-full resize-none placeholder-gray-400 text-sm"
+                    className="bg-transparent text-white outline-none w-full h-28 resize-none placeholder-gray-500 text-sm"
                     placeholder="Enter book description (optional)"
-                    name="description"
-                    id="description"
                     value={desc}
-                    onChange={(e) => {
-                      setdesc(e.target.value);
-                    }}
+                    onChange={(e) => setdesc(e.target.value)}
                   />
                 </div>
               </div>
-                <button className="w-full text-black bg-[#FDB93E] py-2 rounded-lg px-2">AddBook</button>
+
+              {/* Submit Button */}
+              <div className="pt-4 border-t border-gray-800">
+                <button 
+                  type="submit"
+                  disabled={loading}
+                  className="w-full text-black bg-[#F5B041] hover:bg-yellow-500 disabled:opacity-50 py-3 rounded-lg font-bold transition-colors shadow-lg shadow-yellow-500/10"
+                >
+                  Add Book to Library
+                </button>
+              </div>
             </form>
           </div>
+
+          {/* --- Right Side Info Panel --- */}
+          <div className="w-80">
+            <div className="bg-[#04121E] border border-blue-900/50 rounded-xl p-6 sticky top-10">
+              <h3 className="text-blue-400 font-semibold flex items-center gap-2 mb-4">
+                <FaInfoCircle /> Tips for Adding Books
+              </h3>
+              <ul className="text-sm text-gray-400 space-y-3 list-disc list-inside">
+                <li>Make sure the <strong>Book Title</strong> and <strong>Author</strong> match the physical cover exactly.</li>
+                <li>Set the correct number of available copies so the issue system doesn't fail.</li>
+                <li>Categories (Type) help students filter books later (e.g. Fiction, Science, Programming).</li>
+                <li>Descriptions are optional but highly recommended for better search results.</li>
+              </ul>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>

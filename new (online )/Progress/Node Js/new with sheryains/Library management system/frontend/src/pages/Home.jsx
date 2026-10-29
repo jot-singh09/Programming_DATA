@@ -19,7 +19,7 @@ const Home = () => {
        e.preventDefault()
       let res = await  axios.post('http://localhost:5000/adminlogin',{username,passward})
       if (res.data.message===true){
-        navigate('/addbook')
+        navigate('/stock/add')
       }
     }
     const [username, setUsername] = useState('')
